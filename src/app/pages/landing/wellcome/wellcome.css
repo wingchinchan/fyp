@@ -1,0 +1,29 @@
+.started-button{
+    background: white;
+    border:0px;
+    color: #656565;
+    font-size:18px;
+}
+
+.started-button:hover{
+    background: white;
+    border:0px;
+    color: #656565;
+    font-size:18px;
+
+}
+
+.card-title{
+    color: white;
+    background: #adadad;
+    padding: 10px;
+}
+
+.card{
+    /*border: 1px solid #abe4e6;*/
+}
+
+.choosing_card{
+    border: 0px !important;
+    margin:0px;
+}

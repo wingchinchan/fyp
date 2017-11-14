@@ -1,0 +1,345 @@
+<!--------------------------- slider -------------------------->
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div>
+                <ngb-carousel>
+                    <ng-template ngbSlide>
+                        <div style=" height: 550px;background-image: url('assets/jpeg/22.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center;">
+                        </div>
+                        <div class="carousel-caption">
+                            <p style="font-size: 40px;" class="text-white font-bold">How to start with no experience
+                                ?</p>
+                        </div>
+                    </ng-template>
+                    <ng-template ngbSlide>
+                        <div style=" height: 550px;background-image: url('assets/jpeg/employee1.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center;">
+                        </div>
+                        <div class="carousel-caption">
+                            <p style="font-size: 40px;" class="text-white font-bold">How to do what you want ?</p>
+                        </div>
+                    </ng-template>
+                    <ng-template ngbSlide>
+                        <div style=" height: 550px;background-image: url('assets/jpeg/33.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center;">
+                        </div>
+                        <div class="carousel-caption">
+                            <p style="font-size: 40px;" class="text-white font-bold">How to do it right ?</p>
+                        </div>
+                    </ng-template>
+                </ngb-carousel>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--------------------------- job table -------------------------->
+
+
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <div class="card" style="text-align: center;">
+            <div class="card-body">
+                <h4 class="card-title">Latest Jobs</h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th style="text-align: center;">Job No.</th>
+                            <th style="text-align: center;">Post Date</th>
+                            <th style="text-align: center;">Company</th>
+                            <th style="text-align: center;">Job Category</th>
+                            <th style="text-align: center;">Salary</th>
+                            <th style="text-align: center;">Quota</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let job of jobs | async">
+                            <td><a style="color: black;" href="javascript:void(0)">#26589</a></td>
+                            <td><span class="text-muted"><i class="fa fa-clock-o"></i> Oct 16, 2017</span></td>
+                            <td>{{job.name}}</td>
+                            <td>
+                                <div class="btn btn-rounded btn-secondary">Design</div>
+                            </td>
+                            <td>$ {{job.salary}}</td>
+                            <td>2</td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+                <div  style="text-align: center; display: inline-block !important;">
+                    <div class="btn btn-block btn-secondary">View more</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2"></div>
+
+</div>
+
+
+
+<!--------------------------- why choosing -------------------------->
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card text-center choosing_card">
+            <div class="card-body choosing" style="background-color: #f6f6f6;
+            background-repeat: no-repeat;
+            background-size: cover; ">
+                <!--<div class="card-body choosing" style="background-image: url('assets//jpeg/5.jpg'); background-repeat: no-repeat; background-size: cover; ">-->
+                <p style="font-size: 40px; padding-top: 30px;font-weight: 500;" class="card-text">Why
+                    people choose us ?</p>
+                <hr style="width: 5%;">
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-2">
+                        <span class="mdi mdi-account-check" style="font-size: 60px;"></span>
+                        <p style="font-size: 20px;">VERIFIED EMPLOYERS AND EMPLOYEES</p>
+                        <p>Verifying all members' information</p>
+                    </div>
+                    <div class="col-md-2">
+                        <span class="mdi mdi-format-list-numbers" style="font-size: 60px;"></span>
+                        <p style="font-size: 20px;">RANKING SYSTEM</p>
+                        <p>Allowing members to rank after finished the job so that it can
+                            provide a reliable data fore reference</p>
+                    </div>
+                    <div class="col-md-2">
+                        <span class="mdi mdi-wechat" style="font-size: 60px;"></span>
+                        <p style="font-size: 20px;">CHAT ROOM SYSTEM</p>
+                        <p>Allowing members to have instant messages to each other by this
+                            system</p>
+                    </div>
+                    <div class="col-md-2">
+                        <span class="mdi mdi-robot" style="font-size: 60px;"></span>
+                        <p style="font-size: 20px;">CHAT BOT</p>
+                        <p>Providing limited customers service on 24 hours</p>
+                    </div>
+                    <div class="col-md-2"></div>
+
+                </div>
+                <!--<a href="#" class="btn btn-primary started-button">GET STARTED</a>-->
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!--------------------------- start building -------------------------->
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card text-center">
+            <div class="card-body"
+                 style=" height: 250px;background-image: url('assets/jpeg/wood.jpg'); background-repeat: no-repeat; background-size: cover; display: block;  -webkit-filter: blur(5px);  filter: blur(5px);">
+
+            </div>
+            <div style="position: absolute; top: 65px; left: 35%;">
+                <p style="font-size: 35px; color: white; font-weight: 500;" class="card-text">Start Building Your Own
+                    Career Now</p>
+                <a href="/register" class="btn btn-primary started-button">GET STARTED</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!--------------------------- most popular employees -------------------------->
+
+<p style="text-align:center; font-size: 30px;font-size: 30px; padding-top: 30px;font-weight: 500; font-family: fantasy;"
+   class="card-text">
+    The most popular employees
+</p>
+<hr style="width: 5%; padding-bottom: 30px;">
+
+
+<div class="row el-element-overlay">
+    <div class="col-md-2"></div>
+    <div class="col-md-2">
+        <div class="card">
+            <div class="el-card-item">
+                <div class="el-card-avatar el-overlay-1"><img src="../assets/images/users/1.jpg" alt="user"/>
+                    <div class="el-overlay">
+                        <ul class="el-info">
+                            <li><a class="btn default btn-outline image-popup-vertical-fit"
+                                   href="../plugins/images/users/1.jpg"><i class="icon-magnifier"></i></a></li>
+                            <li><a class="btn default btn-outline" href="javascript:void(0);"><i class="icon-link"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="el-card-content">
+                    <h3 class="box-title">Genelia Deshmukh</h3>
+                    <small>Managing Director</small>
+                    <br/></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="card">
+            <div class="el-card-item">
+                <div class="el-card-avatar el-overlay-1"><img src="../assets/images/users/2.jpg" alt="user"/>
+                    <div class="el-overlay">
+                        <ul class="el-info">
+                            <li><a class="btn default btn-outline image-popup-vertical-fit"
+                                   href="../plugins/images/users/1.jpg"><i class="icon-magnifier"></i></a></li>
+                            <li><a class="btn default btn-outline" href="javascript:void(0);"><i class="icon-link"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="el-card-content">
+                    <h3 class="box-title">Genelia Deshmukh</h3>
+                    <small>Managing Director</small>
+                    <br/></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="card">
+            <div class="el-card-item">
+                <div class="el-card-avatar el-overlay-1"><img src="../assets/images/users/3.jpg" alt="user"/>
+                    <div class="el-overlay">
+                        <ul class="el-info">
+                            <li><a class="btn default btn-outline image-popup-vertical-fit"
+                                   href="../plugins/images/users/1.jpg"><i class="icon-magnifier"></i></a></li>
+                            <li><a class="btn default btn-outline" href="javascript:void(0);"><i class="icon-link"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="el-card-content">
+                    <h3 class="box-title">Genelia Deshmukh</h3>
+                    <small>Managing Director</small>
+                    <br/></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="card">
+            <div class="el-card-item">
+                <div class="el-card-avatar el-overlay-1"><img src="../assets/images/users/4.jpg" alt="user"/>
+                    <div class="el-overlay">
+                        <ul class="el-info">
+                            <li><a class="btn default btn-outline image-popup-vertical-fit"
+                                   href="../plugins/images/users/1.jpg"><i class="icon-magnifier"></i></a></li>
+                            <li><a class="btn default btn-outline" href="javascript:void(0);"><i class="icon-link"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="el-card-content">
+                    <h3 class="box-title">Genelia Deshmukh</h3>
+                    <small>Managing Director</small>
+                    <br/></div>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+
+
+<!--------------------------- most popular company -------------------------->
+
+<p style="text-align:center; font-size: 30px;font-size: 30px; padding-top: 30px;font-weight: 500; font-family: fantasy;"
+   class="card-text">
+    The most popular company
+</p>
+<hr style="width: 5%; padding-bottom: 30px;">
+
+
+<div class="row el-element-overlay">
+    <div class="col-md-2"></div>
+    <div class="col-md-2">
+        <div class="card">
+            <div class="el-card-item">
+                <div class="el-card-avatar el-overlay-1"><img src="../assets/images/users/1.jpg" alt="user"/>
+                    <div class="el-overlay">
+                        <ul class="el-info">
+                            <li><a class="btn default btn-outline image-popup-vertical-fit"
+                                   href="../plugins/images/users/1.jpg"><i class="icon-magnifier"></i></a></li>
+                            <li><a class="btn default btn-outline" href="javascript:void(0);"><i
+                                    class="icon-link"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="el-card-content">
+                    <h3 class="box-title">Genelia Deshmukh</h3>
+                    <small>Managing Director</small>
+                    <br/></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="card">
+            <div class="el-card-item">
+                <div class="el-card-avatar el-overlay-1"><img src="../assets/images/users/2.jpg" alt="user"/>
+                    <div class="el-overlay">
+                        <ul class="el-info">
+                            <li><a class="btn default btn-outline image-popup-vertical-fit"
+                                   href="../plugins/images/users/1.jpg"><i class="icon-magnifier"></i></a></li>
+                            <li><a class="btn default btn-outline" href="javascript:void(0);"><i
+                                    class="icon-link"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="el-card-content">
+                    <h3 class="box-title">Genelia Deshmukh</h3>
+                    <small>Managing Director</small>
+                    <br/></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="card">
+            <div class="el-card-item">
+                <div class="el-card-avatar el-overlay-1"><img src="../assets/images/users/3.jpg" alt="user"/>
+                    <div class="el-overlay">
+                        <ul class="el-info">
+                            <li><a class="btn default btn-outline image-popup-vertical-fit"
+                                   href="../plugins/images/users/1.jpg"><i class="icon-magnifier"></i></a></li>
+                            <li><a class="btn default btn-outline" href="javascript:void(0);"><i
+                                    class="icon-link"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="el-card-content">
+                    <h3 class="box-title">Genelia Deshmukh</h3>
+                    <small>Managing Director</small>
+                    <br/></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="card">
+            <div class="el-card-item">
+                <div class="el-card-avatar el-overlay-1"><img src="../assets/images/users/4.jpg" alt="user"/>
+                    <div class="el-overlay">
+                        <ul class="el-info">
+                            <li><a class="btn default btn-outline image-popup-vertical-fit"
+                                   href="../plugins/images/users/1.jpg"><i class="icon-magnifier"></i></a></li>
+                            <li><a class="btn default btn-outline" href="javascript:void(0);"><i
+                                    class="icon-link"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="el-card-content">
+                    <h3 class="box-title">Genelia Deshmukh</h3>
+                    <small>Managing Director</small>
+                    <br/></div>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+

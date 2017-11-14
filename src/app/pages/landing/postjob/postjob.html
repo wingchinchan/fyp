@@ -1,0 +1,158 @@
+
+<!--------------------------- slider -------------------------->
+<div class="row">
+    <div class="col-md-12">
+        <div class="card text-center">
+            <div class="card-body"
+                 style=" height: 250px;background-image: url('assets/jpeg/wood.jpg'); background-repeat: no-repeat; background-size: cover; display: block;  -webkit-filter: blur(5px);  filter: blur(5px);">
+
+            </div>
+            <div style="position: absolute; top: 130px; left: 43%;">
+                <p style="font-size: 45px; color: white; font-weight: 700;" class="card-text">
+                    POST A JOB
+                </p>
+                <hr style="width: 50%; border-top: 1px solid white !important;">
+
+                <!--<a href="/register" class="btn btn-primary started-button">GET STARTED</a>-->
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!--------------------------- post job form -------------------------->
+
+
+<div class="row">
+
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+
+        <p style="font-size: 40px; padding-top: 30px;font-weight: 500; text-align: center;" class="card-text">
+            Post a job in minute
+        </p>
+        <hr style="width: 5%;">
+        <div class="card card-outline-info">
+            <div class="card-body">
+                <form action="#" [formGroup]="jobForm">
+                    <div class="form-body">
+                        <h3 class="card-title" style ="text-align: center;">Job details</h3>
+                        <hr>
+                        <div class="row p-t-20">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Job Title</label><span class="text-danger">*</span>
+                                    <input type="text" id="firstName" class="form-control" placeholder="Mobile Game developer">
+                                    <!--<small class="form-control-feedback"> This is inline help </small> -->
+
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group has-danger">
+                                    <label class="control-label">Job Category</label><span class="text-danger">*</span>
+                                    <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1" formControlName="jobCategory" name="jobCategory">
+                                        <option>Select Category</option>
+                                        <optgroup label="Finance">
+                                        <option value="Category 1">Accounting</option>
+                                        </optgroup>
+                                        <optgroup label="Computing">
+                                            <option value="Category 1">Programming</option>
+                                        </optgroup>
+                                        <optgroup label="Desgin">
+                                        <option value="Category 1">Banner Design</option>
+                                    </optgroup>
+                                    </select>
+                                    <small *ngIf="!jobForm.controls.jobCategory.valid && jobForm.controls.jobCategory.dirty">Error</small>
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Job Description </label><span class="text-danger">*</span>
+                                    <textarea class="form-control" rows="5"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Application Email</label> <span class="text-danger">*</span>
+                                    <div class="controls">
+                                        <input type="email" name="email" class="form-control" formControlName="email" [class.invalid]="!jobForm.controls.email.valid" (keypress)="hello()">
+                                    </div>
+                                    <small *ngIf="!jobForm.controls.email.valid && jobForm.controls.email.dirty">
+                                        You need at least 6 digit
+                                    </small>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Minimum Rate</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Minimum Salary</label><span class="text-danger">*</span>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Maximum Salary</label><span class="text-danger">*</span>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+
+                        <h3 class="box-title m-t-40" style="text-align: center;">Company Details</h3>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Company Name</label><span class="text-danger">*</span>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Website</label>
+                                    <input type="text" class="form-control" formControlName="website" name="website">
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Company Description </label><span class="text-danger">*</span>
+                                    <textarea class="form-control" rows="5"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <!--/row-->
+
+                    </div>
+                    <div class="form-actions" style="text-align: center;">
+                        <button type="submit" class="btn btn-secondary" style="width: 20%;" [disabled]="!jobForm.valid"> <i class="fa fa-check"></i> Save</button>
+                        <button type="button" class="btn btn-outline-secondary cancel" style="width: 20%;">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+        <div class="col-md-2"></div>
+    </div>
+
+
