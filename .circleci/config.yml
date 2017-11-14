@@ -27,7 +27,7 @@ version: 2
     # run tests!
     - run:
     name: Building
-    command: npm run build-prod
+    command: npm run build
 
     - deploy:
     name: Deploying hosting
