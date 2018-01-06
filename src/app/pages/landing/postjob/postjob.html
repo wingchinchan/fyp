@@ -42,9 +42,9 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">Job Title</label><span class="text-danger">*</span>
-                                    <input type="text" id="firstName" class="form-control" placeholder="Mobile Game developer">
+                                    <input name ="title" type="text" class="form-control"  formControlName="title" [class.invalid]="!jobForm.controls.title.valid"  placeholder="Mobile Game developer">
                                     <!--<small class="form-control-feedback"> This is inline help </small> -->
-
+                                    <small  style="color:red;" *ngIf="!jobForm.controls.title.valid && jobForm.controls.title.dirty">This is required</small>
                                 </div>
                             </div>
                             <!--/span-->
@@ -52,7 +52,7 @@
                                 <div class="form-group has-danger">
                                     <label class="control-label">Job Category</label><span class="text-danger">*</span>
                                     <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1" formControlName="jobCategory" name="jobCategory">
-                                        <option>Select Category</option>
+                                        <!--<option>Select Category</option>-->
                                         <optgroup label="Finance">
                                         <option value="Category 1">Accounting</option>
                                         </optgroup>
@@ -69,10 +69,28 @@
                             <!--/span-->
                         </div>
                         <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Job Quota</label><span class="text-danger">*</span>
+                                    <input name ="quota" type="text" class="form-control"  formControlName="quota" [class.invalid]="!jobForm.controls.quota.valid">
+                                    <!--<small class="form-control-feedback"> This is inline help </small> -->
+                                    <small  style="color:red;" *ngIf="!jobForm.controls.quota.valid && jobForm.controls.quota.dirty">This is required</small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                <label class="control-label ">Due Date</label>
+                                    <input type="date" class="form-control" formControlName="dueDate" placeholder="dd/mm/yyyy" [class.invalid]="!jobForm.controls.dueDate.valid">
+                                    <small  style="color:red;" *ngIf="!jobForm.controls.dueDate.valid && jobForm.controls.dueDate.dirty">This is required</small>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Job Description </label><span class="text-danger">*</span>
-                                    <textarea class="form-control" rows="5"></textarea>
+                                    <textarea class="form-control" rows="5" name="desc" formControlName="jobDesc" [class.invalid]="!jobForm.controls.jobDesc.valid" ></textarea>
+                                    <small style="color:red;" *ngIf="!jobForm.controls.jobDesc.valid && jobForm.controls.jobDesc.dirty">This is required</small>
                                 </div>
                             </div>
                         </div>
@@ -84,8 +102,8 @@
                                     <div class="controls">
                                         <input type="email" name="email" class="form-control" formControlName="email" [class.invalid]="!jobForm.controls.email.valid" (keypress)="hello()">
                                     </div>
-                                    <small *ngIf="!jobForm.controls.email.valid && jobForm.controls.email.dirty">
-                                        You need at least 6 digit
+                                    <small style="color: red;" *ngIf="!jobForm.controls.email.valid && jobForm.controls.email.dirty">
+                                        Not a valid email address
                                     </small>
                                 </div>
                             </div>
@@ -93,7 +111,8 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Minimum Rate</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" formControlName="minRate" [class.invalid]="!jobForm.controls.minRate.valid">
+                                    <small style="color:red;" *ngIf="!jobForm.controls.minRate.valid && jobForm.controls.minRate.dirty">Input N/A if do not have any requirement</small>
                                 </div>
                             </div>
                             <!--/span-->
@@ -102,14 +121,16 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Minimum Salary</label><span class="text-danger">*</span>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" formControlName="minSal" [class.invalid]="!jobForm.controls.minSal.valid" >
+                                    <small style="color:red;" *ngIf="!jobForm.controls.minSal.valid && jobForm.controls.minSal.dirty">This is required</small>
                                 </div>
                             </div>
                             <!--/span-->
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Maximum Salary</label><span class="text-danger">*</span>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" formControlName="maxSal" [class.invalid]="!jobForm.controls.maxSal.valid">
+                                    <small style="color:red;" *ngIf="!jobForm.controls.maxSal.valid && jobForm.controls.maxSal.dirty">This is required</small>
                                 </div>
                             </div>
                             <!--/span-->
@@ -121,14 +142,16 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Company Name</label><span class="text-danger">*</span>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" formControlName="comName" [class.invalid]="!jobForm.controls.comName.valid">
+                                    <small style="color:red;" *ngIf="!jobForm.controls.comName.valid && jobForm.controls.comName.dirty">This is required</small>
                                 </div>
                             </div>
                             <!--/span-->
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Website</label>
-                                    <input type="text" class="form-control" formControlName="website" name="website">
+                                    <input type="text" class="form-control" formControlName="website" name="website" [class.invalid]="!jobForm.controls.website.valid">
+                                    <small style="color:red;" *ngIf="!jobForm.controls.website.valid && jobForm.controls.website.dirty">Input N/A if do not have a website</small>
                                 </div>
                             </div>
                             <!--/span-->
@@ -137,7 +160,8 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Company Description </label><span class="text-danger">*</span>
-                                    <textarea class="form-control" rows="5"></textarea>
+                                    <textarea class="form-control" rows="5" formControlName="comDesc" [class.invalid]="!jobForm.controls.comDesc.valid"></textarea>
+                                    <small style="color:red;" *ngIf="!jobForm.controls.comDesc.valid && jobForm.controls.comDesc.dirty">This is required</small>
                                 </div>
                             </div>
                         </div>
@@ -145,7 +169,7 @@
 
                     </div>
                     <div class="form-actions" style="text-align: center;">
-                        <button type="submit" class="btn btn-secondary" style="width: 20%;" [disabled]="!jobForm.valid"> <i class="fa fa-check"></i> Save</button>
+                        <button type="submit" class="btn btn-secondary" style="width: 20%;" [disabled]="!jobForm.valid"> <i class="fa fa-check"></i> Submit</button>
                         <button type="button" class="btn btn-outline-secondary cancel" style="width: 20%;">Cancel</button>
                     </div>
                 </form>

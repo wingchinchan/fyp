@@ -20,6 +20,8 @@ import {GetjobComponent} from './pages/landing/getjob/getjob.component';
 import { AngularFireModule } from 'angularfire2';
 import {AngularFireAuthModule} from "angularfire2/auth";
 import {AngularFirestoreModule} from "angularfire2/firestore";
+import  { MomentModule } from 'angular2-moment';
+import { UserService } from './service/userService';
 
 const firebaseConfig = {
     apiKey: "AIzaSyDhGKcU8rrQ9PSdFrTs9ju5PnE5OFyWd3E",
@@ -136,8 +138,11 @@ const routes: Routes = [
         AngularFireModule.initializeApp(firebaseConfig),
         AngularFirestoreModule, // imports firebase/firestore, only needed for database features
         AngularFireAuthModule, // imports firebase/auth, only needed for auth features
+        MomentModule
     ],
-    providers: [],
+    providers: [
+        UserService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {
