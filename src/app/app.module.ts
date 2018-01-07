@@ -24,11 +24,6 @@ const firebaseConfig = {
 }
 const routes: Routes = [
     {
-        path: '',
-        redirectTo: 'landing',
-        pathMatch: 'full'
-    },
-    {
         path: '**',
         redirectTo: '404'
     },

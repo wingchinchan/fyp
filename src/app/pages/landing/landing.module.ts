@@ -22,6 +22,10 @@ const routes: Routes = [ {
     component: LandingComponet,
     children: [
         {
+            path: '',
+            component: WellcomeComponent,
+        },
+        {
             path: 'landing',
             component: WellcomeComponent,
         },

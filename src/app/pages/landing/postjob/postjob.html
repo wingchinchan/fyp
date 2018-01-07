@@ -173,51 +173,51 @@
                             <!--/span-->
                         </div>
 
-                        <h3 class="box-title m-t-40" style="text-align: center;">Company Details</h3>
-                        <hr>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Company Name</label><span class="text-danger">*</span>
-                                    <input type="text" class="form-control" formControlName="comName"
-                                           [class.invalid]="!jobForm.controls.comName.valid">
-                                    <small style="color:red;"
-                                           *ngIf="!jobForm.controls.comName.valid && jobForm.controls.comName.dirty">
-                                        This is required
-                                    </small>
-                                </div>
-                            </div>
-                            <!--/span-->
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Website</label>
-                                    <input type="text" class="form-control" formControlName="website" name="website"
-                                           [class.invalid]="!jobForm.controls.website.valid">
-                                    <small style="color:red;"
-                                           *ngIf="!jobForm.controls.website.valid && jobForm.controls.website.dirty">
-                                        Input N/A if do not have a website
-                                    </small>
-                                </div>
-                            </div>
-                            <!--/span-->
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label>Company Description </label><span class="text-danger">*</span>
-                                    <textarea class="form-control" rows="5" formControlName="comDesc"
-                                              [class.invalid]="!jobForm.controls.comDesc.valid"></textarea>
-                                    <small style="color:red;"
-                                           *ngIf="!jobForm.controls.comDesc.valid && jobForm.controls.comDesc.dirty">
-                                        This is required
-                                    </small>
-                                </div>
-                            </div>
-                        </div>
+                        <!--<h3 class="box-title m-t-40" style="text-align: center;">Company Details</h3>-->
+                        <!--<hr>-->
+                        <!--<div class="row">-->
+                            <!--<div class="col-md-6">-->
+                                <!--<div class="form-group">-->
+                                    <!--<label>Company Name</label><span class="text-danger">*</span>-->
+                                    <!--<input type="text" class="form-control" formControlName="comName"-->
+                                           <!--[class.invalid]="!jobForm.controls.comName.valid">-->
+                                    <!--<small style="color:red;"-->
+                                           <!--*ngIf="!jobForm.controls.comName.valid && jobForm.controls.comName.dirty">-->
+                                        <!--This is required-->
+                                    <!--</small>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--&lt;!&ndash;/span&ndash;&gt;-->
+                            <!--<div class="col-md-6">-->
+                                <!--<div class="form-group">-->
+                                    <!--<label>Website</label>-->
+                                    <!--<input type="text" class="form-control" formControlName="website" name="website"-->
+                                           <!--[class.invalid]="!jobForm.controls.website.valid">-->
+                                    <!--<small style="color:red;"-->
+                                           <!--*ngIf="!jobForm.controls.website.valid && jobForm.controls.website.dirty">-->
+                                        <!--Input N/A if do not have a website-->
+                                    <!--</small>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--&lt;!&ndash;/span&ndash;&gt;-->
+                        <!--</div>-->
+                        <!--<div class="row">-->
+                            <!--<div class="col-md-12">-->
+                                <!--<div class="form-group">-->
+                                    <!--<label>Company Description </label><span class="text-danger">*</span>-->
+                                    <!--<textarea class="form-control" rows="5" formControlName="comDesc"-->
+                                              <!--[class.invalid]="!jobForm.controls.comDesc.valid"></textarea>-->
+                                    <!--<small style="color:red;"-->
+                                           <!--*ngIf="!jobForm.controls.comDesc.valid && jobForm.controls.comDesc.dirty">-->
+                                        <!--This is required-->
+                                    <!--</small>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
                         <!--/row-->
 
                     </div>
-                    <div class="form-actions" style="text-align: center;">
+                    <div class="form-actions" style="text-align: center;margin-top: 2%;">
                         <button type="submit" class="btn btn-secondary" style="width: 20%;" [disabled]="!jobForm.valid">
                             <i class="fa fa-check"></i> Submit
                         </button>
