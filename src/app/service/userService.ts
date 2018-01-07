@@ -17,7 +17,6 @@ export class UserService {
     public user: Observable<User>;
     public currentUser: User;
     public userSync = false;
-    public logined = false;
 
     constructor(private afAuth: AngularFireAuth,
                 private afs: AngularFirestore) {
@@ -25,9 +24,7 @@ export class UserService {
         this.user = this.afAuth.authState
             .switchMap(user => {
                 if (user) {
-                    console.log(user);
                     this.user = this.afs.doc<User>(`user/${user.uid}`).valueChanges();
-                    this.logined = true;
                     return this.user;
                 } else {
                     return Observable.of(null);
@@ -36,8 +33,7 @@ export class UserService {
     }
 
     isLogin() {
-        console.log(this.logined);
-        return this.logined;
+        return window.localStorage.getItem('login');
     }
 
     updateUserData(user) {
@@ -52,11 +48,25 @@ export class UserService {
         };
         return userRef.update(data);
     }
+    createUser(user) {
+        console.log(user);
+        // Sets user data to firestore on login
+        const userRef = this.afs.doc(`user/${user.uid}`);
+        console.log(userRef);
+        const data = {
+            photoURL: user.photoURL,
+            displayName: user.displayName,
+            email: user.email
+        };
+        return userRef.set(data);
+    }
 
     emailLogin(email, password) {
         return new Promise<User>((resolve, reject) => {
             this.afAuth.auth.signInWithEmailAndPassword(email, password).then(user => {
-                this.updateUserData(user.user);
+                this.user = this.afs.doc<User>(`user/${user.uid}`).valueChanges();
+                window.localStorage.setItem('login','true');
+                this.updateUserData(user);
                 resolve(user);
             }).catch(error => {
                 console.log(error);
@@ -69,6 +79,8 @@ export class UserService {
         return new Promise<User>((resolve, reject) => {
             this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(user => {
                 this.updateUserData(user.user);
+                window.localStorage.setItem('login','true');
+                this.user = this.afs.doc<User>(`user/${user.user.uid}`).valueChanges();
                 console.log(user);
                 resolve(user);
             }).catch(error => {
@@ -78,7 +90,22 @@ export class UserService {
         });
     }
 
+    register(email, password) {
+        return new Promise<User>((resolve, reject) => {
+            this.afAuth.auth.createUserWithEmailAndPassword(email, password).then(user => {
+                this.user = this.afs.doc<User>(`user/${user.uid}`).valueChanges();
+                window.localStorage.setItem('login','true');
+                this.createUser(user);
+                user.sendEmailVerification();
+                resolve(user);
+            }).catch(error => {
+                reject(error);
+            });
+        });
+    }
+
     logout() {
+        window.localStorage.removeItem('login');
         this.afAuth.auth.signOut();
     }
 

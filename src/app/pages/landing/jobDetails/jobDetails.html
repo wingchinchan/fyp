@@ -1,0 +1,82 @@
+<!--------------------------- slider -------------------------->
+<div class="row">
+    <div class="col-md-12">
+        <div class="card text-center" style="margin-bottom: 0px;">
+            <div class="card-body"
+                 style=" height: 250px;background-image: url('assets/jpeg/wood.jpg'); background-repeat: no-repeat; background-size: cover; display: block;  -webkit-filter: blur(5px);  filter: blur(5px);">
+
+            </div>
+            <div style="position: absolute; top: 130px; left: 43%;">
+                <p style="font-size: 45px; color: white; font-weight: 700;" class="card-text">
+                    JOB DETAILS
+                </p>
+                <hr style="width: 50%; border-top: 1px solid white !important;">
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!--------------------------- job details -------------------------->
+<div class="row" *ngIf="( Ojob | async) as job">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <div class="tab-pane" id="profile" role="tabpanel">
+            <div class="card-body">
+                <p>{{ job.title }}</p>
+                <div class="row">
+                    <div class="col-md-3 col-xs-6 b-r"><strong><i class="fa fa-calendar"></i> Due Date</strong>
+                        <br>
+                        <p class="text-muted">{{ job.dueDate | amDateFormat: 'YYYY-MM-DD'}}</p>
+                    </div>
+
+                    <div class="col-md-3 col-xs-6 b-r"><strong><i class="fa fa-dollar"></i> Salary</strong>
+                        <br>
+                        <p class="text-muted">$ {{job.maxSal}} </p>
+                    </div>
+                    <div class="col-md-3 col-xs-6 b-r"><strong><i class="fa fa fa-address-book-o"></i> Contact Email</strong>
+                        <br>
+                        <p class="text-muted">{{job.email}}</p>
+                    </div>
+                    <!--<div class="col-md-3 col-xs-6"><strong><i class="fa  fa-phone"></i> Phone</strong>-->
+                        <!--<br>-->
+                        <!--<p class="text-muted">{{job.maxSal}}</p>-->
+                    <!--</div>-->
+                </div>
+                <hr>
+                <p>Description</p>
+                <p class="m-t-30">Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In
+                    enim
+                    justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede
+                    mollis
+                    pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate
+                    eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac,
+                    enim.</p>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                    has
+                    been the industry's standard dummy text ever since the 1500s, when an unknown printer
+                    took a
+                    galley of type and scrambled it to make a type specimen book. It has survived not only
+                    five
+                    centuries </p>
+                <p>It was popularised in the 1960s with the release of Letraset sheets containing Lorem
+                    Ipsum
+                    passages, and more recently with desktop publishing software like Aldus PageMaker
+                    including
+                    versions of Lorem Ipsum.</p>
+                <h4 class="font-medium m-t-30">Requirement</h4>
+                <hr>
+                <h5 class="m-t-30">Wordpress <span class="pull-right"></span></h5>
+                <h5 class="m-t-30">HTML 5 <span class="pull-right"></span></h5>
+                <h5 class="m-t-30">jQuery <span class="pull-right"></span></h5>
+                <h5 class="m-t-30">Photoshop <span class="pull-right"></span></h5>
+            </div>
+        </div>
+        <div class="form-actions" style="text-align: center; margin-bottom: 2%;">
+            <button type="applyjob" class="btn btn-secondary" style="width: 20%;">
+                <i class="fa fa-address-card-o"></i> Apply this Job
+            </button>
+        </div>
+    </div>
+    <div class="col-md-2"></div>
+</div>

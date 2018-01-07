@@ -1,13 +1,13 @@
 
 <nav class="stroke">
     <ul>
-        <li><a href="#">Home</a></li>
+        <li><a href="/landing">Home</a></li>
         <li><a href="/postjob">POST JOBS</a></li>
-        <li><a href="getjob">GET JOBS</a></li>
+        <li><a href="/jobs">GET JOBS</a></li>
         <li><a href="#">SEARCH JOBS</a></li>
         <li><a href="/login" style="position: absolute; right: 380px;top: 15px;" *ngIf="!user">Login</a></li>
         <li><a href="/login" style="position: absolute; right: 380px;top: 15px;" *ngIf="user" (click)="logout()">Logout</a></li>
 
-        <li><a href="/register" style="position: absolute; right: 250px;top: 15px;"  >Sign Up</a></li>
+        <li><a href="/register" style="position: absolute; right: 250px;top: 15px;"  *ngIf="!user">Sign Up</a></li>
     </ul>
 </nav>

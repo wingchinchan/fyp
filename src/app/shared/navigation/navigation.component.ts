@@ -8,12 +8,13 @@ import { Router } from '@angular/router';
     styleUrls: ['./nav.css'],
 })
 export class NavigationComponent {
-    public user: User;
+    public user: Boolean;
     constructor(public userService: UserService, public router: Router) {
-        this.userService.getUser().then(user => {
-            console.log(user);
-            this.user = user;
-        });
+        if (this.userService.isLogin() === 'true') {
+            this.user = true;
+        } else {
+            this.user = false;
+        }
     }
 
     logout() {

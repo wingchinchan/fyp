@@ -1,20 +1,21 @@
 
 import { Component} from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
+import { JobService, Job} from '../../../service/jobService';
+import { Router } from '@angular/router';
 
-export interface Job {
-    name : string;
-}
 @Component({
     templateUrl: './wellcome.html',
     styleUrls: ['./wellcome.css'],
 })
 
 export class WellcomeComponent {
-    public jobs : Observable<Job[]>
-    constructor(public afs: AngularFirestore) {
-        this.jobs = this.afs.collection('job').valueChanges();
+    public jobs: Observable<Job[]>;
+    constructor(public jobService: JobService, public router: Router) {
+        this.jobs = this.jobService.getJobs();
     }
 
+    goToDetail(job) {
+        this.router.navigate(['job', job.id]);
+    }
 }

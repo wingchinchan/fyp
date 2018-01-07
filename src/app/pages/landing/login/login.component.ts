@@ -34,6 +34,7 @@ export class LoginComponent {
        this.userService.emailLogin(this.loginForm.value.email, this.loginForm.value.password).then(success => {
            this.router.navigateByUrl('profile');
        }).catch(error => {
+           alert(error);
            console.log(error);
        });
     }

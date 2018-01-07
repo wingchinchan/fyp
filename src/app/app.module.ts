@@ -1,27 +1,18 @@
 import * as $ from 'jquery';
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {FormsModule , ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {Routes, RouterModule} from '@angular/router';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {NavigationComponent} from './shared/navigation/navigation.component';
-import {SidebarComponent} from './shared/sidebar/sidebar.component';
-import {BreadcrumbComponent} from './shared/breadcrumb/breadcrumb.component';
-import {RightSidebarComponent} from './shared/right-sidebar/rightsidebar.component';
+import { LandingModule } from './pages/landing/landing.module';
 import {AppComponent} from './app.component';
-import {LandingComponet} from './pages/landing/landing.componet';
-import {WellcomeComponent} from './pages/landing/wellcome/wellcome.component';
-import {RegisterComponent} from './pages/landing/register/register.component';
-import {LoginComponent} from './pages/landing/login/login.component';
-import {ProfileComponent} from './pages/landing/profile/profile.component';
-import {PostjobComponent} from './pages/landing/postjob/postjob.component';
-import {GetjobComponent} from './pages/landing/getjob/getjob.component';
-import { AngularFireModule } from 'angularfire2';
+import {AngularFireModule} from 'angularfire2';
 import {AngularFireAuthModule} from "angularfire2/auth";
 import {AngularFirestoreModule} from "angularfire2/firestore";
-import  { MomentModule } from 'angular2-moment';
-import { UserService } from './service/userService';
+import {MomentModule} from 'angular2-moment';
+import {UserService} from './service/userService';
+import {JobService} from './service/jobService';
 
 const firebaseConfig = {
     apiKey: "AIzaSyDhGKcU8rrQ9PSdFrTs9ju5PnE5OFyWd3E",
@@ -34,35 +25,14 @@ const firebaseConfig = {
 const routes: Routes = [
     {
         path: '',
-        component: LandingComponet,
-        children: [
-            {
-                path: '',
-                component: WellcomeComponent,
-            },
-            {
-                path: 'register',
-                component: RegisterComponent,
-            },
-            {
-              path: 'login',
-              component: LoginComponent,
-            },
-            {
-                path: 'profile',
-                component: ProfileComponent,
-            },
-            {
-              path: 'postjob',
-              component: PostjobComponent,
-            },
-            {
-              path: 'getjob',
-              component: GetjobComponent,
-            },
-        ]
-
-    }, {
+        redirectTo: 'landing',
+        pathMatch: 'full'
+    },
+    {
+        path: '**',
+        redirectTo: '404'
+    },
+    {
         path: 'blank',
         loadChildren: './pages/blank/blank.module'
     }, {
@@ -116,20 +86,11 @@ const routes: Routes = [
 @NgModule({
     declarations: [
         AppComponent,
-        NavigationComponent,
-        BreadcrumbComponent,
-        SidebarComponent,
-        RightSidebarComponent,
-        LandingComponet,
-        WellcomeComponent,
-        RegisterComponent,
-        LoginComponent,
-        ProfileComponent,
-        PostjobComponent,
-        GetjobComponent,
+
     ],
     imports: [
         BrowserModule,
+        LandingModule,
         NgbModule.forRoot(),
         ReactiveFormsModule,
         FormsModule,
@@ -141,7 +102,8 @@ const routes: Routes = [
         MomentModule
     ],
     providers: [
-        UserService
+        UserService,
+        JobService
     ],
     bootstrap: [AppComponent]
 })
