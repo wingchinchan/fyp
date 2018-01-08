@@ -1,9 +1,9 @@
 
 import { Component} from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { EmailValidator } from '../email';
+import { EmailValidator } from '../../landing/email';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
-
+import { JobService } from '../../../service/jobService'
 @Component({
     templateUrl: './postjob.html',
     styleUrls: ['./postjob.css'],
@@ -11,36 +11,7 @@ import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/fires
 export class PostjobComponent {
     public jobForm: FormGroup;
     public jobCollection: AngularFirestoreCollection<any>;
-    constructor(public formBuilder: FormBuilder, public afs: AngularFirestore) {
-
-         //add job to collection
-         // this.jobCollection = this.afs.collection('job');
-         // const job = {
-         //     name: '123',
-         //     price: 45
-         // }
-         //
-         // this.jobCollection.add(job);
-
-        // this.jobCollection = this.afs.collection('job');
-        // const job = {
-        //     no: '1',
-        //     title: 'Mobile app project',
-        //     jobCategory: 'programming',
-        //     quota: '1',
-        //     dueDate:'31/12/2018',
-        //     jobDesc: 'app',
-        //     email: 'test@gmail.com',
-        //     minRate: 'N/A',
-        //     minSal: '3000',
-        //     maxSal: '8000',
-        //     comName: 'abe',
-        //     website: 'N/A',
-        //     comDesc: 'APP',
-        //     name: '123',
-        // }
-        //
-        // this.jobCollection.add(job);
+    constructor(public formBuilder: FormBuilder, public afs: AngularFirestore, public jobService : JobService) {
 
         this.jobForm = formBuilder.group({
             title:[
@@ -105,8 +76,9 @@ export class PostjobComponent {
 
     }
 
-    hello(){
-        console.log(this.jobForm.value.email);
+    postJob() {
+        this.jobService.postJob(this.jobForm.value);
+        alert('success');
     }
 }
 

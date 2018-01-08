@@ -11,6 +11,7 @@ import {BreadcrumbComponent} from '../../shared/breadcrumb/breadcrumb.component'
 import {NavigationComponent} from '../../shared/navigation/navigation.component';
 import { UserComponent } from './user.component';
 import {ProfileComponent} from './profile/profile.component';
+import {PostjobComponent} from './postjob/postjob.component';
 
 const routes: Routes = [{
     path: 'user',
@@ -19,7 +20,10 @@ const routes: Routes = [{
         {
             path: 'profile',
             component: ProfileComponent,
-        },
+        }, {
+            path: 'postJob',
+            component: PostjobComponent,
+        }
     ]
 }];
 
@@ -30,7 +34,8 @@ const routes: Routes = [{
         BreadcrumbComponent,
         SidebarComponent,
         RightSidebarComponent,
-        UserComponent
+        UserComponent,
+        PostjobComponent
     ],
     imports: [
         FormsModule,
@@ -46,6 +51,7 @@ const routes: Routes = [{
     exports: [
         ProfileComponent,
         UserComponent,
+        PostjobComponent
     ]
 })
 export class UserModule {

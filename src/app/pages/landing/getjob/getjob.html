@@ -136,7 +136,7 @@
                         <tr *ngFor="let job of jobs | async">
                             <!--<td><a style="color: black;" href="javascript:void(0)">#{{job.no}}</a></td>-->
                             <td><a style="color: black;">{{job.title}}</a></td>
-                            <td><span class="text-muted"><i class="fa fa-clock-o"></i> {{job.dueDate | amDateFormat: 'YYYY-MM-DD'}}</span>
+                            <td><span class="text-muted"><i class="fa fa-clock-o"></i> {{job.updatedAt | amDateFormat: 'YYYY-MM-DD'}}</span>
                             </td>
                             <td>{{job.comName}}</td>
                             <td>

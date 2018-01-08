@@ -28,8 +28,8 @@
           "../src/assets/js/jquery.slimscroll.js",
           "../src/assets/js/sidebarmenu.js",
           "../src/assets/js/custom.js",
-          "../src/assets/plugins/styleswitcher/jQuery.style.switcher.js"
-          
+          "../src/assets/plugins/styleswitcher/jQuery.style.switcher.js",
+          "../node_modules/moment/min/moment.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

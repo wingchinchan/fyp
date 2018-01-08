@@ -6,7 +6,6 @@ import {LandingComponet} from './landing.componet';
 import {WellcomeComponent} from './wellcome/wellcome.component';
 import {RegisterComponent} from './register/register.component';
 import {LoginComponent} from './login/login.component';
-import {PostjobComponent} from './postjob/postjob.component';
 import {GetjobComponent} from './getjob/getjob.component';
 import {JobDetailsComponent} from './jobDetails/jobDetails.component';
 import {LandingNavigationComponent} from '../../shared/landing-navigation/landing-navigation.component';
@@ -34,11 +33,6 @@ const routes: Routes = [{
             path: 'login',
             component: LoginComponent,
         },
-
-        {
-            path: 'postjob',
-            component: PostjobComponent,
-        },
         {
             path: 'jobs',
             component: GetjobComponent,
@@ -56,7 +50,6 @@ const routes: Routes = [{
         WellcomeComponent,
         RegisterComponent,
         LoginComponent,
-        PostjobComponent,
         GetjobComponent,
         JobDetailsComponent,
         LandingNavigationComponent,
@@ -77,7 +70,6 @@ const routes: Routes = [{
         WellcomeComponent,
         RegisterComponent,
         LoginComponent,
-        PostjobComponent,
         GetjobComponent,
         JobDetailsComponent,
         LandingNavigationComponent

@@ -33,7 +33,7 @@
         <hr style="width: 5%;">
         <div class="card card-outline-info">
             <div class="card-body">
-                <form action="#" [formGroup]="jobForm">
+                <form  [formGroup]="jobForm" (submit)="postJob()">
                     <div class="form-body">
                         <h3 class="card-title" style="text-align: center;">Job details</h3>
                         <hr>
@@ -150,10 +150,10 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Minimum Salary</label><span class="text-danger">*</span>
-                                    <input type="text" class="form-control" formControlName="minSal"
+                                    <input type="text" class="form-control" formControlName="salary"
                                            [class.invalid]="!jobForm.controls.salary.valid">
                                     <small style="color:red;"
-                                           *ngIf="!jobForm.controls.salary.valid && jobForm.controls.minSal.dirty">This
+                                           *ngIf="!jobForm.controls.salary.valid && jobForm.controls.salary.dirty">This
                                         is required
                                     </small>
                                 </div>
@@ -218,7 +218,7 @@
 
                     </div>
                     <div class="form-actions" style="text-align: center;margin-top: 2%;">
-                        <button type="submit" class="btn btn-secondary" style="width: 20%;" [disabled]="!jobForm.valid">
+                        <button type="submit" class="btn btn-secondary" style="width: 20%;">
                             <i class="fa fa-check"></i> Submit
                         </button>
                         <button type="button" class="btn btn-outline-secondary cancel" style="width: 20%;">Cancel

@@ -35,25 +35,31 @@ export class UserService {
     isLogin() {
         return window.localStorage.getItem('login');
     }
-
+    updateUserProfile(userObj, uid) {
+        const userRef = this.afs.doc(`user/${uid}`);
+        userRef.update(userObj);
+    }
     updateUserData(user) {
         console.log(user);
         // Sets user data to firestore on login
         const userRef = this.afs.doc(`user/${user.uid}`);
         console.log(userRef);
         const data = {
+            uid: user.uid,
             photoURL: user.photoURL,
             displayName: user.displayName,
             email: user.email
         };
         return userRef.update(data);
     }
+
     createUser(user) {
         console.log(user);
         // Sets user data to firestore on login
         const userRef = this.afs.doc(`user/${user.uid}`);
         console.log(userRef);
         const data = {
+            uid: user.uid,
             photoURL: user.photoURL,
             displayName: user.displayName,
             email: user.email

@@ -4,7 +4,7 @@
         <div class="col-lg-4 col-xlg-3 col-md-5">
             <div class="card">
                 <div class="card-body">
-                    <p class="m-t-30"><img [src]="user.photoURL" class="img-circle" width="150"/>
+                    <p class="m-t-30"><img [src]="user.photoURL" class="img-circle" width="150" (click)="hello()"/>
                     <h4 class="card-title m-t-10">{{ user.displayName}}</h4>
                     <h6 class="card-subtitle">Programmer / Designer</h6>
                     <!--<div class="row text-center justify-content-md-center">-->
@@ -27,7 +27,7 @@
 
                     <small class="text-muted p-t-30 db">Social Profile</small>
                     <br/>
-                    <button class="btn btn-circle btn-secondary"><i class="fa fa-facebook"></i></button>
+                    <button class="btn btn-circle btn-secondary"><i class="fa fa-facebook" ></i></button>
                 </div>
             </div>
         </div>
@@ -208,7 +208,7 @@
                             <div class="form-group">
                                 <label class="col-md-12">Full Name</label>
                                 <div class="col-md-12">
-                                    <input type="text" placeholder="{{ user.displayName}}" class="form-control form-control-line">
+                                    <input type="text" value="{{ user.displayName}}" class="form-control form-control-line">
                                 </div>
                             </div>
                             <div class="form-group">
