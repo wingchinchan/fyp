@@ -147,29 +147,29 @@
                             <!--/span-->
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Minimum Salary</label><span class="text-danger">*</span>
                                     <input type="text" class="form-control" formControlName="minSal"
-                                           [class.invalid]="!jobForm.controls.minSal.valid">
+                                           [class.invalid]="!jobForm.controls.salary.valid">
                                     <small style="color:red;"
-                                           *ngIf="!jobForm.controls.minSal.valid && jobForm.controls.minSal.dirty">This
+                                           *ngIf="!jobForm.controls.salary.valid && jobForm.controls.minSal.dirty">This
                                         is required
                                     </small>
                                 </div>
                             </div>
                             <!--/span-->
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Maximum Salary</label><span class="text-danger">*</span>
-                                    <input type="text" class="form-control" formControlName="maxSal"
-                                           [class.invalid]="!jobForm.controls.maxSal.valid">
-                                    <small style="color:red;"
-                                           *ngIf="!jobForm.controls.maxSal.valid && jobForm.controls.maxSal.dirty">This
-                                        is required
-                                    </small>
-                                </div>
-                            </div>
+                            <!--<div class="col-md-6">-->
+                                <!--<div class="form-group">-->
+                                    <!--<label>Maximum Salary</label><span class="text-danger">*</span>-->
+                                    <!--<input type="text" class="form-control" formControlName="maxSal"-->
+                                           <!--[class.invalid]="!jobForm.controls.maxSal.valid">-->
+                                    <!--<small style="color:red;"-->
+                                           <!--*ngIf="!jobForm.controls.maxSal.valid && jobForm.controls.maxSal.dirty">This-->
+                                        <!--is required-->
+                                    <!--</small>-->
+                                <!--</div>-->
+                            <!--</div>-->
                             <!--/span-->
                         </div>
 

@@ -12,7 +12,8 @@
                     <div class="col-xs-12">
                         <input class="form-control" type="text" formControlName="email" placeholder="Email" [class.invalid]="!registerForm.controls.email.valid">
                         <small style="color:red;"
-                               *ngIf="!registerForm.controls.email.valid && registerForm.controls.email.dirty"> Not a valid email address
+                               *ngIf="!registerForm.controls.email.valid && registerForm.controls.email.dirty">This is
+                            required
                         </small>
                     </div>
                 </div>
@@ -20,19 +21,20 @@
                     <div class="col-xs-12">
                         <input class="form-control" type="password" formControlName="password" placeholder="Password" [class.invalid]="!registerForm.controls.password.valid">
                         <small style="color:red;"
-                               *ngIf="registerForm.controls.repeatPassword.hasError('minlength')">It must be at least 8 digits
+                               *ngIf="!registerForm.controls.password.valid && registerForm.controls.password.dirty">It must be at least 8 digit
                         </small>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-xs-12">
                         <input class="form-control" type="password" formControlName="repeatPassword" placeholder="Confirm Password" [class.invalid]="!registerForm.controls.repeatPassword.valid">
-                        <small style="color:red;"
-                               *ngIf="registerForm.controls.repeatPassword.hasError('minlength')">It must be at least 8 digits
-                        </small>
                         <!--<small style="color:red;"-->
-                               <!--*ngIf="registerForm.controls.repeatPassword.hasError('minlength')">It must be at least 8 digits-->
+                               <!--*ngIf="!registerForm.controls.repeatPassword.valid && registerForm.controls.repeatPassword.dirty">This is-->
+                            <!--required-->
                         <!--</small>-->
+                        <small style="color:red;"
+                               *ngIf="registerForm.controls.repeatPassword.hasError('minlength')">It must be at least 8 digit
+                        </small>
                     </div>
                 </div>
                 <div class="form-group">
@@ -45,7 +47,7 @@
                 </div>
                 <div class="form-group text-center m-t-20">
                     <div class="col-xs-12">
-                        <button class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light signupbtn" [disabled]="!registerForm.valid" type="submit" (click)="register()">Sign Up</button>
+                        <button class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light signupbtn" [disabled]="!registerForm.valid" type="submit">Sign Up</button>
                     </div>
                 </div>
                 <div class="form-group m-b-0">

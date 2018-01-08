@@ -13,6 +13,9 @@ import {AngularFirestoreModule} from "angularfire2/firestore";
 import {MomentModule} from 'angular2-moment';
 import {UserService} from './service/userService';
 import {JobService} from './service/jobService';
+import {UserModule} from "./pages/user/user.module";
+
+// import { UserModule } from './pages/user/user.module';
 
 const firebaseConfig = {
     apiKey: "AIzaSyDhGKcU8rrQ9PSdFrTs9ju5PnE5OFyWd3E",
@@ -23,6 +26,11 @@ const firebaseConfig = {
     messagingSenderId: "1083031193263"
 }
 const routes: Routes = [
+    {
+        path: '',
+        redirectTo: 'index',
+        pathMatch: 'full'
+    },
     {
         path: '**',
         redirectTo: '404'
@@ -86,6 +94,7 @@ const routes: Routes = [
     imports: [
         BrowserModule,
         LandingModule,
+        UserModule,
         NgbModule.forRoot(),
         ReactiveFormsModule,
         FormsModule,

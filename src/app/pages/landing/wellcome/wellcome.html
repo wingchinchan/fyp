@@ -47,7 +47,7 @@
                     <table class="table">
                         <thead>
                         <tr>
-                            <th style="text-align: center;">Job No.</th>
+                            <th style="text-align: center;">Job Title</th>
                             <th style="text-align: center;">Due Date</th>
                             <th style="text-align: center;">Company</th>
                             <th style="text-align: center;">Job Category</th>
@@ -57,13 +57,13 @@
                         </thead>
                         <tbody>
                         <tr *ngFor="let job of jobs | async">
-                            <td><a style="color: black;">#{{job.no}}</a></td>
+                            <td><a style="color: black;">{{job.title}}</a></td>
                             <td><span class="text-muted"><i class="fa fa-clock-o"></i> {{job.dueDate | amDateFormat: 'YYYY-MM-DD'}}</span></td>
                             <td>{{job.comName}}</td>
                             <td>
                                 <div class="btn btn-rounded btn-secondary">{{job.jobCategory}}</div>
                             </td>
-                            <td>$ {{job.maxSal}}</td>
+                            <td>$ {{job.salary}}</td>
                             <td>{{job.quota}}</td>
                             <div class="btn btn-block btn-secondary" (click)="goToDetail(job)">Detail</div>
                         </tr>
@@ -72,7 +72,8 @@
                     </table>
                 </div>
                 <div  style="text-align: center; display: inline-block !important;">
-                    <div class="btn btn-block btn-secondary">View more</div>
+                    <!--<div class="btn btn-block btn-secondary">View more</div>-->
+                    <a href="/jobs" class="btn btn-block btn-secondary">View more</a>
 
                 </div>
             </div>

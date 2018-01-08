@@ -81,12 +81,7 @@ export class PostjobComponent {
                     Validators.required
                 ])
             ],
-            minSal:[
-                '', Validators.compose([
-                    Validators.required
-                ])
-            ],
-            maxSal:[
+            salary:[
                 '', Validators.compose([
                     Validators.required
                 ])

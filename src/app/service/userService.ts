@@ -78,9 +78,36 @@ export class UserService {
     googleLogin() {
         return new Promise<User>((resolve, reject) => {
             this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(user => {
-                this.updateUserData(user.user);
+
                 window.localStorage.setItem('login','true');
                 this.user = this.afs.doc<User>(`user/${user.user.uid}`).valueChanges();
+                this.user.subscribe(userObj => {
+                    if (userObj) {
+                        this.updateUserData(user.user);
+                    } else {
+                        this.createUser(user.user);
+                    }
+                })
+                console.log(user);
+                resolve(user);
+            }).catch(error => {
+                console.log(error);
+                reject(error);
+            });
+        });
+    }
+    facebookLogin(){
+        return new Promise<User>((resolve, reject) => {
+            this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider()).then(user => {
+                window.localStorage.setItem('login','true');
+                this.user = this.afs.doc<User>(`user/${user.user.uid}`).valueChanges();
+                this.user.subscribe(userObj => {
+                    if (userObj) {
+                        this.updateUserData(user.user);
+                    } else {
+                        this.createUser(user.user);
+                    }
+                })
                 console.log(user);
                 resolve(user);
             }).catch(error => {

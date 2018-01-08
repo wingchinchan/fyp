@@ -1,9 +1,8 @@
-
-import { Component} from '@angular/core';
-import { FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { AngularFireAuth } from 'angularfire2/auth';
-import { Router } from '@angular/router';
-import { UserService } from '../../../service/userService';
+import {Component} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AngularFireAuth} from 'angularfire2/auth';
+import {Router} from '@angular/router';
+import {UserService} from '../../../service/userService';
 import * as firebase from 'firebase/app';
 
 @Component({
@@ -13,7 +12,7 @@ import * as firebase from 'firebase/app';
 export class LoginComponent {
     public loginForm: FormGroup;
 
-    constructor(public formBuilder: FormBuilder, public afAuth : AngularFireAuth, public router : Router, public userService: UserService) {
+    constructor(public formBuilder: FormBuilder, public afAuth: AngularFireAuth, public router: Router, public userService: UserService) {
         this.loginForm = formBuilder.group({
             email: [
                 '', Validators.compose([
@@ -31,20 +30,27 @@ export class LoginComponent {
     }
 
     loginUser() {
-       this.userService.emailLogin(this.loginForm.value.email, this.loginForm.value.password).then(success => {
-           this.router.navigateByUrl('profile');
-       }).catch(error => {
-           alert(error);
-           console.log(error);
-       });
+        this.userService.emailLogin(this.loginForm.value.email, this.loginForm.value.password).then(success => {
+            this.router.navigateByUrl('user/profile');
+        }).catch(error => {
+            alert(error);
+            console.log(error);
+        });
     }
 
     googleLogin() {
         this.userService.googleLogin().then(success => {
-            this.router.navigateByUrl('profile');
+            this.router.navigateByUrl('user/profile');
         }).catch(error => {
             console.log(error);
         });
     }
 
+    facebookLogin() {
+        this.userService.facebookLogin().then(success => {
+            this.router.navigateByUrl('user/profile');
+        }).catch(error => {
+            console.log(error);
+        });
+    }
 }

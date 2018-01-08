@@ -23,7 +23,7 @@
     <div class="col-md-8">
         <div class="tab-pane" id="profile" role="tabpanel">
             <div class="card-body">
-                <p>{{ job.title }}</p>
+                <p style="font-size: 25px; padding: 2%; text-align: center;">{{ job.title }}</p>
                 <div class="row">
                     <div class="col-md-3 col-xs-6 b-r"><strong><i class="fa fa-calendar"></i> Due Date</strong>
                         <br>
@@ -32,45 +32,46 @@
 
                     <div class="col-md-3 col-xs-6 b-r"><strong><i class="fa fa-dollar"></i> Salary</strong>
                         <br>
-                        <p class="text-muted">$ {{job.maxSal}} </p>
+                        <p class="text-muted">$ {{job.salary}} </p>
                     </div>
                     <div class="col-md-3 col-xs-6 b-r"><strong><i class="fa fa fa-address-book-o"></i> Contact Email</strong>
                         <br>
                         <p class="text-muted">{{job.email}}</p>
                     </div>
-                    <!--<div class="col-md-3 col-xs-6"><strong><i class="fa  fa-phone"></i> Phone</strong>-->
-                        <!--<br>-->
-                        <!--<p class="text-muted">{{job.maxSal}}</p>-->
-                    <!--</div>-->
+                    <div class="col-md-3 col-xs-6 "><strong><i class="fa fa-folder-o"></i> Job Category</strong>
+                        <br>
+                        <p class="text-muted">{{job.jobCategory}}</p>
+                    </div>
+                    <div class="col-md-3 col-xs-6 b-r"><strong><i class="fa fa-question"></i> Job Quota</strong>
+                        <br>
+                        <p class="text-muted">{{job.quota}}</p>
+                    </div>
+                    <div class="col-md-3 col-xs-6 b-r"><strong><i class="fa fa-sort-numeric-asc"></i> Minimal Rate</strong>
+                        <br>
+                        <p class="text-muted">{{job.minRate}}</p>
+                    </div>
+                    <div class="col-md-3 col-xs-6 b-r"><strong><i class="fa fa fa-user-o"></i> Company Name</strong>
+                        <br>
+                        <p class="text-muted">{{job.comName}}</p>
+                    </div>
+                    <div class="col-md-3 col-xs-6 b-r"><strong><i class="fa fa fa-id-badge"></i> Company Description</strong>
+                        <br>
+                        <p class="text-muted">{{job.comDesc}}</p>
+                    </div>
+
+
                 </div>
                 <hr>
-                <p>Description</p>
-                <p class="m-t-30">Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In
-                    enim
-                    justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede
-                    mollis
-                    pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate
-                    eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac,
-                    enim.</p>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                    has
-                    been the industry's standard dummy text ever since the 1500s, when an unknown printer
-                    took a
-                    galley of type and scrambled it to make a type specimen book. It has survived not only
-                    five
-                    centuries </p>
-                <p>It was popularised in the 1960s with the release of Letraset sheets containing Lorem
-                    Ipsum
-                    passages, and more recently with desktop publishing software like Aldus PageMaker
-                    including
-                    versions of Lorem Ipsum.</p>
-                <h4 class="font-medium m-t-30">Requirement</h4>
-                <hr>
-                <h5 class="m-t-30">Wordpress <span class="pull-right"></span></h5>
-                <h5 class="m-t-30">HTML 5 <span class="pull-right"></span></h5>
-                <h5 class="m-t-30">jQuery <span class="pull-right"></span></h5>
-                <h5 class="m-t-30">Photoshop <span class="pull-right"></span></h5>
-            </div>
+                <p>Job Description</p>
+                <p class="text-muted">{{job.jobDesc}}</p>
+
+                <!--<h4 class="font-medium m-t-30">Requirement</h4>-->
+                <!--<hr>-->
+                <!--<h5 class="m-t-30">Wordpress <span class="pull-right"></span></h5>-->
+                <!--<h5 class="m-t-30">HTML 5 <span class="pull-right"></span></h5>-->
+                <!--<h5 class="m-t-30">jQuery <span class="pull-right"></span></h5>-->
+                <!--<h5 class="m-t-30">Photoshop <span class="pull-right"></span></h5>-->
+            <!--</div>-->
         </div>
         <div class="form-actions" style="text-align: center; margin-bottom: 2%;">
             <button type="applyjob" class="btn btn-secondary" style="width: 20%;">
