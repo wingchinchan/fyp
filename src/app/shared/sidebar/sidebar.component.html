@@ -11,11 +11,11 @@
             <!-- User profile text-->
             <div class="profile-text"> <a href="#" class="dropdown-toggle link u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">{{user.displayName}} <span class="caret"></span></a>
                 <div class="dropdown-menu animated flipInY">
-                    <a href="profile.html" class="dropdown-item"><i class="ti-user"></i> My Profile</a>
+                    <a routerLink="profile" class="dropdown-item"><i class="ti-user"></i> My Profile</a>
                     <!--<a href="javascript:void(0)" class="dropdown-item"><i class="ti-wallet"></i> My Balance</a>-->
                     <a href="javascript:void(0)" class="dropdown-item"><i class="ti-email"></i> Chat Room</a>
                     <!--<div class="dropdown-divider"></div> <a href="javascript:void(0)" class="dropdown-item"><i class="ti-settings"></i> Account Setting</a>-->
-                    <div class="dropdown-divider"></div> <a href="#" class="dropdown-item" (click)="logout()"><i class="fa fa-power-off"></i> Logout</a>
+                    <div class="dropdown-divider"></div> <a class="dropdown-item" (click)="logout()"><i class="fa fa-power-off"></i> Logout</a>
                 </div>
             </div>
         </div>
@@ -23,7 +23,7 @@
         <!-- Sidebar navigation-->
         <nav class="sidebar-nav">
             <ul id="sidebarnav">
-                <li class="nav-small-cap">Menuf</li>
+                <li class="nav-small-cap">Menu</li>
                 <li>
                     <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="postJob"><i class="mdi mdi-border-color"></i><span class="hide-menu">Post Job</span></a>
                 </li>

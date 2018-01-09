@@ -15,4 +15,9 @@ export class SidebarComponent {
         });
     }
 
+    logout() {
+        this.userService.logout();
+        this.router.navigateByUrl('');
+    }
+
 }

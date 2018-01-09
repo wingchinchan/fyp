@@ -4,6 +4,7 @@ import {EmailValidator} from '../../landing/email';
 import {AngularFirestore, AngularFirestoreCollection} from 'angularfire2/firestore';
 import {JobService} from '../../../service/jobService'
 import {Router} from '@angular/router';
+import {User, UserService} from "../../../service/userService";
 
 @Component({
     templateUrl: './postjob.html',
@@ -12,9 +13,8 @@ import {Router} from '@angular/router';
 export class PostjobComponent {
     public jobForm: FormGroup;
     public jobCollection: AngularFirestoreCollection<any>;
-
-    constructor(public formBuilder: FormBuilder, public afs: AngularFirestore, public jobService: JobService, public router: Router) {
-
+    public user: User;
+    constructor(public formBuilder: FormBuilder, public afs: AngularFirestore, public jobService: JobService, public router: Router,public userService :UserService) {
         this.jobForm = formBuilder.group({
             title: [
                 '', Validators.compose([
@@ -60,6 +60,19 @@ export class PostjobComponent {
                 ])
             ]
         });
+        this.userService.getUser().then(user => {
+            this.jobForm.setValue({
+                email: user.email,
+                title: '',
+                jobCategory: '',
+                dueDate: '',
+                minRate: '',
+                salary: '',
+                quota: '',
+                jobDesc: ''
+            });
+        });
+
 
     }
 

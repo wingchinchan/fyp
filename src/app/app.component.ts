@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from './service/userService';
 import {Router} from '@angular/router';
 
@@ -9,12 +9,28 @@ import {Router} from '@angular/router';
 })
 
 export class AppComponent {
-    constructor(public userService: UserService, public router: Router) {
-        if (this.userService.isLogin() === 'true') {
-            this.router.navigateByUrl('user/profile');
-        } else {
-            this.router.navigateByUrl('');
-        }
-    }
+//     constructor(public userService: UserService, public router: Router) {
+//         if (this.userService.isLogin() === 'true') {
+//             this.router.navigateByUrl('user/profile');
+//         } else {
+//             this.router.navigateByUrl('us');
+//         }
+//     }
 }
+
+
+// export class AppComponent implements OnInit {
+//
+//     constructor(public userService: UserService, public router: Router) {
+//
+//     }
+//     ngOnInit() {
+//         if (this.userService.isLogin() === 'true') {
+//         this.router.navigateByUrl('user/profile');
+//     } else {
+//         this.router.navigateByUrl('us');
+//     }}
+//
+// }
+
 

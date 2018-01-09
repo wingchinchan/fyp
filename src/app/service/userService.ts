@@ -35,7 +35,7 @@ export class UserService {
     isLogin() {
         return window.localStorage.getItem('login');
     }
-    updateUserProfile(userObj, uid) {
+    updateProfile(userObj, uid) {
         const userRef = this.afs.doc(`user/${uid}`);
         userRef.update(userObj);
     }
