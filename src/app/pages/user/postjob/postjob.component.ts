@@ -66,7 +66,7 @@ export class PostjobComponent {
                 title: '',
                 jobCategory: '',
                 dueDate: '',
-                minRate: '',
+                minRate: 'N/A',
                 salary: '',
                 quota: '',
                 jobDesc: ''

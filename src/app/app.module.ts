@@ -12,6 +12,7 @@ import {AngularFireAuthModule} from "angularfire2/auth";
 import {AngularFirestoreModule} from "angularfire2/firestore";
 import {MomentModule} from 'angular2-moment';
 import {UserService} from './service/userService';
+import {ChatService} from './service/chatService';
 import {JobService} from './service/jobService';
 import {UserModule} from "./pages/user/user.module";
 
@@ -107,7 +108,8 @@ const routes: Routes = [
     ],
     providers: [
         UserService,
-        JobService
+        JobService,
+        ChatService
     ],
     bootstrap: [AppComponent]
 })

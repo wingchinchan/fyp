@@ -14,7 +14,7 @@ import {ProfileComponent} from './profile/profile.component';
 import {PostjobComponent} from './postjob/postjob.component';
 import {GetjobComponent} from './getjob/getjob.component';
 import {JobDetailsComponent} from './jobDetails/jobDetails.component';
-
+import {ChatComponent} from './chat/chat.component';
 const routes: Routes = [{
     path: 'user',
     component: UserComponent,
@@ -31,6 +31,9 @@ const routes: Routes = [{
         },{
             path: 'job/:id',
             component: JobDetailsComponent,
+        },{
+            path: 'chat',
+            component: ChatComponent
         }
     ]
 }];
@@ -45,7 +48,8 @@ const routes: Routes = [{
         UserComponent,
         PostjobComponent,
         GetjobComponent,
-        JobDetailsComponent
+        JobDetailsComponent,
+        ChatComponent
     ],
     imports: [
         FormsModule,

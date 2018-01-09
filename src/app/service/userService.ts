@@ -46,7 +46,6 @@ export class UserService {
         console.log(userRef);
         const data = {
             uid: user.uid,
-            photoURL: user.photoURL,
             displayName: user.displayName,
             email: user.email
         };
@@ -60,9 +59,21 @@ export class UserService {
         console.log(userRef);
         const data = {
             uid: user.uid,
-            photoURL: user.photoURL,
             displayName: user.displayName,
             email: user.email
+        };
+        return userRef.set(data);
+    }
+    createUserByEmail(user, displayName) {
+        console.log(user);
+        // Sets user data to firestore on login
+        const userRef = this.afs.doc(`user/${user.uid}`);
+        console.log(userRef);
+        const data = {
+            uid: user.uid,
+            displayName: displayName,
+            email: user.email,
+            photoURL: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSgJ2_u9xXrMkZgeDbjhsE29U8IlU9_TDcr2h9_C3MpTKH47pP'
         };
         return userRef.set(data);
     }
@@ -72,7 +83,11 @@ export class UserService {
             this.afAuth.auth.signInWithEmailAndPassword(email, password).then(user => {
                 this.user = this.afs.doc<User>(`user/${user.uid}`).valueChanges();
                 window.localStorage.setItem('login','true');
-                this.updateUserData(user);
+                this.user.subscribe(userObj => {
+                    if (!userObj) {
+                        this.createUser(user);
+                    }
+                });
                 resolve(user);
             }).catch(error => {
                 console.log(error);
@@ -123,12 +138,12 @@ export class UserService {
         });
     }
 
-    register(email, password) {
+    register(displayName, email, password) {
         return new Promise<User>((resolve, reject) => {
             this.afAuth.auth.createUserWithEmailAndPassword(email, password).then(user => {
                 this.user = this.afs.doc<User>(`user/${user.uid}`).valueChanges();
                 window.localStorage.setItem('login','true');
-                this.createUser(user);
+                this.createUserByEmail(user, displayName);
                 user.sendEmailVerification();
                 resolve(user);
             }).catch(error => {

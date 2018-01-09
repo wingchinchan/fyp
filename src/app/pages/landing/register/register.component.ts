@@ -30,22 +30,23 @@ export class RegisterComponent {
                     Validators.minLength(8),
                 ])
             ],
-            // displayName: [
-            //     '', Validators.compose([
-            //         Validators.required,
-            //     ])
-            // ]
+            displayName: [
+                '', Validators.compose([
+                    Validators.required,
+                ])
+            ]
         });
 
     }
 
     register() {
         if (this.registerForm.value.password === this.registerForm.value.repeatPassword) {
-            this.userService.register(this.registerForm.value.email, this.registerForm.value.password).then(user => {
-                this.router.navigateByUrl('user/profile');
-            }).catch(error => {
-                alert(error);
-            });
+            this.userService.register(this.registerForm.value.displayName, this.registerForm.value.email, this.registerForm.value.password)
+                .then(user => {
+                    this.router.navigateByUrl('user/profile');
+                }).catch(error => {
+                    alert(error);
+                });
         }
     }
 }

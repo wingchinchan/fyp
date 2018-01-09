@@ -34,6 +34,7 @@ export class ProfileComponent {
         console.log('test');
         this.userService.updateProfile(this.userForm, this.user.uid);
         this.router.navigateByUrl('user/profile');
+        alert('Update successfully');
     }
 }
 
