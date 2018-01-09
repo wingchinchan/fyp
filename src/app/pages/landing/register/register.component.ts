@@ -45,8 +45,10 @@ export class RegisterComponent {
                 .then(user => {
                     this.router.navigateByUrl('user/profile');
                 }).catch(error => {
-                    alert(error);
-                });
+                alert(error);
+            });
+        } else {
+            alert('Password not the same');
         }
     }
 }
