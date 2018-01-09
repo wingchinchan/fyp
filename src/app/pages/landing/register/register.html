@@ -10,10 +10,15 @@
                 <h3 class="box-title m-b-20" style="text-align: center;">Sign Up</h3>
                 <div class="form-group ">
                     <div class="col-xs-12">
+                        <input class="form-control" type="text" formControlName="displayName" placeholder="Name" [class.invalid]="!registerForm.controls.displayName.valid">
+                        <small style="color:red;"
+                               *ngIf="!registerForm.controls.displayName.valid && registerForm.controls.displayName.dirty">This is required
+                        </small>
+                    </div>
+                    <div class="col-xs-12">
                         <input class="form-control" type="text" formControlName="email" placeholder="Email" [class.invalid]="!registerForm.controls.email.valid">
                         <small style="color:red;"
-                               *ngIf="!registerForm.controls.email.valid && registerForm.controls.email.dirty">This is
-                            required
+                               *ngIf="!registerForm.controls.email.valid && registerForm.controls.email.dirty">This is required
                         </small>
                     </div>
                 </div>

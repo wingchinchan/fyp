@@ -1,9 +1,10 @@
+import {Component} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {EmailValidator} from '../../landing/email';
+import {AngularFirestore, AngularFirestoreCollection} from 'angularfire2/firestore';
+import {JobService} from '../../../service/jobService'
+import {Router} from '@angular/router';
 
-import { Component} from '@angular/core';
-import { FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { EmailValidator } from '../../landing/email';
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
-import { JobService } from '../../../service/jobService'
 @Component({
     templateUrl: './postjob.html',
     styleUrls: ['./postjob.css'],
@@ -11,15 +12,16 @@ import { JobService } from '../../../service/jobService'
 export class PostjobComponent {
     public jobForm: FormGroup;
     public jobCollection: AngularFirestoreCollection<any>;
-    constructor(public formBuilder: FormBuilder, public afs: AngularFirestore, public jobService : JobService) {
+
+    constructor(public formBuilder: FormBuilder, public afs: AngularFirestore, public jobService: JobService, public router: Router) {
 
         this.jobForm = formBuilder.group({
-            title:[
+            title: [
                 '', Validators.compose([
                     Validators.required
                 ])
             ],
-            jobCategory:[
+            jobCategory: [
                 '', Validators.compose([
                     Validators.nullValidator,
                     Validators.required
@@ -35,7 +37,7 @@ export class PostjobComponent {
                     Validators.required
                 ])
             ],
-            jobDesc:[
+            jobDesc: [
                 '', Validators.compose([
                     Validators.required
                 ])
@@ -52,22 +54,7 @@ export class PostjobComponent {
                     Validators.required
                 ])
             ],
-            salary:[
-                '', Validators.compose([
-                    Validators.required
-                ])
-            ],
-            comName:[
-                '', Validators.compose([
-                    Validators.required
-                ])
-            ],
-            website: [
-                'N/A', Validators.compose([
-                    Validators.required
-                ])
-            ],
-            comDesc:[
+            salary: [
                 '', Validators.compose([
                     Validators.required
                 ])
@@ -78,7 +65,7 @@ export class PostjobComponent {
 
     postJob() {
         this.jobService.postJob(this.jobForm.value);
-        alert('success');
+        this.router.navigateByUrl('user/profile');
     }
 }
 

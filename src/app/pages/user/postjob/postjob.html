@@ -59,16 +59,16 @@
                                             tabindex="1" formControlName="jobCategory" name="jobCategory">
                                         <!--<option>Select Category</option>-->
                                         <optgroup label="Finance">
-                                            <option value="Category 1">Accounting</option>
+                                            <option value="Accounting">Accounting</option>
                                         </optgroup>
                                         <optgroup label="Computing">
-                                            <option value="Category 2">Programming</option>
+                                            <option value="Programming">Programming</option>
                                         </optgroup>
                                         <optgroup label="Desgin">
-                                            <option value="Category 3">Banner Design</option>
+                                            <option value="Banner Design">Banner Design</option>
                                         </optgroup>
                                         <optgroup label="Other">
-                                            <option value="Category 4">Other</option>
+                                            <option value="Other">Other</option>
                                         </optgroup>
                                     </select>
                                     <small *ngIf="!jobForm.controls.jobCategory.valid && jobForm.controls.jobCategory.dirty">
@@ -123,7 +123,7 @@
                                     <label class="control-label">Application Email</label> <span
                                         class="text-danger">*</span>
                                     <div class="controls">
-                                        <input type="email" name="email" class="form-control" formControlName="email"
+                                        <input type="email" value="{{ user.email}}" name="email" class="form-control" formControlName="email"
                                                [class.invalid]="!jobForm.controls.email.valid" (keypress)="hello()">
                                     </div>
                                     <small style="color: red;"
@@ -218,7 +218,7 @@
 
                     </div>
                     <div class="form-actions" style="text-align: center;margin-top: 2%;">
-                        <button type="submit" class="btn btn-secondary" style="width: 20%;">
+                        <button type="submit" class="btn btn-secondary" style="width: 20%;" [disabled]="!jobForm.valid">
                             <i class="fa fa-check"></i> Submit
                         </button>
                         <button type="button" class="btn btn-outline-secondary cancel" style="width: 20%;">Cancel

@@ -29,6 +29,11 @@ export class RegisterComponent {
                     Validators.required,
                     Validators.minLength(8),
                 ])
+            ],
+            displayName: [
+                '', Validators.compose([
+                    Validators.required,
+                ])
             ]
         });
 

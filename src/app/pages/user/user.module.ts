@@ -12,6 +12,8 @@ import {NavigationComponent} from '../../shared/navigation/navigation.component'
 import { UserComponent } from './user.component';
 import {ProfileComponent} from './profile/profile.component';
 import {PostjobComponent} from './postjob/postjob.component';
+import {GetjobComponent} from './getjob/getjob.component';
+import {JobDetailsComponent} from './jobDetails/jobDetails.component';
 
 const routes: Routes = [{
     path: 'user',
@@ -23,6 +25,12 @@ const routes: Routes = [{
         }, {
             path: 'postJob',
             component: PostjobComponent,
+        }, {
+            path: 'jobs',
+            component: GetjobComponent,
+        },{
+            path: 'job/:id',
+            component: JobDetailsComponent,
         }
     ]
 }];
@@ -35,7 +43,9 @@ const routes: Routes = [{
         SidebarComponent,
         RightSidebarComponent,
         UserComponent,
-        PostjobComponent
+        PostjobComponent,
+        GetjobComponent,
+        JobDetailsComponent
     ],
     imports: [
         FormsModule,
@@ -51,7 +61,9 @@ const routes: Routes = [{
     exports: [
         ProfileComponent,
         UserComponent,
-        PostjobComponent
+        PostjobComponent,
+        GetjobComponent,
+        JobDetailsComponent
     ]
 })
 export class UserModule {
