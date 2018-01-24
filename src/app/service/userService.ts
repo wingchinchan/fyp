@@ -6,10 +6,10 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap';
 
 export interface User {
-    uid: String;
-    photoURL?: String;
-    displayName?: String;
-    email?: String;
+    uid: string;
+    photoURL?: string;
+    displayName?: string;
+    email?: string;
 };
 
 @Injectable()

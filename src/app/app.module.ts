@@ -15,7 +15,7 @@ import {UserService} from './service/userService';
 import {ChatService} from './service/chatService';
 import {JobService} from './service/jobService';
 import {UserModule} from "./pages/user/user.module";
-
+import {HttpClientModule} from "@angular/common/http";
 // import { UserModule } from './pages/user/user.module';
 
 const firebaseConfig = {
@@ -104,7 +104,8 @@ const routes: Routes = [
         AngularFireModule.initializeApp(firebaseConfig),
         AngularFirestoreModule, // imports firebase/firestore, only needed for database features
         AngularFireAuthModule, // imports firebase/auth, only needed for auth features
-        MomentModule
+        MomentModule,
+        HttpClientModule
     ],
     providers: [
         UserService,

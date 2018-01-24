@@ -1,4 +1,3 @@
-
 <!-- ============================================================== -->
 <!-- End Bread crumb and right sidebar toggle -->
 <!-- ============================================================== -->
@@ -19,7 +18,9 @@
                         </div>
                         <ul class="chatonline style-none ">
                             <li *ngFor="let chat of chats | async">
-                                <a href="javascript:void(0)"><img src="../assets/images/users/1.jpg" alt="user-img" class="img-circle"> <span>{{chat.user1Name}} <small class="text-success">online</small></span></a>
+                                <a href="javascript:void(0)"><img src="../assets/images/users/1.jpg" alt="user-img"
+                                                                  class="img-circle"> <span>{{chat.user1Name}} <small
+                                        class="text-success">online</small></span></a>
                             </li>
                             <li class="p-20"></li>
                         </ul>
@@ -35,58 +36,61 @@
                     </div>
                     <div class="chat-rbox">
                         <ul class="chat-list p-20" *ngFor="let chat of chats | async">
-                            <li *ngFor="let message of chat.messages">
-                                <div class="chat-img"><img src="../assets/images/users/1.jpg" alt="user" /></div>
-                                <div class="chat-content">
-                                <h5>Jenny</h5>
-                                <div class="box bg-light-info">{{message.value}}</div>
-                                </div>
-                                <div class="chat-time">10:56 am</div>
-                            </li>
+                            <div *ngFor="let message of chat.messages">
+                                <li *ngIf="message.user != currentUser.uid">
+                                    <div class="chat-img"><img src="../assets/images/users/1.jpg" alt="user"/></div>
+                                    <div class="chat-content">
+                                        <h5>Jenny</h5>
+                                        <div class="box bg-light-info">{{message.value}}</div>
+                                    </div>
+                                    <div class="chat-time">10:56 am</div>
+                                </li>
+                                <li class="reverse" *ngIf="message.user == currentUser.uid">
+                                    <div class="chat-time">10:57 am</div>
+                                    <div class="chat-content">
+                                        <h5>Steave Doe</h5>
+                                        <div class="box bg-light-inverse">{{message.value}}</div>
+                                    </div>
+                                    <div class="chat-img"><img src="../assets/images/users/5.jpg" alt="user"/></div>
+                                </li>
+                            </div>
                             <!--chat Row -->
                             <!--<li>-->
-                                <!--<div class="chat-img"><img src="../assets/images/users/1.jpg" alt="user" /></div>-->
-                                <!--<div class="chat-content">-->
-                                    <!--<h5>James Anderson</h5>-->
-                                    <!--<div class="box bg-light-info">Lorem Ipsum is simply dummy text of the printing & type setting industry.</div>-->
-                                <!--</div>-->
-                                <!--<div class="chat-time">10:56 am</div>-->
+                            <!--<div class="chat-img"><img src="../assets/images/users/1.jpg" alt="user" /></div>-->
+                            <!--<div class="chat-content">-->
+                            <!--<h5>James Anderson</h5>-->
+                            <!--<div class="box bg-light-info">Lorem Ipsum is simply dummy text of the printing & type setting industry.</div>-->
+                            <!--</div>-->
+                            <!--<div class="chat-time">10:56 am</div>-->
                             <!--</li>-->
                             <!--&lt;!&ndash;chat Row &ndash;&gt;-->
                             <!--<li>-->
-                                <!--<div class="chat-img"><img src="../assets/images/users/2.jpg" alt="user" /></div>-->
-                                <!--<div class="chat-content">-->
-                                    <!--<h5>Bianca Doe</h5>-->
-                                    <!--<div class="box bg-light-success">It’s Great opportunity to work.</div>-->
-                                <!--</div>-->
-                                <!--<div class="chat-time">10:57 am</div>-->
+                            <!--<div class="chat-img"><img src="../assets/images/users/2.jpg" alt="user" /></div>-->
+                            <!--<div class="chat-content">-->
+                            <!--<h5>Bianca Doe</h5>-->
+                            <!--<div class="box bg-light-success">It’s Great opportunity to work.</div>-->
+                            <!--</div>-->
+                            <!--<div class="chat-time">10:57 am</div>-->
                             <!--</li>-->
                             <!--&lt;!&ndash;chat Row &ndash;&gt;-->
                             <!--<li class="reverse">-->
-                                <!--<div class="chat-time">10:57 am</div>-->
-                                <!--<div class="chat-content">-->
-                                    <!--<h5>Steave Doe</h5>-->
-                                    <!--<div class="box bg-light-inverse">It’s Great opportunity to work.</div>-->
-                                <!--</div>-->
-                                <!--<div class="chat-img"><img src="../assets/images/users/5.jpg" alt="user" /></div>-->
+                            <!--<div class="chat-time">10:57 am</div>-->
+                            <!--<div class="chat-content">-->
+                            <!--<h5>Steave Doe</h5>-->
+                            <!--<div class="box bg-light-inverse">It’s Great opportunity to work.</div>-->
+                            <!--</div>-->
+                            <!--<div class="chat-img"><img src="../assets/images/users/5.jpg" alt="user" /></div>-->
                             <!--</li>-->
                             <!--&lt;!&ndash;chat Row &ndash;&gt;-->
-                            <!--<li class="reverse">-->
-                                <!--<div class="chat-time">10:57 am</div>-->
-                                <!--<div class="chat-content">-->
-                                    <!--<h5>Steave Doe</h5>-->
-                                    <!--<div class="box bg-light-inverse">It’s Great opportunity to work.</div>-->
-                                <!--</div>-->
-                                <!--<div class="chat-img"><img src="../assets/images/users/5.jpg" alt="user" /></div>-->
-                            <!--</li>-->
+
                             <!--&lt;!&ndash;chat Row &ndash;&gt;-->
                             <!--<li>-->
-                                <!--<div class="chat-img"><img src="../assets/images/users/3.jpg" alt="user" /></div>-->
-                                <!--<div class="chat-content">-->
-                                    <!--<h5>Angelina Rhodes</h5>-->
-                                    <!--<div class="box bg-light-primary">Well we have good budget for the project</div>-->
-                                <!--</div>-->
-                                <!--<div class="chat-time">11:00 am</div>-->
+                            <!--<div class="chat-img"><img src="../assets/images/users/3.jpg" alt="user" /></div>-->
+                            <!--<div class="chat-content">-->
+                            <!--<h5>Angelina Rhodes</h5>-->
+                            <!--<div class="box bg-light-primary">Well we have good budget for the project</div>-->
+                            <!--</div>-->
+                            <!--<div class="chat-time">11:00 am</div>-->
                             <!--</li>-->
                             <!--chat Row -->
                         </ul>
@@ -94,10 +98,12 @@
                     <div class="card-body b-t">
                         <div class="row">
                             <div class="col-8">
-                                <textarea placeholder="Type your message here" class="form-control b-0"></textarea>
+                                <input placeholder="Type your message here" class="form-control b-0"
+                                       [(ngModel)]="message"/>
                             </div>
                             <div class="col-4 text-right">
-                                <button type="button" class="btn btn-info btn-circle btn-lg"><i class="fa fa-paper-plane-o"></i> </button>
+                                <button type="button" class="btn btn-info btn-circle btn-lg" (click)="sendMessage()"><i
+                                        class="fa fa-paper-plane-o"></i></button>
                             </div>
                         </div>
                     </div>
