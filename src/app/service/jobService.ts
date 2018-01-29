@@ -1,16 +1,32 @@
 import {AngularFirestore} from 'angularfire2/firestore';
 import 'rxjs/add/operator/switchMap';
 import {Injectable} from '@angular/core';
+import { UserService, User} from './userService';
+
 import * as moment from 'moment';
 export interface Job {
     name: string;
 }
 
+export interface User {
+    uid: string;
+}
+
+export interface JobApplication {
+    uid: string;
+}
+
 @Injectable()
 export class JobService {
-    constructor(public afs: AngularFirestore) {
+
+    public currentUser: User;
+    public user: User;
+    public userForm: User;
+
+    constructor(public afs: AngularFirestore, public userService: UserService) {
 
     }
+
 
     getJobs() {
         return this.afs.collection('job', ref =>
@@ -29,15 +45,18 @@ export class JobService {
     }
 
     postJob(job) {
-        job.dueDate = new Date(job.dueDate);
-        console.log(job);
-        this.afs.collection('job').add(
-            {
-                ...job,
-                updatedAt: new Date(),
-                createdAt: new Date()
-            }
-        );
+        this.userService.getUser().then(user => {
+            job.dueDate = new Date(job.dueDate);
+            this.afs.collection('job').add(
+                {
+                    ...job,
+                    updatedAt: new Date(),
+                    createdAt: new Date(),
+                    uid: user.uid
+                }
+            );
+        });
+
     }
 
     updateJob(job, id) {
@@ -50,4 +69,30 @@ export class JobService {
         );
     }
 
+
+    applyJob(id) {
+        this.userService.getUser().then(user => {
+            this.afs.collection('jobApplication').add(
+                {
+                    jobid: id,
+                    uid: user.uid,
+                    status: 'Waiting Reply',
+                    updatedAt: new Date(),
+                    createdAt: new Date(),
+                }
+            );
+        });
+    }
+
+    getApplication(id) {
+             return this.afs.collection('jobApplication', ref =>
+                ref.where('uid', '==', id)
+            ).snapshotChanges().map(actions => {
+                return actions.map(a => {
+                    const data = a.payload.doc.data() as JobApplication;
+                    const id = a.payload.doc.id;
+                    return {id, ...data};
+                });
+            });
+    };
 }

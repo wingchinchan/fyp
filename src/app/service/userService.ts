@@ -117,7 +117,7 @@ export class UserService {
             });
         });
     }
-    facebookLogin(){
+    facebookLogin() {
         return new Promise<User>((resolve, reject) => {
             this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider()).then(user => {
                 window.localStorage.setItem('login','true');

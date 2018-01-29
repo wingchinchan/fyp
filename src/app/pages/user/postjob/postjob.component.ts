@@ -14,7 +14,7 @@ export class PostjobComponent {
     public jobForm: FormGroup;
     public jobCollection: AngularFirestoreCollection<any>;
     public user: User;
-    constructor(public formBuilder: FormBuilder, public afs: AngularFirestore, public jobService: JobService, public router: Router,public userService :UserService) {
+    constructor(public formBuilder: FormBuilder, public afs: AngularFirestore, public jobService: JobService, public router: Router, public userService: UserService) {
         this.jobForm = formBuilder.group({
             title: [
                 '', Validators.compose([

@@ -9,12 +9,17 @@ import {RightSidebarComponent} from '../../shared/right-sidebar/rightsidebar.com
 import {SidebarComponent} from '../../shared/sidebar/sidebar.component';
 import {BreadcrumbComponent} from '../../shared/breadcrumb/breadcrumb.component';
 import {NavigationComponent} from '../../shared/navigation/navigation.component';
-import { UserComponent } from './user.component';
+import {UserComponent} from './user.component';
 import {ProfileComponent} from './profile/profile.component';
 import {PostjobComponent} from './postjob/postjob.component';
 import {GetjobComponent} from './getjob/getjob.component';
 import {JobDetailsComponent} from './jobDetails/jobDetails.component';
 import {ChatComponent} from './chat/chat.component';
+import {ManageJobComponent} from './manageJob/manageJob.component';
+import {CommentRatingComponent} from './commentRating/commentRating.component';
+import {NgxDatatableModule} from '@swimlane/ngx-datatable';
+import { PipeModule } from '../../pipe/pipe.module';
+
 const routes: Routes = [{
     path: 'user',
     component: UserComponent,
@@ -28,12 +33,18 @@ const routes: Routes = [{
         }, {
             path: 'jobs',
             component: GetjobComponent,
-        },{
+        }, {
             path: 'job/:id',
             component: JobDetailsComponent,
-        },{
+        }, {
             path: 'chat',
-            component: ChatComponent
+            component: ChatComponent,
+        }, {
+            path: 'manageJob',
+            component: ManageJobComponent,
+        }, {
+            path: 'commentRating',
+            component: CommentRatingComponent
         }
     ]
 }];
@@ -49,14 +60,18 @@ const routes: Routes = [{
         PostjobComponent,
         GetjobComponent,
         JobDetailsComponent,
-        ChatComponent
+        ChatComponent,
+        ManageJobComponent,
+        CommentRatingComponent
     ],
     imports: [
         FormsModule,
+        NgxDatatableModule,
         CommonModule,
         MomentModule,
         NgbModule,
         NgbModule.forRoot(),
+        PipeModule.forRoot(),
         ReactiveFormsModule,
         FormsModule,
         HttpModule,
@@ -67,7 +82,8 @@ const routes: Routes = [{
         UserComponent,
         PostjobComponent,
         GetjobComponent,
-        JobDetailsComponent
+        JobDetailsComponent,
+        ManageJobComponent
     ]
 })
 export class UserModule {

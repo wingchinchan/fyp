@@ -8,7 +8,7 @@
                     <img [src]="user.photoURL" class="img-circle" width="150" (click)="hello()"/>
 
                     <h4 class="card-title m-t-10">{{ user.displayName}}</h4>
-                    <h6 class="card-subtitle">Programmer / Designer</h6>
+                    <h6 class="card-subtitle">{{ user.jobCategory}}</h6>
                 </div>
             </div>
             <!--<div class="row text-center justify-content-md-center">-->
@@ -21,14 +21,16 @@
         <div class="card">
             <div class="card-body">
                 <!--<small class="text-muted">{{ user.displayName}}</small>-->
-                <small class="text-muted p-t-30 db"><i class="ti-email"></i>  Email</small>
+                <p>Profile Card</p>
+                <hr>
+                <small class="text-muted p-t-30 db" style="padding-top: 10px;"><i class="ti-email"></i> Email</small>
 
                 <h6>{{ user.email }}</h6>
-                <small class="text-muted p-t-30 db"><i class="fa fa-phone"></i>  Phone</small>
+                <small class="text-muted p-t-30 db"><i class="fa fa-phone"></i> Phone</small>
                 <h6>{{ user.phone}}</h6>
 
 
-                <small class="text-muted p-t-30 db"><i class="fa  fa-facebook"></i>  Social Profile</small>
+                <small class="text-muted p-t-30 db"><i class="fa  fa-facebook"></i> Social Profile</small>
                 <br/>
                 <button class="btn btn-circle btn-secondary"><i class="fa fa-facebook"></i></button>
             </div>
@@ -41,95 +43,56 @@
             <!-- Nav tabs -->
             <ul class="nav nav-tabs profilex-tab" role="tablist">
                 <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#home"
-                                        role="tab">Timeline</a>
+                                        role="tab"><i class="mdi mdi-chart-timeline"></i> Timeline</a>
                 </li>
-                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#profile" role="tab">Profile</a>
+                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#profile" role="tab"><i class="mdi mdi-account-box"></i> Profile</a>
                 </li>
-                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#settings" role="tab">Settings</a>
+                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#settings" role="tab"><i class="mdi mdi-account-edit"></i> Edit Profile</a>
                 </li>
             </ul>
             <!-- Tab panes -->
             <div class="tab-content">
                 <div class="tab-pane active" id="home" role="tabpanel">
                     <div class="card-body">
-                        <div class="profiletimeline">
+                        <div class="profiletimeline" *ngFor="let jobApplication of application | async">
                             <div class="sl-item">
-                                <div class="sl-left"><img src="../assets/images/users/1.jpg" alt="user"
-                                                          class="img-circle"/></div>
-                                <div class="sl-right">
-                                    <div><a href="#" class="link">Mrs Lee</a> <span
-                                            class="sl-date">5 minutes ago</span>
-                                        <p>assign a new task <a href="#"> Design weblayout</a></p>
-                                        <div class="row">
-                                            <div class="col-lg-3 col-md-6 m-b-20"><img
-                                                    src="../assets/images/big/img1.jpg"
-                                                    class="img-responsive radius"/>
-                                            </div>
-                                            <div class="col-lg-3 col-md-6 m-b-20"><img
-                                                    src="../assets/images/big/img2.jpg"
-                                                    class="img-responsive radius"/>
-                                            </div>
-                                            <div class="col-lg-3 col-md-6 m-b-20"><img
-                                                    src="../assets/images/big/img3.jpg"
-                                                    class="img-responsive radius"/>
-                                            </div>
-                                            <div class="col-lg-3 col-md-6 m-b-20"><img
-                                                    src="../assets/images/big/img4.jpg"
-                                                    class="img-responsive radius"/>
-                                            </div>
-                                        </div>
-                                        <div class="like-comm"><a href="javascript:void(0)" class="link m-r-10">2
-                                            comment</a> <a href="javascript:void(0)" class="link m-r-10"><i
-                                                class="fa fa-heart text-danger"></i> 5 Marks</a></div>
-                                    </div>
+                                <div class="sl-left">
+                                    <img [src]="user.photoURL" alt="user"
+                                                          class="img-circle"/>
                                 </div>
-                            </div>
-                            <hr>
-                            <div class="sl-item">
-                                <div class="sl-left"><img src="../assets/images/users/1.jpg" alt="user"
-                                                          class="img-circle"/></div>
                                 <div class="sl-right">
-                                    <div><a href="#" class="link">Mrs Lee</a> <span
-                                            class="sl-date">5 minutes ago</span>
+                                    <div><a href="#" class="link">{{user.displayName}}</a> <span
+                                            class="sl-date">{{jobApplication.createdAt | amDateFormat: 'YYYY-MM-DD HH:mm'}}</span>
                                         <div class="m-t-20 row">
-                                            <div class="col-md-3 col-xs-12"><img src="../assets/images/big/img1.jpg"
-                                                                                 alt="user"
-                                                                                 class="img-responsive radius"/>
+                                            <div class="col-md-3 col-xs-12">
+                                                <img src="../assets/images/job.png" alt="user"
+                                                     class="img-responsive radius"/>
                                             </div>
                                             <div class="col-md-9 col-xs-12">
-                                                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-                                                    nec
-                                                    odio. Praesent libero. Sed cursus ante dapibus diam. </p> <a
-                                                    href="#" class="btn btn-success"> Design weblayout</a></div>
+
+                                                <p>Job Application of {{ (jobApplication.jobid | job | async)?.title
+                                                    }} </p>
+                                                <a class="btn btn-success" style="color: white;"
+                                                   (click)="goToDetail(jobApplication)"><i
+                                                        class="mdi mdi-calendar-text"></i> Job
+                                                    Details</a>
+                                                <button type="button" class="btn btn-secondary"><i
+                                                        class="fa fa-clock-o"></i> {{jobApplication.status}}
+                                                </button>
+                                            </div>
                                         </div>
                                         <div class="like-comm m-t-20"><a href="javascript:void(0)"
                                                                          class="link m-r-10">2
                                             comment</a> <a href="javascript:void(0)" class="link m-r-10"><i
-                                                class="fa fa-heart text-danger"></i> 5 Marks</a></div>
+                                                class="fa fa-heart text-danger"></i> 5 Like</a>
+                                            <button type="button" class="btn btn-danger"><i class="fa fa-heart"></i>
+                                                Like
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <hr>
-                            <div class="sl-item">
-                                <div class="sl-left"><img src="../assets/images/users/1.jpg" alt="user"
-                                                          class="img-circle"/></div>
-                                <div class="sl-right">
-                                    <div><a href="#" class="link">Mrs Lee</a> <span
-                                            class="sl-date">5 minutes ago</span>
-                                        <p class="m-t-10"> Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                            Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed
-                                            nisi.
-                                            Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum.
-                                            Praesent
-                                            mauris. Fusce nec tellus sed augue semper </p>
-                                    </div>
-                                    <div class="like-comm m-t-20"><a href="javascript:void(0)" class="link m-r-10">2
-                                        comment</a> <a href="javascript:void(0)" class="link m-r-10"><i
-                                            class="fa fa-heart text-danger"></i> 5 Marks</a></div>
-                                </div>
-                            </div>
-                            <hr>
-
                         </div>
                     </div>
                 </div>
@@ -209,6 +172,13 @@
                                 <div class="col-md-12">
                                     <input type="text" [(ngModel)]="userForm.phone" name="phone"
                                            class="form-control form-control-line">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-12">Job Category</label>
+                                <div class="col-md-12">
+                                        <input [(ngModel)]="userForm.jobCategory" name="Job Category"
+                                                  class="form-control form-control-line">
                                 </div>
                             </div>
                             <div class="form-group">

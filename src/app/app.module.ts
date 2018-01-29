@@ -16,7 +16,7 @@ import {ChatService} from './service/chatService';
 import {JobService} from './service/jobService';
 import {UserModule} from "./pages/user/user.module";
 import {HttpClientModule} from "@angular/common/http";
-// import { UserModule } from './pages/user/user.module';
+import { PipeModule } from './pipe/pipe.module';
 
 const firebaseConfig = {
     apiKey: "AIzaSyDhGKcU8rrQ9PSdFrTs9ju5PnE5OFyWd3E",
@@ -96,6 +96,7 @@ const routes: Routes = [
         BrowserModule,
         LandingModule,
         UserModule,
+        PipeModule.forRoot(),
         NgbModule.forRoot(),
         ReactiveFormsModule,
         FormsModule,
@@ -110,7 +111,7 @@ const routes: Routes = [
     providers: [
         UserService,
         JobService,
-        ChatService
+        ChatService,
     ],
     bootstrap: [AppComponent]
 })
