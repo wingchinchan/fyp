@@ -1,9 +1,10 @@
 import {AngularFirestore} from 'angularfire2/firestore';
 import 'rxjs/add/operator/switchMap';
 import {Injectable} from '@angular/core';
-import { UserService, User} from './userService';
+import {UserService, User} from './userService';
 
 import * as moment from 'moment';
+
 export interface Job {
     name: string;
 }
@@ -85,14 +86,15 @@ export class JobService {
     }
 
     getApplication(id) {
-             return this.afs.collection('jobApplication', ref =>
-                ref.where('uid', '==', id)
-            ).snapshotChanges().map(actions => {
-                return actions.map(a => {
-                    const data = a.payload.doc.data() as JobApplication;
-                    const id = a.payload.doc.id;
-                    return {id, ...data};
-                });
+        return this.afs.collection('jobApplication', ref =>
+            ref.where('uid', '==', id)
+                // .orderBy('createdAt', 'desc')
+        ).snapshotChanges().map(actions => {
+            return actions.map(a => {
+                const data = a.payload.doc.data() as JobApplication;
+                const id = a.payload.doc.id;
+                return {id, ...data};
             });
+        });
     };
 }

@@ -4,14 +4,14 @@ import {Router} from '@angular/router';
 import {UserService} from '../../../service/userService';
 
 @Component({
-    templateUrl: './register.html',
-    styleUrls: ['./register.css'],
+    templateUrl: './registerAsCom.html',
+    styleUrls: ['./registerAsCom.css'],
 })
-export class RegisterComponent {
-    public registerAsFreelancerForm: FormGroup;
+export class RegisterAsComComponent {
+    public registerAsCompanyForm: FormGroup;
 
     constructor(public formBuilder: FormBuilder, public router: Router, public userService: UserService) {
-        this.registerAsFreelancerForm = formBuilder.group({
+        this.registerAsCompanyForm = formBuilder.group({
             email: [
                 '', Validators.compose([
                     Validators.required,
@@ -39,9 +39,9 @@ export class RegisterComponent {
 
     }
 
-    registerAsFreelancer() {
-        if (this.registerAsFreelancerForm.value.password === this.registerAsFreelancerForm.value.repeatPassword) {
-            this.userService.registerAsFreelancer(this.registerAsFreelancerForm.value.displayName, this.registerAsFreelancerForm.value.email, this.registerAsFreelancerForm.value.password)
+    registerAsCompany() {
+        if (this.registerAsCompanyForm.value.password === this.registerAsCompanyForm.value.repeatPassword) {
+            this.userService.registerAsCompany(this.registerAsCompanyForm.value.displayName, this.registerAsCompanyForm.value.email, this.registerAsCompanyForm.value.password)
                 .then(user => {
                     this.router.navigateByUrl('user/profile');
                 }).catch(error => {

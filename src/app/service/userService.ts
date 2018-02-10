@@ -7,6 +7,7 @@ import 'rxjs/add/operator/switchMap';
 
 export interface User {
     uid: string;
+    userType: string;
     photoURL?: string;
     displayName?: string;
     email?: string;
@@ -58,18 +59,37 @@ export class UserService {
         const userRef = this.afs.doc(`user/${user.uid}`);
         console.log(userRef);
         const data = {
+            userType: 'freelancer',
             uid: user.uid,
             displayName: user.displayName,
-            email: user.email
+            email: user.email,
+            photoURL: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSgJ2_u9xXrMkZgeDbjhsE29U8IlU9_TDcr2h9_C3MpTKH47pP'
         };
         return userRef.set(data);
     }
+
     createUserByEmail(user, displayName) {
         console.log(user);
         // Sets user data to firestore on login
         const userRef = this.afs.doc(`user/${user.uid}`);
         console.log(userRef);
         const data = {
+            userType: 'freelancer',
+            uid: user.uid,
+            displayName: displayName,
+            email: user.email,
+            photoURL: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSgJ2_u9xXrMkZgeDbjhsE29U8IlU9_TDcr2h9_C3MpTKH47pP'
+        };
+        return userRef.set(data);
+    }
+
+    createUserByEmailAsCompany(user, displayName) {
+        console.log(user);
+        // Sets user data to firestore on login
+        const userRef = this.afs.doc(`user/${user.uid}`);
+        console.log(userRef);
+        const data = {
+            userType: 'company',
             uid: user.uid,
             displayName: displayName,
             email: user.email,
@@ -138,12 +158,26 @@ export class UserService {
         });
     }
 
-    register(displayName, email, password) {
+    registerAsFreelancer(displayName, email, password) {
         return new Promise<User>((resolve, reject) => {
             this.afAuth.auth.createUserWithEmailAndPassword(email, password).then(user => {
                 this.user = this.afs.doc<User>(`user/${user.uid}`).valueChanges();
                 window.localStorage.setItem('login','true');
                 this.createUserByEmail(user, displayName);
+                user.sendEmailVerification();
+                resolve(user);
+            }).catch(error => {
+                reject(error);
+            });
+        });
+    }
+
+    registerAsCompany(displayName, email, password) {
+        return new Promise<User>((resolve, reject) => {
+            this.afAuth.auth.createUserWithEmailAndPassword(email, password).then(user => {
+                this.user = this.afs.doc<User>(`user/${user.uid}`).valueChanges();
+                window.localStorage.setItem('login','true');
+                this.createUserByEmailAsCompany(user, displayName);
                 user.sendEmailVerification();
                 resolve(user);
             }).catch(error => {

@@ -1,0 +1,69 @@
+<div class="" style=" height: 850px;    background-image:url('assets/jpeg/22.jpg'); background-repeat: no-repeat;background-size:cover;background-position: center;">
+    <div class="login-box card" style="
+    position: absolute;
+    top: 250px;
+    left: 38%;
+    border-radius: 15px;
+}">
+        <div class="card-body">
+            <form class="form-horizontal form-material" id="loginform" [formGroup]="registerAsCompanyForm" (ngSubmit)="registerAsCompany()">
+                <h3 class="box-title m-b-20" style="text-align: center;">Register as Company</h3>
+                <div class="form-group ">
+                    <div class="col-xs-12">
+                        <input class="form-control" type="text" formControlName="displayName" placeholder="Name" [class.invalid]="!registerForm.controls.displayName.valid">
+                        <small style="color:red;"
+                               *ngIf="!registerAsCompanyForm.controls.displayName.valid && registerAsCompanyForm.controls.displayName.dirty">This is required
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <div class="col-xs-12">
+                        <input class="form-control" type="text" formControlName="email" placeholder="Email" [class.invalid]="!registerAsCompanyForm.controls.email.valid">
+                        <small style="color:red;"
+                               *ngIf="!registerAsCompanyForm.controls.email.valid && registerAsCompanyForm.controls.email.dirty">This is required
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <div class="col-xs-12">
+                        <input class="form-control" type="password" formControlName="password" placeholder="Password" [class.invalid]="!registerAsCompanyForm.controls.password.valid">
+                        <small style="color:red;"
+                               *ngIf="!registerAsCompanyForm.controls.password.valid && registerAsCompanyForm.controls.password.dirty">It must be at least 8 digit
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <input class="form-control" type="password" formControlName="repeatPassword" placeholder="Confirm Password" [class.invalid]="!registerAsCompanyForm.controls.repeatPassword.valid">
+                        <!--<small style="color:red;"-->
+                        <!--*ngIf="!registerAsCompanyForm.controls.repeatPassword.valid && registerAsCompanyForm.controls.repeatPassword.dirty">This is-->
+                        <!--required-->
+                        <!--</small>-->
+                        <small style="color:red;"
+                               *ngIf="registerAsCompanyForm.controls.repeatPassword.hasError('minlength')">It must be at least 8 digit
+                        </small>
+                    </div>
+                </div>
+                <!--<div class="form-group">-->
+                <!--<div class="col-md-12">-->
+                <!--<div class="checkbox checkbox-success p-t-0 p-l-10">-->
+                <!--<input id="checkbox-signup" type="checkbox">-->
+                <!--<label for="checkbox-signup"> I agree to all <a href="#">Terms</a></label>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <div class="form-group text-center m-t-20">
+                    <div class="col-xs-12">
+                        <button class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light signupbtn" [disabled]="!registerAsCompanyForm.valid" type="submit">Sign Up</button>
+                    </div>
+                </div>
+                <div class="form-group m-b-0">
+                    <div class="col-sm-12 text-center">
+                        <p>Already have an account? <a href="login" class="text-info m-l-5"><b>Login</b></a></p>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

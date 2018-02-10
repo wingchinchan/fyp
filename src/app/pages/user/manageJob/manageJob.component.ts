@@ -6,12 +6,12 @@ import { Router } from '@angular/router';
 
 @Component({
     templateUrl: './manageJob.html',
-    styleUrls: ['./manageJob.css'],
+    styleUrls: ['./manageJob.scss'],
 })
 
 export class ManageJobComponent {
     public jobs: Job[];
-    constructor(public jobService : JobService) {
+    constructor(public jobService: JobService) {
         this.jobService.getJobs().subscribe(jobs =>{
             this.jobs = jobs;
         });

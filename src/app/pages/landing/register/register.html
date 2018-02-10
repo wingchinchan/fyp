@@ -6,41 +6,41 @@
     border-radius: 15px;
 }">
         <div class="card-body">
-            <form class="form-horizontal form-material" id="loginform" [formGroup]="registerForm" (ngSubmit)="register()">
-                <h3 class="box-title m-b-20" style="text-align: center;">Sign Up</h3>
+            <form class="form-horizontal form-material" id="loginform" [formGroup]="registerAsFreelancerForm" (ngSubmit)="registerAsFreelancer()">
+                <h3 class="box-title m-b-20" style="text-align: center;">Register as Freelancer</h3>
                 <div class="form-group ">
                     <div class="col-xs-12">
                         <input class="form-control" type="text" formControlName="displayName" placeholder="Name" [class.invalid]="!registerForm.controls.displayName.valid">
                         <small style="color:red;"
-                               *ngIf="!registerForm.controls.displayName.valid && registerForm.controls.displayName.dirty">This is required
+                               *ngIf="!registerAsFreelancerForm.controls.displayName.valid && registerAsFreelancerForm.controls.displayName.dirty">This is required
                         </small>
                     </div>
                 </div>
                 <div class="form-group ">
                     <div class="col-xs-12">
-                        <input class="form-control" type="text" formControlName="email" placeholder="Email" [class.invalid]="!registerForm.controls.email.valid">
+                        <input class="form-control" type="text" formControlName="email" placeholder="Email" [class.invalid]="!registerAsFreelancerForm.controls.email.valid">
                         <small style="color:red;"
-                               *ngIf="!registerForm.controls.email.valid && registerForm.controls.email.dirty">This is required
+                               *ngIf="!registerAsFreelancerForm.controls.email.valid && registerAsFreelancerForm.controls.email.dirty">This is required
                         </small>
                     </div>
                 </div>
                 <div class="form-group ">
                     <div class="col-xs-12">
-                        <input class="form-control" type="password" formControlName="password" placeholder="Password" [class.invalid]="!registerForm.controls.password.valid">
+                        <input class="form-control" type="password" formControlName="password" placeholder="Password" [class.invalid]="!registerAsFreelancerForm.controls.password.valid">
                         <small style="color:red;"
-                               *ngIf="!registerForm.controls.password.valid && registerForm.controls.password.dirty">It must be at least 8 digit
+                               *ngIf="!registerAsFreelancerForm.controls.password.valid && registerAsFreelancerForm.controls.password.dirty">It must be at least 8 digit
                         </small>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-xs-12">
-                        <input class="form-control" type="password" formControlName="repeatPassword" placeholder="Confirm Password" [class.invalid]="!registerForm.controls.repeatPassword.valid">
+                        <input class="form-control" type="password" formControlName="repeatPassword" placeholder="Confirm Password" [class.invalid]="!registerAsFreelancerForm.controls.repeatPassword.valid">
                         <!--<small style="color:red;"-->
-                               <!--*ngIf="!registerForm.controls.repeatPassword.valid && registerForm.controls.repeatPassword.dirty">This is-->
+                               <!--*ngIf="!registerAsFreelancerForm.controls.repeatPassword.valid && registerAsFreelancerForm.controls.repeatPassword.dirty">This is-->
                             <!--required-->
                         <!--</small>-->
                         <small style="color:red;"
-                               *ngIf="registerForm.controls.repeatPassword.hasError('minlength')">It must be at least 8 digit
+                               *ngIf="registerAsFreelancerForm.controls.repeatPassword.hasError('minlength')">It must be at least 8 digit
                         </small>
                     </div>
                 </div>
@@ -54,12 +54,12 @@
                 <!--</div>-->
                 <div class="form-group text-center m-t-20">
                     <div class="col-xs-12">
-                        <button class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light signupbtn" [disabled]="!registerForm.valid" type="submit">Sign Up</button>
+                        <button class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light signupbtn" [disabled]="!registerAsFreelancerForm.valid" type="submit">Sign Up</button>
                     </div>
                 </div>
                 <div class="form-group m-b-0">
                     <div class="col-sm-12 text-center">
-                        <p>Already have an account? <a href="login" class="text-info m-l-5"><b>Sign In</b></a></p>
+                        <p>Already have an account? <a href="login" class="text-info m-l-5"><b>Login</b></a></p>
                     </div>
                 </div>
             </form>

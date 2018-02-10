@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { JobPipe } from './jobPipe';
+import { UserPipe } from './userPipe';
+import { ChatPipe } from './chatPipe';
 
 @NgModule({
     imports:        [],
-    declarations:   [JobPipe],
-    exports:        [JobPipe],
+    declarations:   [JobPipe, UserPipe, ChatPipe],
+    exports:        [JobPipe, UserPipe, ChatPipe],
 })
 
 export class PipeModule {

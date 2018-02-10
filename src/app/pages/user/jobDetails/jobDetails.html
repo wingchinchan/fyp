@@ -18,7 +18,7 @@
 </div>
 
 <!--------------------------- job details -------------------------->
-<div class="row" *ngIf="( Ojob | async) as job" >
+<div class="row" *ngIf="( Ojob | async) as job">
     <div class="col-md-2"></div>
     <div class="col-md-8">
         <div class="tab-pane" id="profile" role="tabpanel">
@@ -34,7 +34,8 @@
                         <br>
                         <p class="text-muted">$ {{job.salary}} </p>
                     </div>
-                    <div class="col-md-3 col-xs-6 b-r"><strong><i class="fa fa fa-address-book-o"></i> Contact Email</strong>
+                    <div class="col-md-3 col-xs-6 b-r"><strong><i class="fa fa fa-address-book-o"></i> Contact
+                        Email</strong>
                         <br>
                         <p class="text-muted">{{job.email}}</p>
                     </div>
@@ -46,17 +47,18 @@
                         <br>
                         <p class="text-muted">{{job.quota}}</p>
                     </div>
-                    <div class="col-md-3 col-xs-6 b-r"><strong><i class="fa fa-sort-numeric-asc"></i> Minimal Rate</strong>
+                    <div class="col-md-3 col-xs-6 b-r"><strong><i class="fa fa-sort-numeric-asc"></i> Minimal
+                        Rate</strong>
                         <br>
                         <p class="text-muted">{{job.minRate}}</p>
                     </div>
                     <!--<div class="col-md-3 col-xs-6 b-r"><strong><i class="fa fa fa-user-o"></i> Company Name</strong>-->
-                        <!--<br>-->
-                        <!--<p class="text-muted">{{job.comName}}</p>-->
+                    <!--<br>-->
+                    <!--<p class="text-muted">{{job.comName}}</p>-->
                     <!--</div>-->
                     <!--<div class="col-md-3 col-xs-6 b-r"><strong><i class="fa fa fa-id-badge"></i> Company Description</strong>-->
-                        <!--<br>-->
-                        <!--<p class="text-muted">{{job.comDesc}}</p>-->
+                    <!--<br>-->
+                    <!--<p class="text-muted">{{job.comDesc}}</p>-->
                     <!--</div>-->
 
 
@@ -71,14 +73,42 @@
                 <!--<h5 class="m-t-30">HTML 5 <span class="pull-right"></span></h5>-->
                 <!--<h5 class="m-t-30">jQuery <span class="pull-right"></span></h5>-->
                 <!--<h5 class="m-t-30">Photoshop <span class="pull-right"></span></h5>-->
-            <!--</div>-->
+                <!--</div>-->
+            </div>
+            <div class="form-actions" style="text-align: center; margin-bottom: 2%;">
+                <button (click)="applyJob()" type="submit" class="btn btn-secondary" style="width: 20%;">
+                    <i class="fa fa-address-card-o"></i> Apply this Job
+                </button>
+            </div>
         </div>
-        <div class="form-actions" style="text-align: center; margin-bottom: 2%;">
-            <button (click)="applyJob()" type="submit" class="btn btn-secondary" style="width: 20%;">
-                <i class="fa fa-address-card-o"></i> Apply this Job
-            </button>
-        </div>
-    </div>
-    <div class="col-md-2"></div>
+
+            <div class="card" style="margin-top: 5%;">
+                <div class="card-body">
+                    <h4 class="card-title" style="text-align: center;">{{ job.title }}</h4>
+                    <ul class="feeds">
+                        <li>
+                            <div class="bg-light-info"><i class="fa fa-calendar"></i></div>Due Date<span>{{ job.dueDate | amDateFormat: 'YYYY-MM-DD'}}</span></li>
+                        <li>
+                            <div class="bg-light-success"><i class="fa fa-dollar"></i></div> Salary<span>$ {{job.salary}} </span></li>
+                        <li>
+                            <div class="bg-light-warning"><i class="fa fa fa-address-book-o"></i></div> Contact
+                            Email<span>{{job.email}}</span></li>
+                        <li>
+                            <div class="bg-light-danger"><i class="fa fa-folder-o"></i></div> Job Category<span>{{job.jobCategory}}</span></li>
+                        <li>
+                            <div class="bg-light-inverse"><i class="fa fa-question"></i></div> Job Quota<span>{{job.quota}}</span></li>
+                        <li>
+                            <div class="bg-light-info"><i class="fa fa-sort-numeric-asc"></i></div> Minimal
+                            Rate<span>{{job.minRate}}</span></li>
+
+                    </ul>
+                    <div class="form-actions" style="text-align: center; margin-top: 2%;">
+                        <button (click)="applyJob()" type="submit" class="btn btn-secondary" style="width: 20%;">
+                            <i class="fa fa-address-card-o"></i> Apply this Job
+                        </button>
+                    </div>
+                </div>
+            </div>
+        <div class="col-md-2"></div>
     </div>
 </div>

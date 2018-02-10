@@ -14,14 +14,31 @@ export class ChatComponent {
     public currentChat: Chat;
     public message: string;
     public currentUser: User;
+    public findLastChat = false;
 
     constructor(public router: Router, public chatService: ChatService, public userService: UserService) {
         this.chats = this.chatService.getChats();
-        this.chatService.getChats().subscribe(chat => {
-            console.log(chat);
-            this.currentChat = chat[0];
-        });
         this.userService.getUser().then(user => {
+            this.chats.subscribe(chats => {
+                console.log(chats);
+                chats.forEach(chat => {
+                    console.log(chat);
+                    if (chat.user1 === user.uid) {
+                        if (this.findLastChat === false) {
+                            this.currentChat = chat;
+                            this.findLastChat = true;
+                        }
+                    }
+                    ;
+                    if (chat.user2 === user.uid) {
+                        if (this.findLastChat === false) {
+                            this.findLastChat = true;
+                            this.currentChat = chat;
+                        }
+                    }
+                    ;
+                });
+            });
             this.currentUser = user;
         });
     }
@@ -29,6 +46,10 @@ export class ChatComponent {
     sendMessage() {
         this.chatService.sendMessage(this.message, this.currentChat);
         this.message = '';
+    }
+
+    selectedChat(chat) {
+        this.currentChat = chat;
     }
 
 }

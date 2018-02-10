@@ -1,9 +1,9 @@
 <!-- ============================================================== -->
 <!-- Left Sidebar - style you can find in sidebar.scss  -->
 <!-- ============================================================== -->
-<aside class="left-sidebar">
+<aside class="left-sidebar" *ngIf="user">
     <!-- Sidebar scroll-->
-    <div class="scroll-sidebar" *ngIf="user">
+    <div class="scroll-sidebar" *ngIf= "user.userType == 'freelancer' ">
         <!-- User profile -->
         <div class="user-profile">
             <!-- User profile image -->
@@ -27,9 +27,9 @@
                 <li>
                     <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="profile"><i class="ti-user"></i><span class="hide-menu">My Profile</span></a>
                 </li>
-                <li>
-                    <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="postJob"><i class="mdi mdi-border-color"></i><span class="hide-menu">Post Job</span></a>
-                </li>
+                <!--<li>-->
+                    <!--<a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="postJob"><i class="mdi mdi-border-color"></i><span class="hide-menu">Post Job</span></a>-->
+                <!--</li>-->
                 <li>
                     <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="jobs"><i class="mdi mdi-calendar-text"></i><span class="hide-menu">Get Job</span></a>
                 </li>
@@ -85,6 +85,39 @@
                         <!--<li><a href="#">item 1.4</a></li>-->
                     <!--</ul>-->
                 <!--</li>-->
+            </ul>
+        </nav>
+    </div>
+    <!--------------------------- company -------------------------->
+
+    <div class="scroll-sidebar" *ngIf= "user.userType == 'company' ">
+        <!-- User profile -->
+        <div class="user-profile">
+            <!-- User profile image -->
+            <div class="profile-img"> <img src="{{user.photoURL}}" alt="user" /> </div>
+
+        </div>
+        <!-- End User profile text-->
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav">
+            <ul id="sidebarnav">
+                <li class="nav-small-cap">Menu</li>
+                <li>
+                    <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="profile"><i class="ti-user"></i><span class="hide-menu">My Profile</span></a>
+                </li>
+                <li>
+                    <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="postJob"><i class="mdi mdi-border-color"></i><span class="hide-menu">Post Job</span></a>
+                </li>
+                <li>
+                    <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="manageJob"><i class="mdi mdi-calendar-text"></i><span class="hide-menu">Manage Job</span></a>
+                </li>
+                <li>
+                    <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="chat"><i class="ti-email"></i><span class="hide-menu">Message</span></a>
+                </li>
+                <li>
+                    <div class="dropdown-divider"></div> <a class="dropdown-item" (click)="logout()"><i class="fa fa-power-off"></i> <span class="hide-menu">Logout</span></a>
+                </li>
+
             </ul>
         </nav>
     </div>

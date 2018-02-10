@@ -16,6 +16,7 @@ export interface ChatbotMessage {
 export interface Message {
     user: string;
     value: string;
+    updatedDt: Date;
 }
 
 export interface Chat {
@@ -23,6 +24,8 @@ export interface Chat {
     user2: string;
     id: string;
     messages: Message[];
+    lastMessage: string;
+    updatedDt: Date;
 }
 
 @Injectable()
@@ -35,7 +38,7 @@ export class ChatService {
     private token: string = '9fd10ff6bb9c49ebaff7d087eff7860c';
 
     getChats() {
-        return this.afs.collection('chat'
+        return this.afs.collection('chat', ref => ref.orderBy('updatedDt', 'desc')
         ).snapshotChanges().map(actions => {
             return actions.map(a => {
                 const data = a.payload.doc.data() as Chat;
@@ -66,8 +69,11 @@ export class ChatService {
         this.userService.getUser().then(user => {
             const chatMessage: Message = {
                 user: user.uid,
-                value: message
+                value: message,
+                updatedDt: new Date()
             };
+            chat.updatedDt = new Date();
+            chat.lastMessage = message;
             chat.messages.push(chatMessage);
             this.afs.doc(`chat/${chat.id}`).update(chat);
         });

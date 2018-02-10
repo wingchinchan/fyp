@@ -111,13 +111,12 @@
 
 </div>
 
-
 <!--------------------------- latest job table -------------------------->
 
 <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-8">
-        <div class="card" style="text-align: center;">
+        <div class="card" style="text-align: center; margin-top: 5%; ">
             <div class="card-body">
                 <h4 class="card-title">Latest Jobs</h4>
                 <div class="table-responsive">
@@ -143,15 +142,16 @@
                             </td>
                             <td>$ {{job.salary}}</td>
                             <td>{{job.quota}}</td>
-                            <div class="btn btn-block btn-secondary" (click)="goToDetail(job)">Detail</div>
-
+                            <td>
+                                <div class="btn btn-block btn-secondary" (click)="goToDetail(job)">Details</div>
+                            </td>
                         </tr>
 
                         </tbody>
                     </table>
                 </div>
                 <!--<div style="text-align: center; display: inline-block !important;">-->
-                    <!--<div class="btn btn-block btn-secondary">View more</div>-->
+                <!--<div class="btn btn-block btn-secondary">View more</div>-->
                 <!--</div>-->
             </div>
         </div>

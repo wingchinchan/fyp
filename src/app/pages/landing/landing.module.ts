@@ -12,6 +12,8 @@ import {LandingNavigationComponent} from '../../shared/landing-navigation/landin
 import {MomentModule} from 'angular2-moment';
 import {HttpModule} from '@angular/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {RegisterTypeComponent} from './registerType/registerType.component';
+import {RegisterAsComComponent} from "./registerAsCom/registerAsCom.component";
 
 const routes: Routes = [{
     path: '',
@@ -40,6 +42,14 @@ const routes: Routes = [{
         {
             path: 'job/:id',
             component: JobDetailsComponent,
+        },
+        {
+            path: 'registerType',
+            component: RegisterTypeComponent,
+        },
+        {
+            path:'registerAsCom',
+            component: RegisterAsComComponent,
         }
     ]
 }];
@@ -52,6 +62,8 @@ const routes: Routes = [{
         LoginComponent,
         GetjobComponent,
         JobDetailsComponent,
+        RegisterTypeComponent,
+        RegisterAsComComponent,
         LandingNavigationComponent,
     ],
     imports: [
@@ -72,7 +84,9 @@ const routes: Routes = [{
         LoginComponent,
         GetjobComponent,
         JobDetailsComponent,
-        LandingNavigationComponent
+        RegisterTypeComponent,
+        RegisterAsComComponent,
+        LandingNavigationComponent,
     ]
 })
 export class LandingModule {
