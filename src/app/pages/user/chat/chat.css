@@ -1,0 +1,9 @@
+.chat-row {
+    padding: 20px;
+    float: left;
+    width: 100%;
+}
+
+.chat-row:hover {
+    background: #ebf3f5;
+}

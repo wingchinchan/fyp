@@ -2,7 +2,7 @@ import {AngularFirestore} from 'angularfire2/firestore';
 import 'rxjs/add/operator/switchMap';
 import {Injectable} from '@angular/core';
 import {UserService} from './userService';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 export interface ChatbotMessage {
     id: string;
@@ -34,76 +34,63 @@ export class ChatService {
 
     }
 
-    private baseURL: string = 'https://api.dialogflow.com/v1/query?v=20150910';
-    private token: string = '9fd10ff6bb9c49ebaff7d087eff7860c';
+    private baseURL = 'https://api.dialogflow.com/v1/query?v=20150910';
+    private token = '9fd10ff6bb9c49ebaff7d087eff7860c';
 
     getChats() {
-        return this.afs.collection('chat', ref => ref.orderBy('updatedDt', 'desc')
-        ).snapshotChanges().map(actions => {
-            return actions.map(a => {
-                const data = a.payload.doc.data() as Chat;
-                const id = a.payload.doc.id;
-                return {id, ...data};
-            });
-        });
+        return this.afs.collection<Chat>('chat', ref => ref.orderBy('updatedDt', 'desc')
+        ).valueChanges();
     };
-    //
-    // public getResponse(query: string) {
-    //     let data = {
-    //         query: query,
-    //         lang: 'en',
-    //         sessionId: '12345'
-    //     };
-    //     let access_token = `Bearer ${this.token}`;
-    //     return this.http
-    //         .post<ChatbotMessage>(this.baseURL, data, {
-    //             headers: {
-    //                 'Authorization': access_token,
-    //             }
-    //         });
-    //
-    // };
 
-    public sendMessage(message: string, chat: Chat) {
+    //
+    getResponse(query: string) {
+        const data = {
+            query: query,
+            lang: 'en',
+            sessionId: '12345'
+        };
+        const access_token = `Bearer ${this.token}`;
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                'Authorization': access_token
+            })
+        };
+        return this.http
+            .post<ChatbotMessage>(this.baseURL, data, httpOptions).toPromise();
 
-        this.userService.getUser().then(user => {
-            const chatMessage: Message = {
-                user: user.uid,
-                value: message,
-                updatedDt: new Date()
-            };
-            chat.updatedDt = new Date();
-            chat.lastMessage = message;
+    };
+
+    async sendMessage(message: string, chat: Chat) {
+
+        const user = await this.userService.getUser();
+        const chatMessage: Message = {
+            user: user.uid,
+            value: message,
+            updatedDt: new Date()
+        };
+        chat.updatedDt = new Date();
+        let botUser = '';
+        if (chat.user1 === user.uid) {
+            botUser = chat.user2;
+        } else {
+            botUser = chat.user1;
+        }
+        const bot = await this.getResponse(message);
+        const botMessage: Message = {
+            user: botUser,
+            value: bot.result.fulfillment.speech,
+            updatedDt: new Date()
+        };
+        if (chat.messages === undefined) {
+            chat.messages = [];
             chat.messages.push(chatMessage);
-            this.afs.doc(`chat/${chat.id}`).update(chat);
-        });
+            chat.messages.push(botMessage);
+        } else {
+            chat.messages.push(chatMessage);
+            chat.messages.push(botMessage);
+        }
+        chat.lastMessage = bot.result.fulfillment.speech;
+        this.afs.doc(`chat/${chat.id}`).update(chat);
     }
-
-
-// getJob(id) {
-//     return this.afs.doc<Job>(`job/${id}`).valueChanges();
-// }
-//
-// postJob(job) {
-//     job.dueDate = new Date(job.dueDate);
-//     console.log(job);
-//     this.afs.collection('job').add(
-//         {
-//             ...job,
-//             updatedAt: new Date(),
-//             createdAt: new Date()
-//         }
-//     );
-// }
-//
-// updateJob(job, id) {
-//     this.afs.doc(`job/${id}`).update(
-//         {
-//             ...job,
-//             updatedAt: new Date(),
-//             createdAt: new Date()
-//         }
-//     );
-// }
-
 }

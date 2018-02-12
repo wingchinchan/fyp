@@ -16,25 +16,26 @@
                         <div class="form-material">
                             <input class="form-control p-20" type="text" placeholder="Search Contact">
                         </div>
-                        <ul class="chatonline style-none ">
+                        <ul class="chatonline style-none">
                             <li *ngFor="let chat of chats | async">
-                                <div *ngIf="chat.user1 === currentUser.uid" (click)="selectedChat(chat)">
-                                    <a href="javascript:void(0)"><img [src]="(chat.user2 | user | async)?.photoURL"
-                                                                      alt="user-img"
-                                                                      class="img-circle"> <span>{{ (chat.user2 | user | async)?.displayName }}
-                                        <small>{{chat.lastMessage }}</small>
-                                        <small class="text-success">{{chat.updatedDt | amTimeAgo }}</small>
-                                    </span></a>
+                                <div *ngIf="chat.user1 === currentUser.uid" (click)="selectedChat(chat)"
+                                     class="chat-row">
+                                    <img [src]="(chat.user2 | user | async)?.photoURL"
+                                         alt="user-img"
+                                         class="img-circle"> <span>{{ (chat.user2 | user | async)?.displayName }}
+                                        <p>{{chat.lastMessage }}</p>
+                                        <small class="text-success" style="float: right;">{{chat.updatedDt | amTimeAgo }}</small>
+                                    </span>
                                 </div>
-                                <div *ngIf="chat.user2 === currentUser.uid" (click)="selectedChat(chat)">
-                                    <a href="javascript:void(0)">
-                                        <img [src]="(chat.user1 | user | async)?.photoURL" alt="user-img"
-                                             class="img-circle"/>
-                                        <span>{{ (chat.user1 | user | async)?.displayName }}
-                                            <small>{{chat.lastMessage }}</small>
-                                            <small class="text-success">{{ chat.updatedDt | amTimeAgo }}</small>
+                                <div *ngIf="chat.user2 === currentUser.uid" (click)="selectedChat(chat)"
+                                     class="chat-row">
+
+                                    <img [src]="(chat.user1 | user | async)?.photoURL" alt="user-img"
+                                         class="img-circle"/>
+                                    <span>{{ (chat.user1 | user | async)?.displayName }}
+                                            <p>{{chat.lastMessage }}</p>
+                                            <small class="text-success" style="float: right;">{{ chat.updatedDt | amTimeAgo }}</small>
                                         </span>
-                                    </a>
                                 </div>
                             </li>
                             <li class="p-20"></li>
@@ -45,7 +46,7 @@
                 <!-- .chat-right-panel -->
                 <div class="chat-right-aside">
                     <div class="chat-main-header">
-                        <div class="p-20 b-b">
+                        <div class="p-20 b-b" style="height: 60px;">
                             <h3 class="box-title">Chat Message</h3>
                         </div>
                     </div>
