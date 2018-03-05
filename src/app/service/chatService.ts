@@ -88,7 +88,7 @@ export class ChatService {
         } else {
             chat.messages.push(chatMessage);
         }
-        if (user.uid === chat.user2) {
+        if (user.uid === chat.user1) {
             chat.messages.push(botMessage);
         }
         chat.lastMessage = bot.result.fulfillment.speech;
