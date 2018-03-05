@@ -35,7 +35,7 @@ export class ChatService {
     }
 
     private baseURL = 'https://api.dialogflow.com/v1/query?v=20150910';
-    private token = '248f07b87cee4b88b7539bf19c242dbb';
+    private token = '9fd10ff6bb9c49ebaff7d087eff7860c';
 
     getChats() {
         return this.afs.collection<Chat>('chat', ref => ref.orderBy('updatedDt', 'desc')
