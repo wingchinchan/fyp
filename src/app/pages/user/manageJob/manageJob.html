@@ -1,57 +1,191 @@
+<!--<div class="row">-->
+    <!--<div class="col-12">-->
+        <!--&lt;!&ndash; Column &ndash;&gt;-->
+        <!--<ngx-datatable class="material ngx-datatable fixed-header"-->
+                       <!--[rows]="jobs">-->
+            <!--<ngx-datatable-column name="Title" [width]="300">-->
+                <!--<ng-template let-value="value" ngx-datatable-cell-template>-->
+                    <!--{{value}}-->
+                <!--</ng-template>-->
+            <!--</ngx-datatable-column>-->
+            <!--<ngx-datatable-column name="Email" [width]="300">-->
+                <!--<ng-template let-value="value" ngx-datatable-cell-template>-->
+                    <!--{{value}}-->
+                <!--</ng-template>-->
+            <!--</ngx-datatable-column>-->
+        <!--</ngx-datatable>-->
+    <!--</div>-->
+<!--</div>-->
+<!--------------------------- slider -------------------------->
 <div class="row">
-    <div class="col-12">
-        <!-- Column -->
-        <ngx-datatable class="material ngx-datatable fixed-header"
-                       [rows]="jobs">
-            <ngx-datatable-column name="Title" [width]="300">
-                <ng-template let-value="value" ngx-datatable-cell-template>
-                    {{value}}
-                </ng-template>
-            </ngx-datatable-column>
-            <ngx-datatable-column name="Email" [width]="300">
-                <ng-template let-value="value" ngx-datatable-cell-template>
-                    {{value}}
-                </ng-template>
-            </ngx-datatable-column>
-        </ngx-datatable>
-    </div>
-</div>
+    <div class="col-md-12">
+        <!--<div class="card text-center" style="margin-bottom: 0px;">-->
+        <!--<div class="card-body"-->
+        <!--style=" height: 250px;background-image: url('assets/jpeg/wood.jpg'); background-repeat: no-repeat; background-size: cover; display: block;  -webkit-filter: blur(5px);  filter: blur(5px);">-->
 
-<div class="row">
-    <div class="col-lg-12">
+        <!--</div>-->
+        <!--<div style="position: absolute; top: 130px; left: 43%;">-->
+        <!--<p style="font-size: 45px; color: white; font-weight: 700;" class="card-text">-->
+        <!--GET A JOB-->
+        <!--</p>-->
+        <!--<hr style="width: 50%; border-top: 1px solid white !important;">-->
+
+        <!--&lt;!&ndash;<a href="/register" class="btn btn-primary started-button">GET STARTED</a>&ndash;&gt;-->
+        <!--</div>-->
+
+        <!--</div>-->
+
         <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">Feeds</h4>
-                <ul class="feeds">
-                    <li>
-                        <div class="bg-light-info"><i class="fa fa-bell-o"></i></div>
-                        You have 4 pending tasks. <span class="text-muted">Just Now</span></li>
-                    <li>
-                        <div class="bg-light-success"><i class="ti-server"></i></div>
-                        Server #1 overloaded.<span class="text-muted">2 Hours ago</span></li>
-                    <li>
-                        <div class="bg-light-warning"><i class="ti-shopping-cart"></i></div>
-                        New order received.<span class="text-muted">31 May</span></li>
-                    <li>
-                        <div class="bg-light-danger"><i class="ti-user"></i></div>
-                        New user registered.<span class="text-muted">30 May</span></li>
-                    <li>
-                        <div class="bg-light-inverse"><i class="fa fa-bell-o"></i></div>
-                        New Version just arrived. <span class="text-muted">27 May</span></li>
-                    <li>
-                        <div class="bg-light-info"><i class="fa fa-bell-o"></i></div>
-                        You have 4 pending tasks. <span class="text-muted">Just Now</span></li>
-                    <li>
-                        <div class="bg-light-danger"><i class="ti-user"></i></div>
-                        New user registered.<span class="text-muted">30 May</span></li>
-                    <li>
-                        <div class="bg-light-inverse"><i class="fa fa-bell-o"></i></div>
-                        New Version just arrived. <span class="text-muted">27 May</span></li>
-                    <li>
-                        <div class="bg-light-primary"><i class="ti-settings"></i></div>
-                        You have 4 pending tasks. <span class="text-muted">27 May</span></li>
-                </ul>
+            <div>
+                <div style=" height: 250px;background-image: url('assets/jpeg/wood.jpg'); border-radius:8px; background-repeat: no-repeat; background-size: cover; background-position: center; opacity: 0.7;">
+                </div>
+                <div class="carousel-caption">
+                    <p style="font-size: 45px; color: white; font-weight: 700;" class="text-white font-bold">Get A JOB</p>
+                    <hr style="width: 10%; border-top: 2px solid white !important;">
+
+                </div>
             </div>
         </div>
     </div>
+</div>
+<!--------------------------- searching -------------------------->
+
+<div class="row" style="background-color: #f6f6f6;">
+    <div class="col-md-2"></div>
+    <div class="col-md-1"></div>
+
+    <!--<div class="col-sm-6">-->
+    <!--&lt;!&ndash; <form> &ndash;&gt;-->
+    <!--<div class="row p-t-20">-->
+    <!--<div class="col-md-5">-->
+    <!--<div class="form-group">-->
+    <!--<input name="title" type="text" class="form-control" formControlName="title"-->
+    <!--[class.invalid]="!jobForm.controls.title.valid" placeholder="Enter job title">-->
+    <!--&lt;!&ndash;<small class="form-control-feedback"> This is inline help </small> &ndash;&gt;-->
+    <!--<small style="color:red;" *ngIf="!jobForm.controls.title.valid && jobForm.controls.title.dirty">This-->
+    <!--is required-->
+    <!--</small>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--&lt;!&ndash;/span&ndash;&gt;-->
+    <!--<div class="col-md-5">-->
+    <!--<div class="form-group has-danger">-->
+    <!--<select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1"-->
+    <!--formControlName="jobCategory" name="jobCategory">-->
+    <!--&lt;!&ndash;<option>Select Category</option>&ndash;&gt;-->
+    <!--<optgroup label="Finance">-->
+    <!--<option value="Category 1">Accounting</option>-->
+    <!--</optgroup>-->
+    <!--<optgroup label="Computing">-->
+    <!--<option value="Category 2">Programming</option>-->
+    <!--</optgroup>-->
+    <!--<optgroup label="Desgin">-->
+    <!--<option value="Category 3">Banner Design</option>-->
+    <!--</optgroup>-->
+    <!--<optgroup label="Other">-->
+    <!--<option value="Category 4">Other</option>-->
+    <!--</optgroup>-->
+    <!--</select>-->
+    <!--<small *ngIf="!jobForm.controls.jobCategory.valid && jobForm.controls.jobCategory.dirty">Error-->
+    <!--</small>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--&lt;!&ndash;/span&ndash;&gt;-->
+    <!--<div class="col-md-2">-->
+    <!--<div class="form-actions" style="text-align: center;">-->
+    <!--<button type="searchJob" class="btn btn-secondary" [disabled]="!jobForm.valid">-->
+    <!--<i class="fa fa-search"></i> Search Job-->
+    <!--</button>-->
+
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+
+    <!--<div class="row">-->
+    <!--<div class="col-md-5">-->
+    <!--<div class="form-group">-->
+    <!--<input type="text" class="form-control" formControlName="minSal"-->
+    <!--[class.invalid]="!jobForm.controls.minSal.valid" placeholder="Minimum Salary">-->
+    <!--<small style="color:red;"-->
+    <!--*ngIf="!jobForm.controls.minSal.valid && jobForm.controls.minSal.dirty">This-->
+    <!--is required-->
+    <!--</small>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--&lt;!&ndash;/span&ndash;&gt;-->
+    <!--<div class="col-md-5">-->
+    <!--<div class="form-group">-->
+    <!--<input type="text" class="form-control" formControlName="maxSal"-->
+    <!--[class.invalid]="!jobForm.controls.maxSal.valid" placeholder="Maximum Salary">-->
+    <!--<small style="color:red;"-->
+    <!--*ngIf="!jobForm.controls.maxSal.valid && jobForm.controls.maxSal.dirty">This-->
+    <!--is required-->
+    <!--</small>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--&lt;!&ndash;/span&ndash;&gt;-->
+    <!--</div>-->
+    <!--&lt;!&ndash; </form> &ndash;&gt;-->
+    <!--</div>-->
+
+    <!--<div class="col-md-2">-->
+    <!--<div class="form-actions" style="text-align: center;">-->
+    <!--<button type="submit" class="btn btn-secondary" style="width: 20%;" [disabled]="!jobForm.valid">-->
+    <!--<i class="fa fa-check"></i> Search Job-->
+    <!--</button>-->
+
+    <!--</div>-->
+    <!--</div>-->
+
+    <div class="col-md-2"></div>
+
+</div>
+
+<!--------------------------- latest job table -------------------------->
+
+<div class="row" *ngIf="user">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <div class="card" style="text-align: center; ">
+            <div class="card-body">
+                <h4 class="card-title">Latest Jobs</h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th style="text-align: center;">Job Title</th>
+                            <th style="text-align: center;">Post Date</th>
+                            <th style="text-align: center;">Job Category</th>
+                            <th style="text-align: center;">Salary</th>
+                            <th style="text-align: center;">Quota</th>
+                            <th style="text-align: center;">Detail</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let job of jobs | async">
+                            <!--<td><a style="color: black;" href="javascript:void(0)">#{{job.no}}</a></td>-->
+                            <td><a style="color: black;">{{ (job.uid | user | async)?.displayName}}</a></td>
+                            <td><span class="text-muted"><i class="fa fa-clock-o"></i> {{job.createdAt | amDateFormat: 'YYYY-MM-DD'}}</span>
+                            </td>
+                            <td>
+                                <div class="catButton btn btn-rounded {{job.ngClass}}">{{job.jobCategory}}</div>
+                            </td>
+                            <td>$ {{job.salary}}</td>
+                            <td>{{job.quota}}</td>
+                            <td>
+                                <div class="btn btn-block btn-warning" (click)="goToDetail(job)">Details</div>
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+                <!--<div style="text-align: center; display: inline-block !important;">-->
+                <!--<div class="btn btn-block btn-secondary">View more</div>-->
+                <!--</div>-->
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2"></div>
+
 </div>

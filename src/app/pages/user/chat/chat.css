@@ -7,3 +7,15 @@
 .chat-row:hover {
     background: #ebf3f5;
 }
+
+.chat-row-active {
+    background: #ebf3f5;
+    padding: 20px;
+    float: left;
+    width: 100%;
+}
+
+.message-content{
+    overflow-y:  scroll;
+    height: 600px!important;
+}

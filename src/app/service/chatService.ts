@@ -35,7 +35,7 @@ export class ChatService {
     }
 
     private baseURL = 'https://api.dialogflow.com/v1/query?v=20150910';
-    private token = '9fd10ff6bb9c49ebaff7d087eff7860c';
+    private token = '248f07b87cee4b88b7539bf19c242dbb';
 
     getChats() {
         return this.afs.collection<Chat>('chat', ref => ref.orderBy('updatedDt', 'desc')
@@ -92,5 +92,23 @@ export class ChatService {
         }
         chat.lastMessage = bot.result.fulfillment.speech;
         this.afs.doc(`chat/${chat.id}`).update(chat);
+    }
+
+    async createChat(companyUserId, userId) {
+        const id = this.afs.createId();
+        const message = 'Hello I already apply your job';
+        const chat = {
+            id: id,
+            user1: userId,
+            user2: companyUserId,
+            lastMessage: message,
+            messages: [{
+                user: userId,
+                value: message,
+                updatedDt: new Date()
+            }],
+            updatedDt: new Date()
+        };
+        this.afs.doc(`chat/${id}`).set(chat);
     }
 }

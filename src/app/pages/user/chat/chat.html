@@ -18,8 +18,8 @@
                         </div>
                         <ul class="chatonline style-none">
                             <li *ngFor="let chat of chats | async">
-                                <div *ngIf="chat.user1 === currentUser.uid" (click)="selectedChat(chat)"
-                                     class="chat-row">
+                                <div *ngIf="chat.user1 === currentUser.uid" (click)="selectedChat(chat, $event)"
+                                     class="chat-row" id="{{chat.id}}">
                                     <img [src]="(chat.user2 | user | async)?.photoURL"
                                          alt="user-img"
                                          class="img-circle"> <span>{{ (chat.user2 | user | async)?.displayName }}
@@ -27,8 +27,8 @@
                                         <small class="text-success" style="float: right;">{{chat.updatedDt | amTimeAgo }}</small>
                                     </span>
                                 </div>
-                                <div *ngIf="chat.user2 === currentUser.uid" (click)="selectedChat(chat)"
-                                     class="chat-row">
+                                <div *ngIf="chat.user2 === currentUser.uid" (click)="selectedChat(chat, $event)"
+                                     class="chat-row" id="{{chat.id}}">
 
                                     <img [src]="(chat.user1 | user | async)?.photoURL" alt="user-img"
                                          class="img-circle"/>
@@ -44,14 +44,21 @@
                 </div>
                 <!-- .chat-left-panel -->
                 <!-- .chat-right-panel -->
-                <div class="chat-right-aside">
+                <div class="chat-right-aside" *ngIf="currentChat">
                     <div class="chat-main-header">
                         <div class="p-20 b-b" style="height: 60px;">
-                            <h3 class="box-title">Chat Message</h3>
+                            <div *ngIf="currentChat.user1 == currentUser.uid">
+                                <img style="    margin-right: 10px; float: left; width: 30px; border-radius: 100%;" [src]="(currentChat.user2 | user | async)?.photoURL"/>
+                                <h3>{{ (currentChat.user2 | user | async)?.displayName }}</h3>
+                            </div>
+                            <div class="box-title" *ngIf="currentChat.user2 == currentUser.uid">
+                                <img style="    margin-right: 10px; float: left; width: 30px; border-radius: 100%;" [src]="(currentChat.user1 | user | async)?.photoURL"/>
+                                <h3>{{ (currentChat.user1 | user | async)?.displayName }}</h3>
+                            </div>
                         </div>
                     </div>
                     <div class="chat-rbox">
-                        <ul class="chat-list p-20" *ngIf="currentChat">
+                        <ul #messageScroll class="chat-list p-20 message-content">
                             <div *ngFor="let message of (currentChat.id | chat | async)?.messages">
                                 <li *ngIf="message.user != currentUser.uid">
                                     <div class="chat-img"><img [src]="(message.user | user | async)?.photoURL"
@@ -75,16 +82,19 @@
                         </ul>
                     </div>
                     <div class="card-body b-t">
-                        <div class="row">
-                            <div class="col-8">
-                                <input placeholder="Type your message here" class="form-control b-0"
-                                       [(ngModel)]="message"/>
+                        <form (submit)="sendMessage()">
+                            <div class="row">
+                                <div class="col-8">
+                                    <input placeholder="Type your message here" class="form-control b-0"
+                                           [(ngModel)]="message" [ngModelOptions]="{standalone: true}"/>
+                                </div>
+                                <div class="col-4 text-right">
+                                    <button type="submit" class="btn btn-info btn-circle btn-lg"><i
+                                            class="fa fa-paper-plane-o"></i></button>
+                                </div>
                             </div>
-                            <div class="col-4 text-right">
-                                <button type="button" class="btn btn-info btn-circle btn-lg" (click)="sendMessage()"><i
-                                        class="fa fa-paper-plane-o"></i></button>
-                            </div>
-                        </div>
+                        </form>
+
                     </div>
                 </div>
                 <!-- .chat-right-panel -->

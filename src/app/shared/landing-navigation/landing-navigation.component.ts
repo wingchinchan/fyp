@@ -21,5 +21,4 @@ export class LandingNavigationComponent {
         this.router.navigateByUrl('');
         this.userService.logout();
     }
-
 }

@@ -11,6 +11,8 @@ import {BreadcrumbComponent} from '../../shared/breadcrumb/breadcrumb.component'
 import {NavigationComponent} from '../../shared/navigation/navigation.component';
 import {UserComponent} from './user.component';
 import {ProfileComponent} from './profile/profile.component';
+import {SetChatBotComponent} from './setChatBot/setChatBot.component';
+
 import {PostjobComponent} from './postjob/postjob.component';
 import {GetjobComponent} from './getjob/getjob.component';
 import {JobDetailsComponent} from './jobDetails/jobDetails.component';
@@ -18,7 +20,7 @@ import {ChatComponent} from './chat/chat.component';
 import {ManageJobComponent} from './manageJob/manageJob.component';
 import {CommentRatingComponent} from './commentRating/commentRating.component';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
-import { PipeModule } from '../../pipe/pipe.module';
+import {PipeModule} from '../../pipe/pipe.module';
 
 const routes: Routes = [{
     path: 'user',
@@ -45,6 +47,9 @@ const routes: Routes = [{
         }, {
             path: 'commentRating',
             component: CommentRatingComponent
+        }, {
+            path: 'chatBot',
+            component: SetChatBotComponent
         }
     ]
 }];
@@ -62,7 +67,8 @@ const routes: Routes = [{
         JobDetailsComponent,
         ChatComponent,
         ManageJobComponent,
-        CommentRatingComponent
+        CommentRatingComponent,
+        SetChatBotComponent
     ],
     imports: [
         FormsModule,
@@ -83,7 +89,8 @@ const routes: Routes = [{
         PostjobComponent,
         GetjobComponent,
         JobDetailsComponent,
-        ManageJobComponent
+        ManageJobComponent,
+        SetChatBotComponent
     ]
 })
 export class UserModule {

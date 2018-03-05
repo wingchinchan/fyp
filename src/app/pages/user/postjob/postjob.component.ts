@@ -14,6 +14,7 @@ export class PostjobComponent {
     public jobForm: FormGroup;
     public jobCollection: AngularFirestoreCollection<any>;
     public user: User;
+
     constructor(public formBuilder: FormBuilder, public afs: AngularFirestore, public jobService: JobService, public router: Router, public userService: UserService) {
         this.jobForm = formBuilder.group({
             title: [
@@ -28,11 +29,6 @@ export class PostjobComponent {
                 ])
             ],
             quota: [
-                '', Validators.compose([
-                    Validators.required
-                ])
-            ],
-            dueDate: [
                 '', Validators.compose([
                     Validators.required
                 ])
@@ -65,7 +61,6 @@ export class PostjobComponent {
                 email: user.email,
                 title: '',
                 jobCategory: '',
-                dueDate: '',
                 minRate: 'N/A',
                 salary: '',
                 quota: '',
@@ -78,6 +73,9 @@ export class PostjobComponent {
 
     postJob() {
         this.jobService.postJob(this.jobForm.value);
+        this.router.navigateByUrl('user/profile');
+    }
+    redirect() {
         this.router.navigateByUrl('user/profile');
     }
 }

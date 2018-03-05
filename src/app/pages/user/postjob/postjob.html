@@ -1,20 +1,32 @@
 <!--------------------------- slider -------------------------->
 <div class="row">
     <div class="col-md-12">
-        <div class="card text-center">
-            <div class="card-body"
-                 style=" height: 250px;background-image: url('assets/jpeg/wood.jpg'); background-repeat: no-repeat; background-size: cover; display: block;  -webkit-filter: blur(5px);  filter: blur(5px);">
+        <!--<div class="card text-center">-->
+            <!--<div class="card-body"-->
+                 <!--style=" height: 250px;background-image: url('assets/jpeg/wood.jpg'); background-repeat: no-repeat; background-size: cover; display: block;  -webkit-filter: blur(5px);  filter: blur(5px);">-->
 
+            <!--</div>-->
+            <!--<div style="position: absolute; top: 130px; left: 43%;">-->
+                <!--<p style="font-size: 45px; color: white; font-weight: 700;" class="card-text">-->
+                    <!--POST A JOB-->
+                <!--</p>-->
+                <!--<hr style="width: 50%; border-top: 1px solid white !important;">-->
+
+                <!--&lt;!&ndash;<a href="/register" class="btn btn-primary started-button">GET STARTED</a>&ndash;&gt;-->
+            <!--</div>-->
+
+        <!--</div>-->
+
+        <div class="card">
+            <div>
+                <div style=" height: 250px;background-image: url('assets/jpeg/wood.jpg'); border-radius:8px; background-repeat: no-repeat; background-size: cover; background-position: center; opacity: 0.7;">
+                </div>
+                <div class="carousel-caption">
+                    <p style="font-size: 45px; color: white; font-weight: 700;" class="text-white font-bold">POST A JOB</p>
+                    <hr style="width: 10%; border-top: 2px solid white !important;">
+
+                </div>
             </div>
-            <div style="position: absolute; top: 130px; left: 43%;">
-                <p style="font-size: 45px; color: white; font-weight: 700;" class="card-text">
-                    POST A JOB
-                </p>
-                <hr style="width: 50%; border-top: 1px solid white !important;">
-
-                <!--<a href="/register" class="btn btn-primary started-button">GET STARTED</a>-->
-            </div>
-
         </div>
     </div>
 </div>
@@ -64,8 +76,8 @@
                                         <optgroup label="Computing">
                                             <option value="Programming">Programming</option>
                                         </optgroup>
-                                        <optgroup label="Desgin">
-                                            <option value="Banner Design">Banner Design</option>
+                                        <optgroup label="Design">
+                                            <option value="Design">Design</option>
                                         </optgroup>
                                         <optgroup label="Other">
                                             <option value="Other">Other</option>
@@ -91,17 +103,17 @@
                                     </small>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="control-label ">Due Date</label>
-                                    <input type="date" class="form-control" formControlName="dueDate"
-                                           placeholder="dd/mm/yyyy" [class.invalid]="!jobForm.controls.dueDate.valid">
-                                    <small style="color:red;"
-                                           *ngIf="!jobForm.controls.dueDate.valid && jobForm.controls.dueDate.dirty">
-                                        This is required
-                                    </small>
-                                </div>
-                            </div>
+                            <!--<div class="col-md-6">-->
+                                <!--<div class="form-group">-->
+                                    <!--<label class="control-label ">Due Date</label>-->
+                                    <!--<input type="date" class="form-control" formControlName="dueDate"-->
+                                           <!--placeholder="dd/mm/yyyy" [class.invalid]="!jobForm.controls.dueDate.valid">-->
+                                    <!--<small style="color:red;"-->
+                                           <!--*ngIf="!jobForm.controls.dueDate.valid && jobForm.controls.dueDate.dirty">-->
+                                        <!--This is required-->
+                                    <!--</small>-->
+                                <!--</div>-->
+                            <!--</div>-->
                         </div>
                         <div class="row">
                             <div class="col-md-12">
@@ -221,7 +233,7 @@
                         <button type="submit" class="btn btn-secondary" style="width: 20%;" [disabled]="!jobForm.valid">
                             <i class="fa fa-check"></i> Submit
                         </button>
-                        <button type="button" class="btn btn-outline-secondary cancel" style="width: 20%;">Cancel
+                        <button  (click)="redirect()" type="button" class="btn btn-outline-secondary cancel" style="width: 20%;">Cancel
                         </button>
                     </div>
                 </form>

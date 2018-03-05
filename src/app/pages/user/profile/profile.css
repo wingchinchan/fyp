@@ -9,3 +9,12 @@
     background: #96a8b3;
     border: 1px solid #96a8b3;
 }
+
+.card{
+    margin-top: 5%;
+}
+
+.statusButton{
+    cursor: auto !important;
+
+}

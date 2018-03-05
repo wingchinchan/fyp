@@ -1,8 +1,9 @@
+import {Component} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {JobService, Job} from '../../../service/jobService';
+import {UserService} from '../../../service/userService';
 
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { JobService, Job} from '../../../service/jobService';
-import { Observable } from 'rxjs/Observable';
+import {Observable} from 'rxjs/Observable';
 import {Router} from '@angular/router';
 
 
@@ -10,26 +11,26 @@ import {Router} from '@angular/router';
     templateUrl: './jobDetails.html',
     styleUrls: ['./jobDetails.css'],
 })
-export class JobDetailsComponent implements OnInit, OnDestroy {
-    id: number;
+export class JobDetailsComponent {
+    id: string;
     private sub: any;
     public Ojob: Observable<Job>;
-    constructor(private route: ActivatedRoute, public jobService: JobService, public router: Router) {
+    public canApplied = true;
+    constructor(private route: ActivatedRoute, public jobService: JobService, public router: Router, public userService: UserService) {
+        this.id = this.route.snapshot.paramMap.get('id');
 
-    }
-
-    ngOnInit() {
-        this.sub = this.route.params.subscribe(params => {
-            this.id = params.id;
-            this.Ojob = this.jobService.getJob(params.id);
+        this.Ojob = this.jobService.getJob(this.id);
+        this.userService.getUser().then(user => {
+            this.jobService.isApplied(this.id, user.uid).subscribe(application => {
+                if (application.length > 0 ) {
+                    this.canApplied = false;
+                }
+            });
         });
     }
-    ngOnDestroy() {
-        this.sub.unsubscribe();
-    }
 
-    applyJob() {
-        this.jobService.applyJob(this.id);
+    applyJob(job) {
+        this.jobService.applyJob(job, this.id);
         this.router.navigateByUrl('user/profile');
     }
 }
