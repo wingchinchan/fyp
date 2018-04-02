@@ -15,7 +15,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {RegisterTypeComponent} from './registerType/registerType.component';
 import {SearchJobComponent} from './searchJob/searchJob.component';
 import { ScrollableDirective } from '../../Directive/scrollable.directive';
-import {RegisterAsComComponent} from "./registerAsCom/registerAsCom.component";
+import {RegisterAsComComponent} from './registerAsCom/registerAsCom.component';
 
 const routes: Routes = [{
     path: '',
