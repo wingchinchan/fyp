@@ -316,8 +316,8 @@ export class JobService {
         return this.afs.doc<CommentFreelancer>(`commentRatingForFreelancer/${id}`).valueChanges();
     }
 
-    getCommentRecordByFreelancer(id) {
-        return this.afs.doc<CommentCompany>(`commentRatingForCompany/${id}`).valueChanges();
-    }
+    // getCommentRecordByFreelancer(id) {
+    //     return this.afs.doc<CommentCompany>(`commentRatingForCompany/${id}`).valueChanges();
+    // }
 }
 
