@@ -2700,10 +2700,10 @@ widget-chart-page product review
   padding: 15px 20px;
   color: #54667a; }
   .profile-tab li a.nav-link.active, .customtab li a.nav-link.active {
-    border-bottom: 2px solid #009efb;
-    color: #009efb; }
+    border-bottom: 2px solid #98decf !important;
+    color: #98decf !important; }
   .profile-tab li a.nav-link:hover, .customtab li a.nav-link:hover {
-    color: #009efb; }
+    color: #98decf !important; }
 
 /*============================================================== 
 Form addons page
@@ -5484,9 +5484,9 @@ When click on sidebar toggler and also for tablet
     width: 60px; }
   .mini-sidebar .sidebar-nav #sidebarnav > li:hover > a {
     width: 260px;
-    background: #009efb;
+    background: #98decf;
     color: #ffffff;
-    border-color: #009efb; }
+    border-color: #98decf; }
     .mini-sidebar .sidebar-nav #sidebarnav > li:hover > a i {
       color: #ffffff; }
     .mini-sidebar .sidebar-nav #sidebarnav > li:hover > a .hide-menu {

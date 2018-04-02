@@ -22,7 +22,8 @@ export class LoginComponent {
             ],
             password: [
                 '', Validators.compose([
-                    Validators.required
+                    Validators.required,
+                    Validators.minLength(8)
                 ])
             ]
         });

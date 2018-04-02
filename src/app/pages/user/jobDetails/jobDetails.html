@@ -1,18 +1,17 @@
 <!--------------------------- slider -------------------------->
 <div class="row">
     <div class="col-md-12">
-        <div class="card text-center" style="margin-bottom: 0px;">
-            <div class="card-body"
-                 style=" height: 250px;background-image: url('assets/jpeg/wood.jpg'); background-repeat: no-repeat; background-size: cover; display: block;  -webkit-filter: blur(5px);  filter: blur(5px);">
 
-            </div>
-            <div style="position: absolute; top: 130px; left: 43%;">
-                <p style="font-size: 45px; color: white; font-weight: 700;" class="card-text">
-                    JOB DETAILS
-                </p>
-                <hr style="width: 50%; border-top: 1px solid white !important;">
-            </div>
+        <div class="card">
+            <div>
+                <div style=" height: 250px;background-image: url('assets/jpeg/wood.jpg'); border-radius:8px; background-repeat: no-repeat; background-size: cover; background-position: center; opacity: 0.7;">
+                </div>
+                <div class="carousel-caption">
+                    <p style="font-size: 45px; color: white; font-weight: 700;" class="text-white font-bold">JOB DETAILS</p>
+                    <hr style="width: 10%; border-top: 2px solid white !important;">
 
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -107,9 +106,9 @@
                 <div class="card-body">
                     <h4 class="card-title" style="text-align: center;">{{ job.title }}</h4>
                     <ul class="feeds">
-                        <li>
-                            <div class="bg-light-info"><i class="fa fa-calendar"></i></div>
-                            <b>Due Date</b><span>{{ job.dueDate | amDateFormat: 'YYYY-MM-DD'}}</span></li>
+                        <!--<li>-->
+                            <!--<div class="bg-light-info"><i class="fa fa-calendar"></i></div>-->
+                            <!--<b>Due Date</b><span>{{ job.dueDate | amDateFormat: 'YYYY-MM-DD'}}</span></li>-->
                         <li>
                             <div class="bg-light-success"><i class="fa fa-dollar"></i></div>
                             <b>Salary</b><span>$ {{job.salary}} </span></li>
@@ -123,10 +122,10 @@
                         <li>
                             <div class="bg-light-inverse"><i class="fa fa-question"></i></div>
                             <b>Job Quota</b><span>{{job.quota}}</span></li>
-                        <li>
-                            <div class="bg-light-info"><i class="fa fa-sort-numeric-asc"></i></div>
-                            <b>Minimal
-                                Rate</b><span>{{job.minRate}}</span></li>
+                        <!--<li>-->
+                            <!--<div class="bg-light-info"><i class="fa fa-sort-numeric-asc"></i></div>-->
+                            <!--<b>Minimal-->
+                                <!--Rate</b><span>{{job.minRate}}</span></li>-->
 
                     </ul>
                     <div class="form-actions" style="text-align: center; margin-top: 2%;">

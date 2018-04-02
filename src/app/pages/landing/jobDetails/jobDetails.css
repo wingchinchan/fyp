@@ -1,0 +1,11 @@
+.feeds li span {
+    font-size: 15px;
+    padding: 1%;
+}
+
+.card{
+    background-color: #ffc10717;
+}
+.feeds li:hover {
+    background: #ffbc3442;
+}

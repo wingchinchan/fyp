@@ -35,7 +35,7 @@ export class ManageJobComponent {
         });
     }
 
-    goToDetail(job) {
-        this.router.navigate(['/user/job', job.id]);
+    goToEditJobDetail(job) {
+        this.router.navigate(['/user/editJob', job.id]);
     }
 }

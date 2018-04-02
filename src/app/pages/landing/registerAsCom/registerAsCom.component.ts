@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {UserService} from '../../../service/userService';
+import {EmailValidator} from "../email";
 
 @Component({
     templateUrl: './registerAsCom.html',
@@ -16,6 +17,7 @@ export class RegisterAsComComponent {
                 '', Validators.compose([
                     Validators.required,
                     Validators.minLength(4),
+                    EmailValidator.isValid
                 ])
             ],
             password: [

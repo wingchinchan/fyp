@@ -3,11 +3,13 @@ import 'rxjs/add/operator/switchMap';
 import {Injectable} from '@angular/core';
 import {UserService, User} from './userService';
 import {ChatService} from './chatService';
+import {Observable} from 'rxjs/Observable';
 
 export interface Job {
     name: string;
     ngClass: string;
     id: String;
+    title: string;
 }
 
 export interface User {
@@ -16,6 +18,22 @@ export interface User {
 
 export interface JobApplication {
     uid: string;
+    id: string;
+}
+
+export interface CommentFreelancer {
+    uid: string;
+    id: string;
+}
+
+export interface CommentCompany {
+    uid: string;
+    id: string;
+}
+
+export interface viewFreelancerComment {
+    uid: string;
+    id: string;
 }
 
 @Injectable()
@@ -25,14 +43,37 @@ export class JobService {
     public user: User;
     public userForm: User;
 
+
+    public jobs: Observable<Job>;
+
+    // public currentJob: Job;
+    // public jobSync = false;
+    public job: Job;
+    public jobApplication: JobApplication;
+    // public commentRatingForFreelancer: CommentToFreelancer;
+
     constructor(public afs: AngularFirestore, public userService: UserService, public chatService: ChatService) {
 
     }
 
+    // getEditJob() {
+    //     return new Promise<Job>((resolve, reject) => {
+    //         if (this.jobSync === false) {
+    //             this.job.subscribe(job => {
+    //                 this.currentJob = job;
+    //                 this.jobSync = true;
+    //                 resolve(job);
+    //             });
+    //         } else {
+    //             resolve(this.currentJob);
+    //         }
+    //     });
+    // }
+
 
     getJobs() {
         return this.afs.collection('job', ref =>
-            ref.orderBy('createdAt', 'desc')
+            ref.orderBy('createdAt', 'desc').limit(5)
         ).snapshotChanges().map(actions => {
             return actions.map(a => {
                 const data = a.payload.doc.data() as Job;
@@ -41,6 +82,37 @@ export class JobService {
             });
         });
     };
+
+    getMoreJob(offset: number) {
+        return this.afs.collection('job', ref =>
+            ref.orderBy('createdAt', 'desc').limit(offset)
+        ).snapshotChanges().map(actions => {
+            return actions.map(a => {
+                const data = a.payload.doc.data() as Job;
+                const id = a.payload.doc.id;
+                return {id, ...data};
+            });
+        });
+    }
+
+    searchJobs(title, category) {
+        return this.afs.collection('job', ref => {
+                if (title !== '' && category !== '') {
+                    return ref.where('jobCategory', '==', category).orderBy('title').startAt(title);
+                } else if (title !== '') {
+                    return ref.orderBy('title').startAt(title);
+                } else if (category !== '') {
+                    return ref.where('jobCategory', '==', category);
+                }
+            }
+        ).snapshotChanges().map(actions => {
+            return actions.map(a => {
+                const data = a.payload.doc.data() as Job;
+                const id = a.payload.doc.id;
+                return {id, ...data};
+            });
+        });
+    }
 
     getJobsByCompany(id) {
         return this.afs.collection('job', ref =>
@@ -52,7 +124,8 @@ export class JobService {
                 return {id, ...data};
             });
         });
-    };
+    }
+    ;
 
     getJob(id) {
         return this.afs.doc<Job>(`job/${id}`).valueChanges();
@@ -84,6 +157,8 @@ export class JobService {
         }
         this.userService.getUser().then(user => {
             // job.dueDate = new Date(job.dueDate);
+            // const jobRef = this.afs.doc(`job/${job.id}`);
+            // console.log(jobRef);
             this.afs.collection('job').add(
                 {
                     ...job,
@@ -117,6 +192,8 @@ export class JobService {
                     status: 'Waiting Reply',
                     updatedAt: new Date(),
                     createdAt: new Date(),
+                    ngClass: 'btn btn-primary',
+                    companyID: job.uid,
                 }
             );
             this.chatService.createChat(job.uid, user.uid);
@@ -134,4 +211,113 @@ export class JobService {
             });
         });
     };
+
+    getApplicationByCompany(id) {
+        return this.afs.collection('jobApplication', ref =>
+            ref.where('companyID', '==', id).orderBy('createdAt', 'desc')
+        ).snapshotChanges().map(actions => {
+            return actions.map(a => {
+                const data = a.payload.doc.data() as JobApplication;
+                const id = a.payload.doc.id;
+                return {id, ...data};
+            });
+        });
+    };
+
+    updateJobDetails(job, id) {
+        this.afs.doc(`job/${id}`).update(
+            {
+                // title: job.title,
+                ...job,
+            }
+        );
+        console.log(...job);
+
+    };
+
+    updateJobApplicationStatus(jobApplication, id) {
+        let ngClass = '';
+        switch (jobApplication.status) {
+            case 'Job Processing':
+                ngClass = 'btn btn-info';
+                break;
+            case 'Job Finished':
+                ngClass = 'btn btn-danger';
+                break;
+            case 'Accepted':
+                ngClass = 'btn btn-success';
+                break;
+            case 'Rejected':
+                ngClass = 'btn btn-secondary';
+                break;
+            case 'Waiting Reply':
+                ngClass = 'btn btn-primary';
+                break;
+        }
+        this.afs.doc(`jobApplication/${id}`).update(
+            {
+                // title: job.title,
+                ...jobApplication,
+                ngClass: ngClass,
+            }
+        );
+
+        console.log(...jobApplication);
+
+    };
+
+    // getApplicationID(id) {
+    //     return this.afs.doc<Job>(`jobApplication/${id}`).valueChanges();
+    // }
+
+    getApplicationByJob(id) {
+        return this.afs.collection('jobApplication', ref =>
+            ref.where('jobid', '==', id).orderBy('createdAt', 'desc')
+        ).snapshotChanges().map(actions => {
+            return actions.map(a => {
+                const data = a.payload.doc.data() as JobApplication;
+                const id = a.payload.doc.id;
+                return {id, ...data};
+            });
+        });
+    };
+    getApplicationByID(id) {
+        return this.afs.doc<JobApplication>(`jobApplication/${id}`).valueChanges();
+    }
+
+    commentFreelancer(jobApplication, id) {
+        this.userService.getUser().then(user => {
+            this.afs.doc(`jobApplication/${id}`).update(
+                {
+                    ...jobApplication,
+                    updatedAt: new Date(),
+                    createdAt: new Date(),
+                    // uid: user.uid,
+                    jobApplicationID: id,
+                }
+            );
+        });
+    }
+
+    commentCompany(jobApplication, id) {
+        this.userService.getUser().then(user => {
+            this.afs.doc(`jobApplication/${id}`).update(
+                {
+                    ...jobApplication,
+                    updatedAt: new Date(),
+                    createdAt: new Date(),
+                    // uid: user.uid,
+                    jobApplicationID: id,
+                }
+            );
+        });
+    }
+    getCommentRecordByCompany(id) {
+        return this.afs.doc<CommentFreelancer>(`commentRatingForFreelancer/${id}`).valueChanges();
+    }
+
+    getCommentRecordByFreelancer(id) {
+        return this.afs.doc<CommentCompany>(`commentRatingForCompany/${id}`).valueChanges();
+    }
 }
+

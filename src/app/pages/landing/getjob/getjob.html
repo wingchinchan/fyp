@@ -18,7 +18,7 @@
         <!--</div>-->
         <div class="card">
             <div>
-                <div style=" height: 250px;background-image: url('assets/jpeg/wood.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center; opacity: 0.7;">
+                <div style=" height: 550px;background-image: url('assets/jpeg/wood.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center; opacity: 0.7;">
                 </div>
                 <div class="carousel-caption">
                     <p style="font-size: 45px; color: white; font-weight: 700;" class="text-white font-bold">Get A JOB</p>
@@ -132,8 +132,8 @@
         <div class="card" style="text-align: center;">
             <div class="card-body">
                 <h4 class="card-title">Latest Jobs</h4>
-                <div class="table-responsive">
-                    <table class="table">
+                <div class="table-responsive" style="overflow-y: scroll;height: 400px" scrollable (scrollPosition)="scrollHandler($event)">
+                    <table class="table" *ngIf="jobs">
                         <thead>
                         <tr>
                             <th style="text-align: center;">Job Title</th>
@@ -145,18 +145,18 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr *ngFor="let job of jobs | async">
+                        <tr *ngFor="let job of jobs">
                             <!--<td><a style="color: black;" href="javascript:void(0)">#{{job.no}}</a></td>-->
                             <td><a style="color: black;">{{job.title}}</a></td>
                             <td><span class="text-muted"><i class="fa fa-clock-o"></i> {{job.createdAt | amDateFormat: 'YYYY-MM-DD'}}</span>
                             </td>
                             <td>
-                                <div class="btn btn-rounded btn-secondary">{{job.jobCategory}}</div>
+                                <div class="catButton btn btn-rounded {{job.ngClass}}">{{job.jobCategory}}</div>
                             </td>
                             <td>$ {{job.salary}}</td>
                             <td>{{job.quota}}</td>
                             <td>
-                                <div class="btn btn-block btn-secondary" (click)="goToDetail(job)">Details</div>
+                                <div class="btn btn-block btn-warning" (click)="goToDetail(job)">Details</div>
                             </td>
                         </tr>
 

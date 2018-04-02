@@ -20,7 +20,7 @@
                     <div class="col-xs-12">
                         <input class="form-control" type="text" formControlName="email" placeholder="Email" [class.invalid]="!registerAsFreelancerForm.controls.email.valid">
                         <small style="color:red;"
-                               *ngIf="!registerAsFreelancerForm.controls.email.valid && registerAsFreelancerForm.controls.email.dirty">This is required
+                               *ngIf="!registerAsFreelancerForm.controls.email.valid && registerAsFreelancerForm.controls.email.dirty">Not a valid email address
                         </small>
                     </div>
                 </div>

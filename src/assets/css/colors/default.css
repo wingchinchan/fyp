@@ -81,7 +81,7 @@ a.link:hover, a.link:focus {
 }
 
 .stylish-table tbody tr:hover, .stylish-table tbody tr.active {
-  border-left: 4px solid #009efb;
+  border-left: 4px solid #98decf !important;
 }
 
 .text-themecolor {

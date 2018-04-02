@@ -40,7 +40,7 @@
                 <div style=" height: 250px;background-image: url('assets/jpeg/wood.jpg'); border-radius:8px; background-repeat: no-repeat; background-size: cover; background-position: center; opacity: 0.7;">
                 </div>
                 <div class="carousel-caption">
-                    <p style="font-size: 45px; color: white; font-weight: 700;" class="text-white font-bold">Get A JOB</p>
+                    <p style="font-size: 45px; color: white; font-weight: 700;" class="text-white font-bold">Manage Job</p>
                     <hr style="width: 10%; border-top: 2px solid white !important;">
 
                 </div>
@@ -148,7 +148,7 @@
     <div class="col-md-8">
         <div class="card" style="text-align: center; ">
             <div class="card-body">
-                <h4 class="card-title">Latest Jobs</h4>
+                <h4 class="card-title" style="color: white; background: #98decf; padding: 10px;">Job list</h4>
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
@@ -164,7 +164,7 @@
                         <tbody>
                         <tr *ngFor="let job of jobs | async">
                             <!--<td><a style="color: black;" href="javascript:void(0)">#{{job.no}}</a></td>-->
-                            <td><a style="color: black;">{{ (job.uid | user | async)?.displayName}}</a></td>
+                            <td><a style="color: black;">{{job.title}}</a></td>
                             <td><span class="text-muted"><i class="fa fa-clock-o"></i> {{job.createdAt | amDateFormat: 'YYYY-MM-DD'}}</span>
                             </td>
                             <td>
@@ -173,7 +173,7 @@
                             <td>$ {{job.salary}}</td>
                             <td>{{job.quota}}</td>
                             <td>
-                                <div class="btn btn-block btn-warning" (click)="goToDetail(job)">Details</div>
+                                <div class="btn btn-block btn-warning" (click)="goToEditJobDetail(job)">Details</div>
                             </td>
                         </tr>
 

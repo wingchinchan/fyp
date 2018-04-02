@@ -8,14 +8,14 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { LandingModule } from './pages/landing/landing.module';
 import {AppComponent} from './app.component';
 import {AngularFireModule} from 'angularfire2';
-import {AngularFireAuthModule} from "angularfire2/auth";
-import {AngularFirestoreModule} from "angularfire2/firestore";
+import {AngularFireAuthModule} from 'angularfire2/auth';
+import {AngularFirestoreModule} from 'angularfire2/firestore';
 import {MomentModule} from 'angular2-moment';
 import {UserService} from './service/userService';
 import {ChatService} from './service/chatService';
 import {JobService} from './service/jobService';
-import {UserModule} from "./pages/user/user.module";
-import {HttpClientModule} from "@angular/common/http";
+import {UserModule} from './pages/user/user.module';
+import {HttpClientModule} from '@angular/common/http';
 import { PipeModule } from './pipe/pipe.module';
 
 const firebaseConfig = {
@@ -90,7 +90,6 @@ const routes: Routes = [
 @NgModule({
     declarations: [
         AppComponent,
-
     ],
     imports: [
         BrowserModule,

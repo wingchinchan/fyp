@@ -3,20 +3,20 @@
 <!-- ============================================================== -->
 <aside class="left-sidebar" *ngIf="user">
     <!-- Sidebar scroll-->
-    <div class="scroll-sidebar" *ngIf= "user.userType == 'freelancer' ">
+    <div class="scroll-sidebar" *ngIf="user.userType == 'freelancer' ">
         <!-- User profile -->
         <div class="user-profile">
             <!-- User profile image -->
-            <div class="profile-img"> <img src="{{user.photoURL}}" alt="user" /> </div>
+            <div class="profile-img"><img src="{{user.photoURL}}" alt="user"/></div>
             <!-- User profile text-->
             <!--<div class="profile-text"> <a href="#" class="dropdown-toggle link u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">{{user.displayName}} <span class="caret"></span></a>-->
-                <!--<div class="dropdown-menu animated flipInY">-->
-                    <!--<a routerLink="profile" class="dropdown-item"><i class="ti-user"></i> My Profile</a>-->
-                    <!--&lt;!&ndash;<a href="javascript:void(0)" class="dropdown-item"><i class="ti-wallet"></i> My Balance</a>&ndash;&gt;-->
-                    <!--<a href="javascript:void(0)" class="dropdown-item"><i class="ti-email"></i> Chat Room</a>-->
-                    <!--&lt;!&ndash;<div class="dropdown-divider"></div> <a href="javascript:void(0)" class="dropdown-item"><i class="ti-settings"></i> Account Setting</a>&ndash;&gt;-->
-                    <!--<div class="dropdown-divider"></div> <a class="dropdown-item" (click)="logout()"><i class="fa fa-power-off"></i> Logout</a>-->
-                <!--</div>-->
+            <!--<div class="dropdown-menu animated flipInY">-->
+            <!--<a routerLink="profile" class="dropdown-item"><i class="ti-user"></i> My Profile</a>-->
+            <!--&lt;!&ndash;<a href="javascript:void(0)" class="dropdown-item"><i class="ti-wallet"></i> My Balance</a>&ndash;&gt;-->
+            <!--<a href="javascript:void(0)" class="dropdown-item"><i class="ti-email"></i> Chat Room</a>-->
+            <!--&lt;!&ndash;<div class="dropdown-divider"></div> <a href="javascript:void(0)" class="dropdown-item"><i class="ti-settings"></i> Account Setting</a>&ndash;&gt;-->
+            <!--<div class="dropdown-divider"></div> <a class="dropdown-item" (click)="logout()"><i class="fa fa-power-off"></i> Logout</a>-->
+            <!--</div>-->
             <!--</div>-->
         </div>
         <!-- End User profile text-->
@@ -25,76 +25,80 @@
             <ul id="sidebarnav">
                 <li class="nav-small-cap">Menu</li>
                 <li>
-                    <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="profile"><i class="ti-user"></i><span class="hide-menu">My Profile</span></a>
+                    <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="profile"><i
+                            class="ti-user"></i><span class="hide-menu">My Profile</span></a>
                 </li>
                 <!--<li>-->
-                    <!--<a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="postJob"><i class="mdi mdi-border-color"></i><span class="hide-menu">Post Job</span></a>-->
+                <!--<a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="postJob"><i class="mdi mdi-border-color"></i><span class="hide-menu">Post Job</span></a>-->
                 <!--</li>-->
                 <li>
-                    <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="jobs"><i class="mdi mdi-calendar-text"></i><span class="hide-menu">Get Job</span></a>
+                    <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="jobs"><i
+                            class="mdi mdi-calendar-text"></i><span class="hide-menu">Get Job</span></a>
                 </li>
                 <li>
-                    <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="chat"><i class="ti-email"></i><span class="hide-menu">Message</span></a>
+                    <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="chat"><i
+                            class="ti-email"></i><span class="hide-menu">Message</span></a>
                 </li>
                 <li>
-                    <div class="dropdown-divider"></div> <a class="dropdown-item" (click)="logout()"><i class="fa fa-power-off"></i> <span class="hide-menu">Logout</span></a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" (click)="logout()"><i class="fa fa-power-off"></i> <span class="hide-menu">Logout</span></a>
                 </li>
                 <!--<li>-->
-                    <!--<a class="has-arrow" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-map-marker"></i><span class="hide-menu">Angular Component</span></a>-->
-                    <!--<ul aria-expanded="false" class="collapse">-->
-                        <!--<li><a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="accordion">Accordion</a></li>-->
-                        <!--<li><a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="alert">Alert</a></li>-->
+                <!--<a class="has-arrow" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-map-marker"></i><span class="hide-menu">Angular Component</span></a>-->
+                <!--<ul aria-expanded="false" class="collapse">-->
+                <!--<li><a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="accordion">Accordion</a></li>-->
+                <!--<li><a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="alert">Alert</a></li>-->
 
-                        <!--<li><a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="carousel">Carousel</a></li>-->
-                        <!--<li><a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="datepicker">Datepicker</a></li>-->
-                        <!--<li><a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="dropdown">Dropdown - Collapse</a></li>-->
-                        <!--<li><a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="modal">Modal</a></li>-->
-                        <!--<li><a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="pagination">Pagination</a></li>-->
-                        <!--<li><a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="Popovertooltip">Popover & Tooltip</a></li>-->
-                        <!--<li><a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="progressbar">Progressbar</a></li>-->
-                        <!--<li><a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="rating">Ratings</a></li>-->
-                        <!--<li><a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="tabs">Tabs</a></li>-->
-                        <!--<li><a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="timepicker">Timepicker</a></li>-->
-                        <!--<li><a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="typehead">Typehead</a></li>-->
-                    <!--</ul>-->
+                <!--<li><a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="carousel">Carousel</a></li>-->
+                <!--<li><a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="datepicker">Datepicker</a></li>-->
+                <!--<li><a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="dropdown">Dropdown - Collapse</a></li>-->
+                <!--<li><a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="modal">Modal</a></li>-->
+                <!--<li><a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="pagination">Pagination</a></li>-->
+                <!--<li><a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="Popovertooltip">Popover & Tooltip</a></li>-->
+                <!--<li><a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="progressbar">Progressbar</a></li>-->
+                <!--<li><a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="rating">Ratings</a></li>-->
+                <!--<li><a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="tabs">Tabs</a></li>-->
+                <!--<li><a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="timepicker">Timepicker</a></li>-->
+                <!--<li><a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="typehead">Typehead</a></li>-->
+                <!--</ul>-->
                 <!--</li>-->
                 <!--<li>-->
-                    <!--<a class="has-arrow" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-map-marker"></i><span class="hide-menu">Icons</span></a>-->
-                    <!--<ul aria-expanded="false" class="collapse">-->
-                        <!--<li><a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="fontawesome">Fontawesome</a></li>-->
-                        <!--<li><a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="simpleline">Simple Line Icons</a></li>-->
-                    <!--</ul>-->
+                <!--<a class="has-arrow" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-map-marker"></i><span class="hide-menu">Icons</span></a>-->
+                <!--<ul aria-expanded="false" class="collapse">-->
+                <!--<li><a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="fontawesome">Fontawesome</a></li>-->
+                <!--<li><a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="simpleline">Simple Line Icons</a></li>-->
+                <!--</ul>-->
                 <!--</li>-->
                 <!--<li>-->
-                    <!--<a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="blank"><i class="mdi mdi-gauge"></i><span class="hide-menu">Blank Page</span></a>-->
+                <!--<a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="blank"><i class="mdi mdi-gauge"></i><span class="hide-menu">Blank Page</span></a>-->
                 <!--</li>-->
                 <!--<li>-->
-                    <!--<a class="has-arrow" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-arrange-send-backward"></i><span class="hide-menu">Multi level dd</span></a>-->
-                    <!--<ul aria-expanded="false" class="collapse">-->
-                        <!--<li><a href="javascript:void(0)">item 1.1</a></li>-->
-                        <!--<li><a href="javascript:void(0)">item 1.2</a></li>-->
-                        <!--<li>-->
-                            <!--<a class="has-arrow" href="#" aria-expanded="false">Menu 1.3</a>-->
-                            <!--<ul aria-expanded="false" class="collapse">-->
-                                <!--<li><a href="javascript:void(0)">item 1.3.1</a></li>-->
-                                <!--<li><a href="javascript:void(0)">item 1.3.2</a></li>-->
-                                <!--<li><a href="javascript:void(0)">item 1.3.3</a></li>-->
-                                <!--<li><a href="javascript:void(0)">item 1.3.4</a></li>-->
-                            <!--</ul>-->
-                        <!--</li>-->
-                        <!--<li><a href="#">item 1.4</a></li>-->
-                    <!--</ul>-->
+                <!--<a class="has-arrow" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-arrange-send-backward"></i><span class="hide-menu">Multi level dd</span></a>-->
+                <!--<ul aria-expanded="false" class="collapse">-->
+                <!--<li><a href="javascript:void(0)">item 1.1</a></li>-->
+                <!--<li><a href="javascript:void(0)">item 1.2</a></li>-->
+                <!--<li>-->
+                <!--<a class="has-arrow" href="#" aria-expanded="false">Menu 1.3</a>-->
+                <!--<ul aria-expanded="false" class="collapse">-->
+                <!--<li><a href="javascript:void(0)">item 1.3.1</a></li>-->
+                <!--<li><a href="javascript:void(0)">item 1.3.2</a></li>-->
+                <!--<li><a href="javascript:void(0)">item 1.3.3</a></li>-->
+                <!--<li><a href="javascript:void(0)">item 1.3.4</a></li>-->
+                <!--</ul>-->
+                <!--</li>-->
+                <!--<li><a href="#">item 1.4</a></li>-->
+                <!--</ul>-->
                 <!--</li>-->
             </ul>
         </nav>
     </div>
     <!--------------------------- company -------------------------->
 
-    <div class="scroll-sidebar" *ngIf= "user.userType == 'company' ">
+    <div class="scroll-sidebar" *ngIf="user.userType == 'company' ">
         <!-- User profile -->
         <div class="user-profile">
             <!-- User profile image -->
-            <div class="profile-img"> <img src="{{user.photoURL}}" alt="user" /> </div>
+            <div class="profile-img"><img src="{{user.photoURL}}" alt="user"/></div>
 
         </div>
         <!-- End User profile text-->
@@ -103,19 +107,68 @@
             <ul id="sidebarnav">
                 <li class="nav-small-cap">Menu</li>
                 <li>
-                    <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="profile"><i class="ti-user"></i><span class="hide-menu">My Profile</span></a>
+                    <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="profile"><i
+                            class="ti-user"></i><span class="hide-menu">My Profile</span></a>
                 </li>
                 <li>
-                    <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="postJob"><i class="mdi mdi-border-color"></i><span class="hide-menu">Post Job</span></a>
+                    <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="postJob"><i
+                            class="mdi mdi-border-color"></i><span class="hide-menu">Post Job</span></a>
                 </li>
                 <li>
-                    <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="manageJob"><i class="mdi mdi-calendar-text"></i><span class="hide-menu">Manage Job</span></a>
+                    <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="manageJob"><i
+                            class="mdi mdi-calendar-text"></i><span class="hide-menu">Manage Job</span></a>
                 </li>
                 <li>
-                    <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="chat"><i class="ti-email"></i><span class="hide-menu">Message</span></a>
+                    <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active"
+                       routerLink="manageJobApplication"><i
+                            class="mdi mdi-calendar-text"></i><span class="hide-menu">Manage Application</span></a>
                 </li>
                 <li>
-                    <div class="dropdown-divider"></div> <a class="dropdown-item" (click)="logout()"><i class="fa fa-power-off"></i> <span class="hide-menu">Logout</span></a>
+                    <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="chat"><i
+                            class="ti-email"></i><span class="hide-menu">Message</span></a>
+                </li>
+                <li>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" (click)="logout()"><i class="fa fa-power-off"></i> <span class="hide-menu">Logout</span></a>
+                </li>
+
+            </ul>
+        </nav>
+    </div>
+
+    <!--------------------------- admin -------------------------->
+
+    <div class="scroll-sidebar" *ngIf="user.userType == 'admin' ">
+        <!-- User profile -->
+        <div class="user-profile">
+            <!-- User profile image -->
+            <div class="profile-img"><img src="{{user.photoURL}}" alt="user"/></div>
+
+        </div>
+        <!-- End User profile text-->
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav">
+            <ul id="sidebarnav">
+                <li class="nav-small-cap">Menu</li>
+                <li>
+                    <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="profile"><i
+                            class="ti-user"></i><span class="hide-menu">My Profile</span></a>
+                </li>
+                <li>
+                    <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="manageChatbot"><i
+                            class="mdi mdi-border-color"></i><span class="hide-menu">Manage Chatbot</span></a>
+                </li>
+                <li>
+                    <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active"
+                       routerLink="manageJobByAdmin"><i class="mdi mdi-calendar-text"></i><span class="hide-menu">Manage Job</span></a>
+                </li>
+                <li>
+                    <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="chat"><i
+                            class="ti-email"></i><span class="hide-menu">Message</span></a>
+                </li>
+                <li>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" (click)="logout()"><i class="fa fa-power-off"></i> <span class="hide-menu">Logout</span></a>
                 </li>
 
             </ul>
@@ -124,12 +177,12 @@
     <!-- End Sidebar scroll-->
     <!-- Bottom points-->
     <!--<div class="sidebar-footer">-->
-        <!--&lt;!&ndash; item&ndash;&gt;-->
-        <!--<a href="" class="link" data-toggle="tooltip" title="Settings"><i class="ti-settings"></i></a>-->
-        <!--&lt;!&ndash; item&ndash;&gt;-->
-        <!--<a href="" class="link" data-toggle="tooltip" title="Email"><i class="mdi mdi-gmail"></i></a>-->
-        <!--&lt;!&ndash; item&ndash;&gt;-->
-        <!--<a href="" class="link" data-toggle="tooltip" title="Logout"><i class="mdi mdi-power"></i></a>-->
+    <!--&lt;!&ndash; item&ndash;&gt;-->
+    <!--<a href="" class="link" data-toggle="tooltip" title="Settings"><i class="ti-settings"></i></a>-->
+    <!--&lt;!&ndash; item&ndash;&gt;-->
+    <!--<a href="" class="link" data-toggle="tooltip" title="Email"><i class="mdi mdi-gmail"></i></a>-->
+    <!--&lt;!&ndash; item&ndash;&gt;-->
+    <!--<a href="" class="link" data-toggle="tooltip" title="Logout"><i class="mdi mdi-power"></i></a>-->
     <!--</div>-->
     <!-- End Bottom points-->
 </aside>

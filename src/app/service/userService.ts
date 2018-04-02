@@ -204,4 +204,7 @@ export class UserService {
             }
         });
     }
+    getUserByID(id) {
+        return this.afs.doc<User>(`user/${id}`).valueChanges();
+    }
 }

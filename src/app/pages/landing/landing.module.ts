@@ -13,6 +13,8 @@ import {MomentModule} from 'angular2-moment';
 import {HttpModule} from '@angular/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {RegisterTypeComponent} from './registerType/registerType.component';
+import {SearchJobComponent} from './searchJob/searchJob.component';
+import { ScrollableDirective } from '../../Directive/scrollable.directive';
 import {RegisterAsComComponent} from "./registerAsCom/registerAsCom.component";
 
 const routes: Routes = [{
@@ -48,8 +50,12 @@ const routes: Routes = [{
             component: RegisterTypeComponent,
         },
         {
-            path:'registerAsCom',
+            path: 'registerAsCom',
             component: RegisterAsComComponent,
+        },
+        {
+            path: 'searchJob',
+            component: SearchJobComponent
         }
     ]
 }];
@@ -65,6 +71,8 @@ const routes: Routes = [{
         RegisterTypeComponent,
         RegisterAsComComponent,
         LandingNavigationComponent,
+        SearchJobComponent,
+        ScrollableDirective
     ],
     imports: [
         FormsModule,
@@ -87,6 +95,7 @@ const routes: Routes = [{
         RegisterTypeComponent,
         RegisterAsComComponent,
         LandingNavigationComponent,
+        SearchJobComponent
     ]
 })
 export class LandingModule {

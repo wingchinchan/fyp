@@ -1,170 +1,138 @@
+<!--------------------------- slider -------------------------->
 <div class="row">
-    <div class="col-12">
+    <div class="col-md-12">
+        <!--<div class="card text-center">-->
+        <!--<div class="card-body"-->
+        <!--style=" height: 250px;background-image: url('assets/jpeg/wood.jpg'); background-repeat: no-repeat; background-size: cover; display: block;  -webkit-filter: blur(5px);  filter: blur(5px);">-->
+
+        <!--</div>-->
+        <!--<div style="position: absolute; top: 130px; left: 43%;">-->
+        <!--<p style="font-size: 45px; color: white; font-weight: 700;" class="card-text">-->
+        <!--POST A JOB-->
+        <!--</p>-->
+        <!--<hr style="width: 50%; border-top: 1px solid white !important;">-->
+
+        <!--&lt;!&ndash;<a href="/register" class="btn btn-primary started-button">GET STARTED</a>&ndash;&gt;-->
+        <!--</div>-->
+
+        <!--</div>-->
+
         <div class="card">
-            <div class="card-body wizard-content">
-                <h4 class="card-title">Step wizard</h4>
-                <h6 class="card-subtitle">You can find the <a href="http://www.jquery-steps.com" target="_blank">offical website</a></h6>
-                <form action="#" class="tab-wizard wizard-circle">
-                    <!-- Step 1 -->
-                    <h6>Personal Info</h6>
-                    <section>
-                        <div class="row">
-                            <div class="col-md-6">
+            <div>
+                <div style=" height: 250px;background-image: url('assets/jpeg/wood.jpg'); border-radius:8px; background-repeat: no-repeat; background-size: cover; background-position: center; opacity: 0.7;">
+                </div>
+                <div class="carousel-caption">
+                    <p style="font-size: 45px; color: white; font-weight: 700;" class="text-white font-bold">Comment and
+                        Rank to Freelancer</p>
+                    <hr style="width: 10%; border-top: 2px solid white !important;">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--------------------------- post job form -------------------------->
+
+
+<div class="row">
+
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+
+        <p style="font-size: 40px; padding-top: 30px;font-weight: 500; text-align: center;" class="card-text">
+            Give comment and rate to freelancer
+        </p>
+        <hr style="width: 5%;">
+        <div class="card card-outline-info">
+            <div class="card-body">
+                <form [formGroup]="commentFreelancerForm" (submit)="commentFreelancer(jobApplication)"
+                      *ngIf="( application | async) as jobApplication">
+                    <div class="form-body">
+                        <h3 class="card-title" style="text-align: center;">Job details</h3>
+                        <hr>
+                        <div class="row p-t-20">
+                            <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="firstName1">First Name :</label>
-                                    <input type="text" class="form-control" id="firstName1"> </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="lastName1">Last Name :</label>
-                                    <input type="text" class="form-control" id="lastName1"> </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="emailAddress1">Email Address :</label>
-                                    <input type="email" class="form-control" id="emailAddress1"> </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="phoneNumber1">Phone Number :</label>
-                                    <input type="tel" class="form-control" id="phoneNumber1"> </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="location1">Select City :</label>
-                                    <select class="custom-select form-control" id="location1" name="location">
-                                        <option value="">Select City</option>
-                                        <option value="Amsterdam">India</option>
-                                        <option value="Berlin">USA</option>
-                                        <option value="Frankfurt">Dubai</option>
-                                    </select>
+                                    <label class="control-label">Freealncer Name</label><span
+                                        class="text-danger">*</span>
+                                    <input name="title" type="text" class="form-control"
+                                           disabled value="{{ (jobApplication.uid | user | async)?.displayName}}">
+                                    <!--<small class="form-control-feedback"> This is inline help </small> -->
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="date1">Date of Birth :</label>
-                                    <input type="date" class="form-control" id="date1"> </div>
-                            </div>
-                        </div>
-                    </section>
-                    <!-- Step 2 -->
-                    <h6>Job Status</h6>
-                    <section>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="jobTitle1">Job Title :</label>
-                                    <input type="text" class="form-control" id="jobTitle1"> </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="videoUrl1">Company Name :</label>
-                                    <input type="text" class="form-control" id="videoUrl1">
+                                    <label class="control-label">Job Title</label><span class="text-danger">*</span>
+                                    <input name="title" type="text" class="form-control"
+                                           disabled value="{{ (jobApplication.jobid | job | async)?.title}}">
+                                    <!--<small class="form-control-feedback"> This is inline help </small> -->
                                 </div>
                             </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">Finished Date</label><span class="text-danger">*</span>
+                                    <input name="title" type="text" class="form-control"
+                                           disabled value="{{ jobApplication.updatedAt | amDateFormat: 'YYYY-MM-DD'}}">
+                                    <!--<small class="form-control-feedback"> This is inline help </small> -->
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="shortDescription1">Job Description :</label>
-                                    <textarea name="shortDescription" id="shortDescription1" rows="6" class="form-control"></textarea>
+                                    <label>Comment to {{ (jobApplication.uid | user |
+                                        async)?.displayName}} </label><span class="text-danger">*</span>
+                                    <textarea class="form-control" rows="5" name="commentFreelancer"
+                                              formControlName="commentFreelancer"
+                                              [class.invalid]="!commentFreelancerForm.controls.commentFreelancer.valid"></textarea>
+                                    <small style="color:red;"
+                                           *ngIf="!commentFreelancerForm.controls.commentFreelancer.valid && commentFreelancerForm.controls.commentFreelancer.dirty">
+                                        This is required
+                                    </small>
                                 </div>
                             </div>
                         </div>
-                    </section>
-                    <!-- Step 3 -->
-                    <h6>Interview</h6>
-                    <section>
-                        <div class="row">
+                        <div class="row p-t-20">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="int1">Interview For :</label>
-                                    <input type="text" class="form-control" id="int1"> </div>
-                                <div class="form-group">
-                                    <label for="intType1">Interview Type :</label>
-                                    <select class="custom-select form-control" id="intType1" data-placeholder="Type to search cities" name="intType1">
-                                        <option value="Banquet">Normal</option>
-                                        <option value="Fund Raiser">Difficult</option>
-                                        <option value="Dinner Party">Hard</option>
+                                    <label class="control-label">Rate to {{ (jobApplication.uid | user |
+                                        async)?.displayName}}</label><span
+                                        class="text-danger">*</span>
+                                    <select class="form-control custom-select"
+                                            data-placeholder="Rate to freelancer"
+                                            tabindex="1" formControlName="rateFreelancer" name="rateFreelancer">
+                                        <!--<option>Select Category</option>-->
+                                        <optgroup label="Give star to rate freelancer">
+                                            <option value="★">★</option>
+                                            <option value="★★">★★</option>
+                                            <option value="★★★">★★★</option>
+                                            <option value="★★★★">★★★★</option>
+                                            <option value="★★★★★">★★★★★</option>
+                                        </optgroup>
                                     </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="Location1">Location :</label>
-                                    <select class="custom-select form-control" id="Location1" name="location">
-                                        <option value="">Select City</option>
-                                        <option value="India">India</option>
-                                        <option value="USA">USA</option>
-                                        <option value="Dubai">Dubai</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="jobTitle2">Interview Date :</label>
-                                    <input type="date" class="form-control" id="jobTitle2">
-                                </div>
-                                <div class="form-group">
-                                    <label>Requirements :</label>
-                                    <div class="c-inputs-stacked">
-                                        <label class="inline custom-control custom-checkbox block">
-                                            <input type="checkbox" class="custom-control-input"> <span class="custom-control-indicator"></span> <span class="custom-control-description ml-0">Employee</span> </label>
-                                        <label class="inline custom-control custom-checkbox block">
-                                            <input type="checkbox" class="custom-control-input"> <span class="custom-control-indicator"></span> <span class="custom-control-description ml-0">Contract</span> </label>
-                                    </div>
+                                    <small *ngIf="!commentFreelancerForm.controls.rateFreelancer.valid && commentFreelancerForm.controls.rateFreelancer.dirty">
+                                        This is required
+                                    </small>
                                 </div>
                             </div>
                         </div>
-                    </section>
-                    <!-- Step 4 -->
-                    <h6>Remark</h6>
-                    <section>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="behName1">Behaviour :</label>
-                                    <input type="text" class="form-control" id="behName1">
-                                </div>
-                                <div class="form-group">
-                                    <label for="participants1">Confidance</label>
-                                    <input type="text" class="form-control" id="participants1">
-                                </div>
-                                <div class="form-group">
-                                    <label for="participants1">Result</label>
-                                    <select class="custom-select form-control" id="participants1" name="location">
-                                        <option value="">Select Result</option>
-                                        <option value="Selected">Selected</option>
-                                        <option value="Rejected">Rejected</option>
-                                        <option value="Call Second-time">Call Second-time</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="decisions1">Comments</label>
-                                    <textarea name="decisions" id="decisions1" rows="4" class="form-control"></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label>Rate Interviwer :</label>
-                                    <div class="c-inputs-stacked">
-                                        <label class="inline custom-control custom-checkbox block">
-                                            <input type="checkbox" class="custom-control-input"> <span class="custom-control-indicator"></span> <span class="custom-control-description ml-0">1 star</span> </label>
-                                        <label class="inline custom-control custom-checkbox block">
-                                            <input type="checkbox" class="custom-control-input"> <span class="custom-control-indicator"></span> <span class="custom-control-description ml-0">2 star</span> </label>
-                                        <label class="inline custom-control custom-checkbox block">
-                                            <input type="checkbox" class="custom-control-input"> <span class="custom-control-indicator"></span> <span class="custom-control-description ml-0">3 star</span> </label>
-                                        <label class="inline custom-control custom-checkbox block">
-                                            <input type="checkbox" class="custom-control-input"> <span class="custom-control-indicator"></span> <span class="custom-control-description ml-0">4 star</span> </label>
-                                        <label class="inline custom-control custom-checkbox block">
-                                            <input type="checkbox" class="custom-control-input"> <span class="custom-control-indicator"></span> <span class="custom-control-description ml-0">5 star</span> </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
+
+                    </div>
+                    <div class="form-actions" style="text-align: center;margin-top: 2%;">
+                        <button type="submit" class="btn btn-secondary" style="width: 20%;"
+                                [disabled]="!commentFreelancerForm.valid">
+                            <i class="fa fa-check"></i> Submit
+                        </button>
+                        <button (click)="redirect()" type="button" class="btn btn-outline-secondary cancel"
+                                style="width: 20%;">Cancel
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>
     </div>
+    <div class="col-md-2"></div>
 </div>

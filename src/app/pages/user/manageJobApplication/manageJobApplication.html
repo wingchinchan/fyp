@@ -1,0 +1,61 @@
+<div class="tab-pane" id="manageApplication" role="tabpanel">
+    <div class="card-body">
+        <div class="row" >
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body" >
+                        <h4 class="card-title" style="text-align: center;">Manage Application</h4>
+                        <div class="table-responsive m-t-40">
+                            <table class="table stylish-table">
+                                <thead>
+                                <tr>
+                                    <th colspan="2">Applicant</th>
+                                    <th>Application Date</th>
+                                    <th>Status</th>
+                                    <th>Update Status</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class="updateStatusSide" *ngFor="let jobApplication of application | async">
+                                    <td>
+                                        <img [src]="(jobApplication.uid | user | async)?.photoURL" class="img-circle" width="50px" (click)="hello()"/>
+                                    </td>
+                                    <td>
+                                        <h6>{{ (jobApplication.uid | user | async)?.displayName}}</h6>
+                                        <small class="text-muted">{{ (jobApplication.uid | user | async)?.jobCategory}}</small></td>
+                                    <td>{{jobApplication.createdAt | amDateFormat: 'YYYY-MM-DD HH:mm'}}</td>
+                                    <td><span class="label label-warning label-rouded">{{jobApplication.status}}</span></td>
+                                    <td>
+                                        <select class="form-control custom-select" data-placeholder="Choose a Category"
+                                                tabindex="1" name="status">
+                                            <!--<option>Select Category</option>-->
+                                            <optgroup label="Current Status">
+                                                <option value="currentStatus" selected>{{jobApplication.status}}</option>
+                                            </optgroup>
+                                            <optgroup label="Job Applicaition">
+                                                <option value="Accepted">Accepted</option>
+                                                <option value="Rejected">Rejected</option>
+                                            </optgroup>
+                                            <optgroup label="Job Status">
+                                                <option value="Job Processing">Job Processing</option>
+                                                <option value="Job Finished">Job Finished</option>
+                                            </optgroup>
+                                        </select>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <!--<div class="btn btn-danger updatebtn" (click)="updateJobApplicationStatus(jobApplication.id)">Update Job Application Status</div>-->
+
+                            <div class="col-sm-12" (click)="updateJobApplicationStatus(applicationID)">
+                            <button class="btn btn-danger updatebtn" type="click"
+                            style="margin: 0 auto; display: block;">Update Job Application Status
+                            </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

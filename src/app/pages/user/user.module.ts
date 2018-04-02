@@ -11,16 +11,22 @@ import {BreadcrumbComponent} from '../../shared/breadcrumb/breadcrumb.component'
 import {NavigationComponent} from '../../shared/navigation/navigation.component';
 import {UserComponent} from './user.component';
 import {ProfileComponent} from './profile/profile.component';
-import {SetChatBotComponent} from './setChatBot/setChatBot.component';
-
 import {PostjobComponent} from './postjob/postjob.component';
 import {GetjobComponent} from './getjob/getjob.component';
 import {JobDetailsComponent} from './jobDetails/jobDetails.component';
 import {ChatComponent} from './chat/chat.component';
 import {ManageJobComponent} from './manageJob/manageJob.component';
+import {ManageChatbotComponent} from './manageChatbot/manageChatbot.component';
+import {ManageJobByAdminComponent} from './manageJobByAdmin/manageJobByAdmin.component';
+import {EditJobDetailsComponent} from './editJobDetails/editJobDetails.component';
 import {CommentRatingComponent} from './commentRating/commentRating.component';
+import {CommentRatingToCompanyComponent} from './commentRatingToCompany/commentRatingToCompany.component';
+import {ViewCommentFromCompanyComponent} from './viewCommentFromCompany/viewCommentFromCompany.component';
+import {ManageJobApplicationComponent} from './manageJobApplication/manageJobApplication.component';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import {PipeModule} from '../../pipe/pipe.module';
+import {ViewProfileByOtherComponent} from './viewProfileByOther/viewProfileByOther.component';
+import {ViewProfileOfCompanyComponent} from './viewProfileOfCompany/viewProfileOfCompany.component';
 
 const routes: Routes = [{
     path: 'user',
@@ -45,11 +51,33 @@ const routes: Routes = [{
             path: 'manageJob',
             component: ManageJobComponent,
         }, {
-            path: 'commentRating',
+            path: 'commentRating/:id',
             component: CommentRatingComponent
         }, {
-            path: 'chatBot',
-            component: SetChatBotComponent
+            path: 'manageChatbot',
+            component: ManageChatbotComponent,
+        }, {
+            path: 'manageJobByAdmin',
+            component: ManageJobByAdminComponent,
+        }, {
+            path: 'editJob/:id',
+            component: EditJobDetailsComponent,
+
+        }, {
+            path: 'manageJobApplication',
+            component: ManageJobApplicationComponent,
+        }, {
+            path: 'commentRatingToCompany/:id',
+            component: CommentRatingToCompanyComponent,
+        }, {
+            path: 'viewCommentFromCompany/:id',
+            component: ViewCommentFromCompanyComponent,
+        }, {
+            path: 'viewProfileByOther/:id',
+            component: ViewProfileByOtherComponent,
+        },  {
+            path: 'viewProfileOfCompany/:id',
+            component: ViewProfileOfCompanyComponent,
         }
     ]
 }];
@@ -68,7 +96,14 @@ const routes: Routes = [{
         ChatComponent,
         ManageJobComponent,
         CommentRatingComponent,
-        SetChatBotComponent
+        ManageChatbotComponent,
+        ManageJobByAdminComponent,
+        EditJobDetailsComponent,
+        ManageJobApplicationComponent,
+        CommentRatingToCompanyComponent,
+        ViewCommentFromCompanyComponent,
+        ViewProfileByOtherComponent,
+        ViewProfileOfCompanyComponent
     ],
     imports: [
         FormsModule,
@@ -81,7 +116,7 @@ const routes: Routes = [{
         ReactiveFormsModule,
         FormsModule,
         HttpModule,
-        RouterModule.forChild(routes)
+        RouterModule.forChild(routes),
     ],
     exports: [
         ProfileComponent,
@@ -90,7 +125,15 @@ const routes: Routes = [{
         GetjobComponent,
         JobDetailsComponent,
         ManageJobComponent,
-        SetChatBotComponent
+        ManageChatbotComponent,
+        ManageJobByAdminComponent,
+        EditJobDetailsComponent,
+        ManageJobApplicationComponent,
+        CommentRatingComponent,
+        CommentRatingToCompanyComponent,
+        ViewCommentFromCompanyComponent,
+        ViewProfileByOtherComponent,
+        ViewProfileOfCompanyComponent
     ]
 })
 export class UserModule {

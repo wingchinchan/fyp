@@ -1,8 +1,9 @@
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {JobService, Job} from '../../../service/jobService';
+import {Observable} from 'rxjs/Observable';
+import {Router} from '@angular/router';
 
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { JobService, Job} from '../../../service/jobService';
-import { Observable } from 'rxjs/Observable';
 
 @Component({
     templateUrl: './jobDetails.html',
@@ -12,7 +13,8 @@ export class JobDetailsComponent implements OnInit, OnDestroy {
     id: number;
     private sub: any;
     public Ojob: Observable<Job>;
-    constructor(private route: ActivatedRoute, public jobService: JobService) {
+
+    constructor(private route: ActivatedRoute, public jobService: JobService, public router: Router) {
 
     }
 
@@ -22,7 +24,12 @@ export class JobDetailsComponent implements OnInit, OnDestroy {
             this.Ojob = this.jobService.getJob(params.id);
         });
     }
+
     ngOnDestroy() {
         this.sub.unsubscribe();
+    }
+
+    goBackJobList() {
+        this.router.navigateByUrl('jobs');
     }
 }
