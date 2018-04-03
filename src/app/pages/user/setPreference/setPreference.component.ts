@@ -7,10 +7,10 @@ import {Router} from '@angular/router';
 import {User, UserService} from "../../../service/userService";
 
 @Component({
-    templateUrl: './postjob.html',
-    styleUrls: ['./postjob.css'],
+    templateUrl: './setPreference.html',
+    styleUrls: ['./setPreference.css'],
 })
-export class PostjobComponent {
+export class SetPreferenceComponent {
     public jobForm: FormGroup;
     public jobCollection: AngularFirestoreCollection<any>;
     public user: User;
@@ -45,49 +45,26 @@ export class PostjobComponent {
                     EmailValidator.isValid
                 ])
             ],
-            eduLv: [
-                '', Validators.compose([
-                    Validators.nullValidator,
+            minRate: [
+                'N/A', Validators.compose([
                     Validators.required
                 ])
             ],
             salary: [
                 '', Validators.compose([
-                    Validators.nullValidator,
                     Validators.required
                 ])
-            ],
-            skills: [
-                '', Validators.compose([
-                    Validators.required
-                ])
-            ],
-            expectedExp: [
-                '', Validators.compose([
-                    Validators.nullValidator,
-                    Validators.required
-                ])
-            ],
-            location: [
-                '', Validators.compose([
-                    Validators.nullValidator,
-                    Validators.required
-                ])
-            ],
+            ]
         });
         this.userService.getUser().then(user => {
             this.jobForm.setValue({
                 email: user.email,
                 title: '',
                 jobCategory: '',
-                eduLv: '',
+                minRate: 'N/A',
                 salary: '',
                 quota: '',
-                jobDesc: '',
-                skills: '',
-                expectedExp: '',
-                location: '',
-
+                jobDesc: ''
             });
         });
 
@@ -97,9 +74,7 @@ export class PostjobComponent {
     postJob() {
         this.jobService.postJob(this.jobForm.value);
         this.router.navigateByUrl('user/profile');
-        alert('Post job successfully');
     }
-
     redirect() {
         this.router.navigateByUrl('user/profile');
     }

@@ -113,24 +113,34 @@
                         <div class="card-body">
                             <h4 class="card-title" style="text-align: center;">{{ job.title }}</h4>
                             <ul class="feeds">
-
-                                <li>
-                                    <div class="bg-light-success"><i class="fa fa-dollar"></i></div>
-                                    <b>Salary</b><span>$ {{job.salary}} </span></li>
                                 <li>
                                     <div class="bg-light-warning"><i class="fa fa fa-address-book-o"></i></div>
                                     <b>Contact
                                         Email</b><span>{{job.email}}</span></li>
                                 <li>
-                                    <div class="bg-light-danger"><i class="fa fa-folder-o"></i></div>
+                                    <div class="bg-light-info"><i class="fa fa-folder-o"></i></div>
                                     <b>Job Category</b><span>{{job.jobCategory}}</span></li>
                                 <li>
-                                    <div class="bg-light-inverse"><i class="fa fa-question"></i></div>
+                                    <div class="bg-light-danger"><i class="fa fa-mortar-board"></i></div>
+                                    <b>Expected Education Level</b><span>{{job.eduLv}}</span></li>
+                                <li>
+                                    <div class="bg-light-primary"><i class="fa fa-drivers-license-o"></i></div>
+                                    <b>Expected Working Experience</b><span>{{job.expectedExp}}</span></li>
+                                <li>
+                                    <div class="bg-light-inverse"><i class="fa fa-sort-numeric-asc"></i></div>
                                     <b>Job Quota</b><span>{{job.quota}}</span></li>
                                 <li>
-                                    <div class="bg-light-info"><i class="fa fa-sort-numeric-asc"></i></div>
-                                    <b>Minimal
-                                        Rate</b><span>{{job.minRate}}</span></li>
+                                    <div class="bg-light-success"><i class="fa fa-map-marker"></i></div>
+                                    <b>Location</b><span>{{job.location}}</span></li>
+                                <li>
+                                    <div class="bg-light-info"><i class="fa fa-question"></i></div>
+                                    <b>Salary</b><span>{{job.salary}} </span></li>
+                                <li>
+                                    <div class="bg-light-danger"><i class="fa fa-edit"></i></div>
+                                    <b>Job Description/ Responsibilities</b><span>{{job.jobDesc}} </span></li>
+                                <li>
+                                    <div class="bg-light-success"><i class="fa fa-thumb-tack"></i></div>
+                                    <b>Knowledge/ Skills</b><span>{{job.skills}} </span></li>
 
                             </ul>
                             <!--<div class="form-actions" style="text-align: center; margin-top: 2%;">-->
@@ -146,30 +156,236 @@
 
                 <div class="tab-pane" id="editjob" role="tabpanel">
                     <div class="card-body">
-                        <form class="form-horizontal form-material" (submit)="updateJobDetails(job)">
-                            <!--<form class="form-horizontal form-material" [formGroup]="profileForm" >-->
-                            <h4 style="text-align: center;">Job Details</h4>
-                            <div class="form-group">
-                                <label class="col-md-12"> Job Title</label>
-                                <div class="col-md-12">
-                                    <input type="text" [(ngModel)]="job.title" name="title"
-                                           class="form-control form-control-line">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-12"> Salary</label>
-                                <div class="col-md-12">
-                                    <input type="text" [(ngModel)]="job.email" name="email"
-                                           class="form-control form-control-line">
-                                </div>
-                            </div>
-
-                            <div class="col-sm-12">
-                                <button class="btn btn-success updatebtn " type="submit"
-                                        style="margin: 0 auto; display: block;">Update Job Details
-                                </button>
-                            </div>
+                        <!--<form class="form-horizontal form-material" (submit)="updateJobDetails(job)">-->
+                            <!--&lt;!&ndash;<form class="form-horizontal form-material" [formGroup]="profileForm" >&ndash;&gt;-->
+                            <!--<h4 style="text-align: center;">Job Details</h4>-->
+                            <!--<div class="form-group">-->
+                                <!--<label class="col-md-12"> Job Title</label>-->
+                                <!--<div class="col-md-12">-->
+                                    <!--<input type="text" [(ngModel)]="job.title" name="title"-->
+                                           <!--class="form-control form-control-line">-->
+                                <!--</div>-->
                             <!--</div>-->
+                            <!--<div class="form-group">-->
+                                <!--<label class="col-md-12"> Salary</label>-->
+                                <!--<div class="col-md-12">-->
+                                    <!--<input type="text" [(ngModel)]="job.email" name="email"-->
+                                           <!--class="form-control form-control-line">-->
+                                <!--</div>-->
+                            <!--</div>-->
+
+                            <!--<div class="col-sm-12">-->
+                                <!--<button class="btn btn-success updatebtn " type="submit"-->
+                                        <!--style="margin: 0 auto; display: block;">Update Job Details-->
+                                <!--</button>-->
+                            <!--</div>-->
+                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                        <!--</form>-->
+                        <form [formGroup]="jobForm" (submit)="updateJobDetails(job)">
+                            <div class="form-body">
+                                <h3 class="card-title" style="text-align: center;">Job details</h3>
+                                <hr>
+                                <div class="row p-t-20">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label">Job Title</label><span class="text-danger">*</span>
+                                            <input name="title" type="text" class="form-control" formControlName="title"
+                                                   [class.invalid]="!jobForm.controls.title.valid"
+                                                   placeholder="Mobile Game developer" [(ngModel)]="job.title">
+                                            <!--<small class="form-control-feedback"> This is inline help </small> -->
+                                            <small style="color:red;"
+                                                   *ngIf="!jobForm.controls.title.valid && jobForm.controls.title.dirty">This is
+                                                required
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                    <div class="col-md-6">
+                                        <div class="form-group has-danger">
+                                            <label class="control-label">Job Category</label><span class="text-danger">*</span>
+                                            <select class="form-control custom-select" data-placeholder="Choose a Category"
+                                                    tabindex="1" formControlName="jobCategory" name="jobCategory" [(ngModel)]="job.jobCategory">
+                                                <!--<option>Select Category</option>-->
+                                                <optgroup label="Finance">
+                                                    <option value="Accounting">Accounting</option>
+                                                    <option value="Banking">Banking</option>
+                                                </optgroup>
+                                                <optgroup label="Computing">
+                                                    <option value="Mobile Application Development">Mobile Application Development
+                                                    </option>
+                                                    <option value="Website Development">Website Development</option>
+                                                </optgroup>
+                                                <optgroup label="Design">
+                                                    <option value="Fashion Design">Fashion Design</option>
+                                                    <option value="Graphics Design">Graphics Design</option>
+                                                </optgroup>
+                                                <optgroup label="Other">
+                                                    <option value="Education">Education</option>
+                                                    <option value="Other">Other</option>
+                                                </optgroup>
+                                            </select>
+                                            <small *ngIf="!jobForm.controls.jobCategory.valid && jobForm.controls.jobCategory.dirty">
+                                                Error
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                </div>
+                                <div class="row p-t-20">
+                                    <div class="col-md-6">
+                                        <div class="form-group has-danger">
+                                            <label class="control-label">Expected Education level</label><span
+                                                class="text-danger">*</span>
+                                            <select class="form-control custom-select" data-placeholder="Choose a Category"
+                                                    tabindex="1" formControlName="eduLv" name="eduLv" [(ngModel)]="job.eduLv">
+                                                <!--<option>Select Category</option>-->
+                                                <optgroup label="Education level">
+                                                    <option value="Postgraduate">Postgraduate</option>
+                                                    <option value="Degree">Degree</option>
+                                                    <option value="Non-Degree Tertiary">Non-Degree Tertiary</option>
+                                                    <option value="Matriculated">Matriculated</option>
+                                                    <option value="School Certificate">School Certificate</option>
+                                                    <option value="Form three">Form three</option>
+                                                    <option value="Primary">Primary</option>
+                                                    <option value="No Requirement">No Requirement</option>
+                                                </optgroup>
+
+                                            </select>
+                                            <small *ngIf="!jobForm.controls.eduLv.valid && jobForm.controls.eduLv.dirty">
+                                                Error
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                    <div class="col-md-6">
+                                        <div class="form-group has-danger">
+                                            <label class="control-label">Expected Working Experience</label><span
+                                                class="text-danger">*</span>
+                                            <select class="form-control custom-select" data-placeholder="Choose a Category"
+                                                    tabindex="1" formControlName="expectedExp" name="expectedExp" [(ngModel)]="job.expectedExp">
+                                                <!--<option>Select Category</option>-->
+                                                <optgroup label="Expected Working Experience">
+                                                    <option value="< 1 year">< 1 year</option>
+                                                    <option value="1 - 2 year(s)ree">1 - 2 year(s)</option>
+                                                    <option value="3 - 4 years">3 - 4 years</option>
+                                                    <option value="> 4 years">> 4 years</option>
+                                                    <option value="No Requirement">No Requirement</option>
+                                                </optgroup>
+
+                                            </select>
+                                            <small *ngIf="!jobForm.controls.expectedExp.valid && jobForm.controls.expectedExp.dirty">
+                                                Error
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label">Job Quota</label><span class="text-danger">*</span>
+                                            <input name="quota" type="text" class="form-control" formControlName="quota"
+                                                   [class.invalid]="!jobForm.controls.quota.valid" [(ngModel)]="job.quota">
+                                            <!--<small class="form-control-feedback"> This is inline help </small> -->
+                                            <small style="color:red;"
+                                                   *ngIf="!jobForm.controls.quota.valid && jobForm.controls.quota.dirty">This is
+                                                required
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group has-danger">
+                                            <label class="control-label">Location</label><span class="text-danger">*</span>
+                                            <select class="form-control custom-select" data-placeholder="Choose a Category"
+                                                    tabindex="1" formControlName="location" name="location" [(ngModel)]="job.location">
+                                                <!--<option>Select Category</option>-->
+                                                <optgroup label="Location">
+                                                    <option value="New Territories">New Territories</option>
+                                                    <option value="Kowloon">Kowloon</option>
+                                                    <option value="Hong Kong Island">Hong Kong Island</option>
+                                                </optgroup>
+                                            </select>
+                                            <small *ngIf="!jobForm.controls.location.valid && jobForm.controls.location.dirty">
+                                                Error
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label">Contact Email</label> <span
+                                                class="text-danger">*</span>
+                                            <div class="controls">
+                                                <input type="email" name="email" class="form-control" formControlName="email"
+                                                       [class.invalid]="!jobForm.controls.email.valid" [(ngModel)]="job.email">
+                                            </div>
+                                            <small style="color: red;"
+                                                   *ngIf="!jobForm.controls.email.valid && jobForm.controls.email.dirty">
+                                                Not a valid email address
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                    <div class="col-md-6">
+                                        <div class="form-group has-danger">
+                                            <label class="control-label">Salary</label><span class="text-danger">*</span>
+                                            <select class="form-control custom-select" data-placeholder="Choose a Category"
+                                                    tabindex="1" formControlName="salary" name="salary" [(ngModel)]="job.salary">
+                                                <!--<option>Select Category</option>-->
+                                                <optgroup label="Salary">
+                                                    <option value="< $3000">< $3000</option>
+                                                    <option value="$3001 - $6000">$3001 - $6000</option>
+                                                    <option value="$6001 - $9000">$6001 - $9000</option>
+                                                    <option value="$9001 - $12000">$9001 - $12000</option>
+                                                    <option value="$12001 - $15000">$12001 - $15000</option>
+                                                    <option value="> $15000">> $15000</option>
+                                                </optgroup>
+                                            </select>
+                                            <small *ngIf="!jobForm.controls.salary.valid && jobForm.controls.salary.dirty">
+                                                Error
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Job Description/ Responsibilities</label><span class="text-danger">*</span>
+                                            <textarea class="form-control" rows="5" name="desc" formControlName="jobDesc" placeholder="Describe the job duties and details"
+                                                      [class.invalid]="!jobForm.controls.jobDesc.valid" [(ngModel)]="job.jobDesc"></textarea>
+                                            <small style="color:red;"
+                                                   *ngIf="!jobForm.controls.jobDesc.valid && jobForm.controls.jobDesc.dirty">
+                                                This is required
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Knowledge/ Skills</label><span class="text-danger">*</span>
+                                            <textarea class="form-control" rows="5" name="skills" formControlName="skills"  placeholder="List out required skills of the job"
+                                                      [class.invalid]="!jobForm.controls.skills.valid" [(ngModel)]="job.skills"></textarea>
+                                            <small style="color:red;"
+                                                   *ngIf="!jobForm.controls.skills.valid && jobForm.controls.skills.dirty">
+                                                This is required
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--/row-->
+
+                            </div>
+                            <div class="form-actions" style="text-align: center;margin-top: 2%;">
+                                <button type="submit" class="btn btn-secondary" style="margin: 0 auto;" [disabled]="!jobForm.valid">
+                                    <i class="fa fa-check"></i> Update Job Details
+                                </button>
+                                <!--<button (click)="redirect()" type="button" class="btn btn-outline-secondary cancel"-->
+                                        <!--style="width: 20%;">Cancel-->
+                                <!--</button>-->
+                            </div>
                         </form>
                     </div>
                 </div>

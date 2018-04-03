@@ -27,6 +27,7 @@ import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import {PipeModule} from '../../pipe/pipe.module';
 import {ViewProfileByOtherComponent} from './viewProfileByOther/viewProfileByOther.component';
 import {ViewProfileOfCompanyComponent} from './viewProfileOfCompany/viewProfileOfCompany.component';
+import {SetPreferenceComponent} from './setPreference/setPreference.component';
 
 const routes: Routes = [{
     path: 'user',
@@ -78,6 +79,9 @@ const routes: Routes = [{
         },  {
             path: 'viewProfileOfCompany/:id',
             component: ViewProfileOfCompanyComponent,
+        }, {
+            path: 'setPreference',
+            component: SetPreferenceComponent,
         }
     ]
 }];
@@ -103,7 +107,8 @@ const routes: Routes = [{
         CommentRatingToCompanyComponent,
         ViewCommentFromCompanyComponent,
         ViewProfileByOtherComponent,
-        ViewProfileOfCompanyComponent
+        ViewProfileOfCompanyComponent,
+        SetPreferenceComponent
     ],
     imports: [
         FormsModule,
@@ -133,7 +138,8 @@ const routes: Routes = [{
         CommentRatingToCompanyComponent,
         ViewCommentFromCompanyComponent,
         ViewProfileByOtherComponent,
-        ViewProfileOfCompanyComponent
+        ViewProfileOfCompanyComponent,
+        SetPreferenceComponent
     ]
 })
 export class UserModule {

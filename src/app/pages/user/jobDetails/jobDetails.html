@@ -23,8 +23,11 @@
         <br>
         <div class="card" style="margin-top: 5%;">
             <div class="card-body">
+                <p style="text-align: center">Company Profile Card</p>
                 <!--<small class="text-muted">{{ user.displayName}}</small>-->
-                <p style="text-align: center;">{{ (job.uid | user | async)?.displayName}}</p>
+                <p style="text-align: center;">
+                    <span (click)="viewCompanyProfile(job)" style="color: #b3d7ff;cursor: pointer;">{{ (job.uid | user | async)?.displayName}}</span>
+                    </p>
                 <hr>
                 <small class="text-muted p-t-30 db" style="padding-top: 10px;"><i class="ti-email"></i> Email</small>
                 <small>{{ (job.uid | user | async)?.email}}</small>
@@ -106,30 +109,38 @@
                 <div class="card-body">
                     <h4 class="card-title" style="text-align: center;">{{ job.title }}</h4>
                     <ul class="feeds">
-                        <!--<li>-->
-                            <!--<div class="bg-light-info"><i class="fa fa-calendar"></i></div>-->
-                            <!--<b>Due Date</b><span>{{ job.dueDate | amDateFormat: 'YYYY-MM-DD'}}</span></li>-->
-                        <li>
-                            <div class="bg-light-success"><i class="fa fa-dollar"></i></div>
-                            <b>Salary</b><span>$ {{job.salary}} </span></li>
                         <li>
                             <div class="bg-light-warning"><i class="fa fa fa-address-book-o"></i></div>
                             <b>Contact
                                 Email</b><span>{{job.email}}</span></li>
                         <li>
-                            <div class="bg-light-danger"><i class="fa fa-folder-o"></i></div>
+                            <div class="bg-light-info"><i class="fa fa-folder-o"></i></div>
                             <b>Job Category</b><span>{{job.jobCategory}}</span></li>
                         <li>
-                            <div class="bg-light-inverse"><i class="fa fa-question"></i></div>
+                            <div class="bg-light-danger"><i class="fa fa-mortar-board"></i></div>
+                            <b>Expected Education Level</b><span>{{job.eduLv}}</span></li>
+                        <li>
+                            <div class="bg-light-primary"><i class="fa fa-drivers-license-o"></i></div>
+                            <b>Expected Working Experience</b><span>{{job.expectedExp}}</span></li>
+                        <li>
+                            <div class="bg-light-inverse"><i class="fa fa-sort-numeric-asc"></i></div>
                             <b>Job Quota</b><span>{{job.quota}}</span></li>
-                        <!--<li>-->
-                            <!--<div class="bg-light-info"><i class="fa fa-sort-numeric-asc"></i></div>-->
-                            <!--<b>Minimal-->
-                                <!--Rate</b><span>{{job.minRate}}</span></li>-->
+                        <li>
+                            <div class="bg-light-success"><i class="fa fa-map-marker"></i></div>
+                            <b>Location</b><span>{{job.location}}</span></li>
+                        <li>
+                            <div class="bg-light-info"><i class="fa fa-question"></i></div>
+                            <b>Salary</b><span>{{job.salary}} </span></li>
+                        <li>
+                            <div class="bg-light-danger"><i class="fa fa-edit"></i></div>
+                            <b>Job Description/ Responsibilities</b><span>{{job.jobDesc}} </span></li>
+                        <li>
+                            <div class="bg-light-primary"><i class="fa fa-thumb-tack"></i></div>
+                            <b>Knowledge/ Skills</b><span>{{job.skills}} </span></li>
 
                     </ul>
                     <div class="form-actions" style="text-align: center; margin-top: 2%;">
-                        <button (click)="applyJob(job)" type="submit" class="btn btn-warning" style="width: 25%;"
+                        <button (click)="applyJob(job)" type="submit" class="btn btn-warning" style="margin: 0 auto"
                                 [disabled]="!canApplied">
                             <i class="fa fa-address-card-o"></i> Apply this Job
                         </button>

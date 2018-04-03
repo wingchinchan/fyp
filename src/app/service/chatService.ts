@@ -26,6 +26,7 @@ export interface Chat {
     messages: Message[];
     lastMessage: string;
     updatedDt: Date;
+    type: string;
 }
 
 @Injectable()
@@ -88,7 +89,7 @@ export class ChatService {
         } else {
             chat.messages.push(chatMessage);
         }
-        if (user.uid === chat.user1) {
+        if (chat.type === 'Admin') {
             chat.messages.push(botMessage);
         }
         chat.lastMessage = bot.result.fulfillment.speech;
@@ -97,7 +98,7 @@ export class ChatService {
 
     async createChat(companyUserId, userId) {
         const id = this.afs.createId();
-        const message = 'Hello I already apply your job';
+        const message = 'Hello I already applied your job';
         const chat = {
             id: id,
             user1: userId,
@@ -112,4 +113,5 @@ export class ChatService {
         };
         this.afs.doc(`chat/${id}`).set(chat);
     }
+
 }

@@ -5,8 +5,9 @@ import {User, UserService} from '../../../service/userService';
 
 import {Observable} from 'rxjs/Observable';
 import {Router} from '@angular/router';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AngularFirestore} from 'angularfire2/firestore';
+import {EmailValidator} from "../../landing/email";
 
 
 
@@ -24,6 +25,8 @@ export class EditJobDetailsComponent {
     public EditJob: Observable<Job>;
     public userForm: User;
     public user: User;
+    public jobForm: FormGroup;
+
 
 
     constructor(private route: ActivatedRoute, public userService: UserService, public jobService: JobService, public formBuilder: FormBuilder, public afs: AngularFirestore, public router: Router) {
@@ -50,6 +53,81 @@ export class EditJobDetailsComponent {
         //     this.user = user;
         //     this.userForm = user;
         // });
+
+        this.jobForm = formBuilder.group({
+            title: [
+                '', Validators.compose([
+                    Validators.required
+                ])
+            ],
+            jobCategory: [
+                '', Validators.compose([
+                    Validators.nullValidator,
+                    Validators.required
+                ])
+            ],
+            quota: [
+                '', Validators.compose([
+                    Validators.required
+                ])
+            ],
+            jobDesc: [
+                '', Validators.compose([
+                    Validators.required
+                ])
+            ],
+            email: [
+                '', Validators.compose([
+                    Validators.required,
+                    Validators.minLength(4),
+                    EmailValidator.isValid
+                ])
+            ],
+            eduLv: [
+                '', Validators.compose([
+                    Validators.nullValidator,
+                    Validators.required
+                ])
+            ],
+            salary: [
+                '', Validators.compose([
+                    Validators.nullValidator,
+                    Validators.required
+                ])
+            ],
+            skills: [
+                '', Validators.compose([
+                    Validators.required
+                ])
+            ],
+            expectedExp: [
+                '', Validators.compose([
+                    Validators.nullValidator,
+                    Validators.required
+                ])
+            ],
+            location: [
+                '', Validators.compose([
+                    Validators.nullValidator,
+                    Validators.required
+                ])
+            ],
+        });
+        this.userService.getUser().then(user => {
+            this.jobForm.setValue({
+                email: user.email,
+                title: '',
+                jobCategory: '',
+                eduLv: '',
+                salary: '',
+                quota: '',
+                jobDesc: '',
+                skills: '',
+                expectedExp: '',
+                location: '',
+
+            });
+        });
     }
 
     updateJobDetails(job) {
@@ -74,10 +152,7 @@ export class EditJobDetailsComponent {
         console.log(jobApplication.id);
         this.router.navigate(['/user/commentRating', jobApplication.id]);
     }
-    viewFreelancerProfile(jobApplication) {
-        this.router.navigate(['/user/viewProfileByOther', jobApplication.uid]);
 
-    }
 
 }
 

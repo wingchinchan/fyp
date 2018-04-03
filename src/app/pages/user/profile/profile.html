@@ -96,7 +96,7 @@
                                                 <br>
                                                 <p>Comment From <span (click)="viewCompanyProfile(jobApplication)" style="color: #b3d7ff;cursor: pointer;">{{ ((jobApplication.jobid | job | async)?.uid | user | async)?.displayName}}</span> :
                                                     {{ (jobApplication.commentFreelancer)}} </p>
-                                                <p>Rate From <span style="color: #b3d7ff; cursor: pointer;">{{ ((jobApplication.jobid | job | async)?.uid | user | async)?.displayName}}</span> :
+                                                <p>Rate From <span (click)="viewCompanyProfile(jobApplication)" style="color: #b3d7ff; cursor: pointer;">{{ ((jobApplication.jobid | job | async)?.uid | user | async)?.displayName}}</span> :
                                                     <span style="color: #ffb700;">{{ (jobApplication.rateFreelancer)}} </span></p>
                                                 <!--<a class="btn btn-warning" style="color: white;"-->
                                                 <!--(click)="goToDetail(jobApplication)"><i-->

@@ -33,4 +33,8 @@ export class JobDetailsComponent {
         this.jobService.applyJob(job, this.id);
         this.router.navigateByUrl('user/profile');
     }
+    viewCompanyProfile(job) {
+        this.router.navigate(['/user/viewProfileOfCompany', job.uid]);
+
+    }
 }

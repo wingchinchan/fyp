@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import * as firebase from 'firebase/app';
-import { AngularFireAuth } from 'angularfire2/auth';
-import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
-import { Observable } from 'rxjs/Observable';
+import {AngularFireAuth} from 'angularfire2/auth';
+import {AngularFirestore, AngularFirestoreDocument} from 'angularfire2/firestore';
+import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap';
 
 export interface User {
@@ -11,6 +11,7 @@ export interface User {
     photoURL?: string;
     displayName?: string;
     email?: string;
+    id: string;
 };
 
 @Injectable()
@@ -19,8 +20,7 @@ export class UserService {
     public currentUser: User;
     public userSync = false;
 
-    constructor(private afAuth: AngularFireAuth,
-                private afs: AngularFirestore) {
+    constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore) {
         //// Get auth data, then get firestore user document || null
         this.user = this.afAuth.authState
             .switchMap(user => {
@@ -36,10 +36,12 @@ export class UserService {
     isLogin() {
         return window.localStorage.getItem('login');
     }
+
     updateProfile(userObj, uid) {
         const userRef = this.afs.doc(`user/${uid}`);
         userRef.update(userObj);
     }
+
     updateUserData(user) {
         console.log(user);
         // Sets user data to firestore on login
@@ -65,11 +67,32 @@ export class UserService {
             email: user.email,
             photoURL: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSgJ2_u9xXrMkZgeDbjhsE29U8IlU9_TDcr2h9_C3MpTKH47pP'
         };
+        // this.chatService.createChatByNewMember(user.uid, 'sFYQxt3AOLT8Nv1LY22FeVoKZgD3');
+        console.log(user.uid);
+
+        const id = this.afs.createId();
+        const message = 'Welcome to Flashjob';
+        const chat = {
+            id: id,
+            user1: user.uid,
+            user2: 'sFYQxt3AOLT8Nv1LY22FeVoKZgD3',
+            lastMessage: message,
+            type: 'Admin',
+            messages: [{
+                user: 'sFYQxt3AOLT8Nv1LY22FeVoKZgD3',
+                value: message,
+                updatedDt: new Date()
+            }],
+            updatedDt: new Date()
+        };
+        this.afs.doc(`chat/${id}`).set(chat);
         return userRef.set(data);
     }
 
+
     createUserByEmail(user, displayName) {
         console.log(user);
+        this.createUser(user);
         // Sets user data to firestore on login
         const userRef = this.afs.doc(`user/${user.uid}`);
         console.log(userRef);
@@ -85,6 +108,8 @@ export class UserService {
 
     createUserByEmailAsCompany(user, displayName) {
         console.log(user);
+        this.createUser(user);
+
         // Sets user data to firestore on login
         const userRef = this.afs.doc(`user/${user.uid}`);
         console.log(userRef);
@@ -102,7 +127,7 @@ export class UserService {
         return new Promise<User>((resolve, reject) => {
             this.afAuth.auth.signInWithEmailAndPassword(email, password).then(user => {
                 this.user = this.afs.doc<User>(`user/${user.uid}`).valueChanges();
-                window.localStorage.setItem('login','true');
+                window.localStorage.setItem('login', 'true');
                 this.user.subscribe(userObj => {
                     if (!userObj) {
                         this.createUser(user);
@@ -120,7 +145,7 @@ export class UserService {
         return new Promise<User>((resolve, reject) => {
             this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(user => {
 
-                window.localStorage.setItem('login','true');
+                window.localStorage.setItem('login', 'true');
                 this.user = this.afs.doc<User>(`user/${user.user.uid}`).valueChanges();
                 this.user.subscribe(userObj => {
                     if (userObj) {
@@ -137,10 +162,11 @@ export class UserService {
             });
         });
     }
+
     facebookLogin() {
         return new Promise<User>((resolve, reject) => {
             this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider()).then(user => {
-                window.localStorage.setItem('login','true');
+                window.localStorage.setItem('login', 'true');
                 this.user = this.afs.doc<User>(`user/${user.user.uid}`).valueChanges();
                 this.user.subscribe(userObj => {
                     if (userObj) {
@@ -162,7 +188,7 @@ export class UserService {
         return new Promise<User>((resolve, reject) => {
             this.afAuth.auth.createUserWithEmailAndPassword(email, password).then(user => {
                 this.user = this.afs.doc<User>(`user/${user.uid}`).valueChanges();
-                window.localStorage.setItem('login','true');
+                window.localStorage.setItem('login', 'true');
                 this.createUserByEmail(user, displayName);
                 user.sendEmailVerification();
                 resolve(user);
@@ -176,7 +202,7 @@ export class UserService {
         return new Promise<User>((resolve, reject) => {
             this.afAuth.auth.createUserWithEmailAndPassword(email, password).then(user => {
                 this.user = this.afs.doc<User>(`user/${user.uid}`).valueChanges();
-                window.localStorage.setItem('login','true');
+                window.localStorage.setItem('login', 'true');
                 this.createUserByEmailAsCompany(user, displayName);
                 user.sendEmailVerification();
                 resolve(user);
@@ -204,7 +230,8 @@ export class UserService {
             }
         });
     }
-    getUserByID(id) {
-        return this.afs.doc<User>(`user/${id}`).valueChanges();
+
+    getUserByID(jobApplication) {
+        return this.afs.doc<User>(`user/${jobApplication}`).valueChanges();
     }
 }

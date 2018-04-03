@@ -56,20 +56,6 @@ export class JobService {
 
     }
 
-    // getEditJob() {
-    //     return new Promise<Job>((resolve, reject) => {
-    //         if (this.jobSync === false) {
-    //             this.job.subscribe(job => {
-    //                 this.currentJob = job;
-    //                 this.jobSync = true;
-    //                 resolve(job);
-    //             });
-    //         } else {
-    //             resolve(this.currentJob);
-    //         }
-    //     });
-    // }
-
 
     getJobs() {
         return this.afs.collection('job', ref =>
@@ -145,13 +131,25 @@ export class JobService {
             case 'Accounting':
                 ngClass = 'btn btn-rounded btn-info';
                 break;
-            case 'Design':
+            case 'Banking':
+                ngClass = 'btn btn-rounded btn-info';
+                break;
+            case 'Fashion Design':
                 ngClass = 'btn btn-rounded btn-danger';
                 break;
-            case 'Programming':
+            case 'Graphics Design':
+                ngClass = 'btn btn-rounded btn-danger';
+                break;
+            case 'Mobile Application Development':
+                ngClass = 'btn btn-rounded btn-success';
+                break;
+            case 'Website Development':
                 ngClass = 'btn btn-rounded btn-success';
                 break;
             case 'Other':
+                ngClass = 'btn btn-rounded btn-secondary';
+                break;
+            case 'Education':
                 ngClass = 'btn btn-rounded btn-secondary';
                 break;
         }

@@ -2,18 +2,18 @@
 <div class="row">
     <div class="col-md-12">
         <!--<div class="card text-center">-->
-            <!--<div class="card-body"-->
-                 <!--style=" height: 250px;background-image: url('assets/jpeg/wood.jpg'); background-repeat: no-repeat; background-size: cover; display: block;  -webkit-filter: blur(5px);  filter: blur(5px);">-->
+        <!--<div class="card-body"-->
+        <!--style=" height: 250px;background-image: url('assets/jpeg/wood.jpg'); background-repeat: no-repeat; background-size: cover; display: block;  -webkit-filter: blur(5px);  filter: blur(5px);">-->
 
-            <!--</div>-->
-            <!--<div style="position: absolute; top: 130px; left: 43%;">-->
-                <!--<p style="font-size: 45px; color: white; font-weight: 700;" class="card-text">-->
-                    <!--POST A JOB-->
-                <!--</p>-->
-                <!--<hr style="width: 50%; border-top: 1px solid white !important;">-->
+        <!--</div>-->
+        <!--<div style="position: absolute; top: 130px; left: 43%;">-->
+        <!--<p style="font-size: 45px; color: white; font-weight: 700;" class="card-text">-->
+        <!--POST A JOB-->
+        <!--</p>-->
+        <!--<hr style="width: 50%; border-top: 1px solid white !important;">-->
 
-                <!--&lt;!&ndash;<a href="/register" class="btn btn-primary started-button">GET STARTED</a>&ndash;&gt;-->
-            <!--</div>-->
+        <!--&lt;!&ndash;<a href="/register" class="btn btn-primary started-button">GET STARTED</a>&ndash;&gt;-->
+        <!--</div>-->
 
         <!--</div>-->
 
@@ -22,7 +22,8 @@
                 <div style=" height: 250px;background-image: url('assets/jpeg/wood.jpg'); border-radius:8px; background-repeat: no-repeat; background-size: cover; background-position: center; opacity: 0.7;">
                 </div>
                 <div class="carousel-caption">
-                    <p style="font-size: 45px; color: white; font-weight: 700;" class="text-white font-bold">POST A JOB</p>
+                    <p style="font-size: 45px; color: white; font-weight: 700;" class="text-white font-bold">POST A
+                        JOB</p>
                     <hr style="width: 10%; border-top: 2px solid white !important;">
 
                 </div>
@@ -45,7 +46,7 @@
         <hr style="width: 5%;">
         <div class="card card-outline-info">
             <div class="card-body">
-                <form  [formGroup]="jobForm" (submit)="postJob()">
+                <form [formGroup]="jobForm" (submit)="postJob()">
                     <div class="form-body">
                         <h3 class="card-title" style="text-align: center;">Job details</h3>
                         <hr>
@@ -72,18 +73,72 @@
                                         <!--<option>Select Category</option>-->
                                         <optgroup label="Finance">
                                             <option value="Accounting">Accounting</option>
+                                            <option value="Banking">Banking</option>
                                         </optgroup>
                                         <optgroup label="Computing">
-                                            <option value="Programming">Programming</option>
+                                            <option value="Mobile Application Development">Mobile Application Development
+                                            </option>
+                                            <option value="Website Development">Website Development</option>
                                         </optgroup>
                                         <optgroup label="Design">
-                                            <option value="Design">Design</option>
+                                            <option value="Fashion Design">Fashion Design</option>
+                                            <option value="Graphics Design">Graphics Design</option>
                                         </optgroup>
                                         <optgroup label="Other">
+                                            <option value="Education">Education</option>
                                             <option value="Other">Other</option>
                                         </optgroup>
                                     </select>
                                     <small *ngIf="!jobForm.controls.jobCategory.valid && jobForm.controls.jobCategory.dirty">
+                                        Error
+                                    </small>
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                        <div class="row p-t-20">
+                            <div class="col-md-6">
+                                <div class="form-group has-danger">
+                                    <label class="control-label">Expected Education level</label><span
+                                        class="text-danger">*</span>
+                                    <select class="form-control custom-select" data-placeholder="Choose a Category"
+                                            tabindex="1" formControlName="eduLv" name="eduLv">
+                                        <!--<option>Select Category</option>-->
+                                        <optgroup label="Education level">
+                                            <option value="Postgraduate">Postgraduate</option>
+                                            <option value="Degree">Degree</option>
+                                            <option value="Non-Degree Tertiary">Non-Degree Tertiary</option>
+                                            <option value="Matriculated">Matriculated</option>
+                                            <option value="School Certificate">School Certificate</option>
+                                            <option value="Form three">Form three</option>
+                                            <option value="Primary">Primary</option>
+                                            <option value="No Requirement">No Requirement</option>
+                                        </optgroup>
+
+                                    </select>
+                                    <small *ngIf="!jobForm.controls.eduLv.valid && jobForm.controls.eduLv.dirty">
+                                        Error
+                                    </small>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group has-danger">
+                                    <label class="control-label">Expected Working Experience</label><span
+                                        class="text-danger">*</span>
+                                    <select class="form-control custom-select" data-placeholder="Choose a Category"
+                                            tabindex="1" formControlName="expectedExp" name="expectedExp">
+                                        <!--<option>Select Category</option>-->
+                                        <optgroup label="Expected Working Experience">
+                                            <option value="< 1 year">< 1 year</option>
+                                            <option value="1 - 2 year(s)ree">1 - 2 year(s)</option>
+                                            <option value="3 - 4 years">3 - 4 years</option>
+                                            <option value="> 4 years">> 4 years</option>
+                                            <option value="No Requirement">No Requirement</option>
+                                        </optgroup>
+
+                                    </select>
+                                    <small *ngIf="!jobForm.controls.expectedExp.valid && jobForm.controls.expectedExp.dirty">
                                         Error
                                     </small>
                                 </div>
@@ -103,32 +158,24 @@
                                     </small>
                                 </div>
                             </div>
-                            <!--<div class="col-md-6">-->
-                                <!--<div class="form-group">-->
-                                    <!--<label class="control-label ">Due Date</label>-->
-                                    <!--<input type="date" class="form-control" formControlName="dueDate"-->
-                                           <!--placeholder="dd/mm/yyyy" [class.invalid]="!jobForm.controls.dueDate.valid">-->
-                                    <!--<small style="color:red;"-->
-                                           <!--*ngIf="!jobForm.controls.dueDate.valid && jobForm.controls.dueDate.dirty">-->
-                                        <!--This is required-->
-                                    <!--</small>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label>Job Description </label><span class="text-danger">*</span>
-                                    <textarea class="form-control" rows="5" name="desc" formControlName="jobDesc"
-                                              [class.invalid]="!jobForm.controls.jobDesc.valid"></textarea>
-                                    <small style="color:red;"
-                                           *ngIf="!jobForm.controls.jobDesc.valid && jobForm.controls.jobDesc.dirty">
-                                        This is required
+                            <div class="col-md-6">
+                                <div class="form-group has-danger">
+                                    <label class="control-label">Location</label><span class="text-danger">*</span>
+                                    <select class="form-control custom-select" data-placeholder="Choose a Category"
+                                            tabindex="1" formControlName="location" name="location">
+                                        <!--<option>Select Category</option>-->
+                                        <optgroup label="Location">
+                                            <option value="New Territories">New Territories</option>
+                                            <option value="Kowloon">Kowloon</option>
+                                            <option value="Hong Kong Island">Hong Kong Island</option>
+                                        </optgroup>
+                                    </select>
+                                    <small *ngIf="!jobForm.controls.location.valid && jobForm.controls.location.dirty">
+                                        Error
                                     </small>
                                 </div>
                             </div>
                         </div>
-                        <!--/row-->
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -146,13 +193,22 @@
                             </div>
                             <!--/span-->
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Minimum Rate</label>
-                                    <input type="text" class="form-control" formControlName="minRate"
-                                           [class.invalid]="!jobForm.controls.minRate.valid">
-                                    <small style="color:red;"
-                                           *ngIf="!jobForm.controls.minRate.valid && jobForm.controls.minRate.dirty">
-                                        Input N/A if do not have any requirement
+                                <div class="form-group has-danger">
+                                    <label class="control-label">Salary</label><span class="text-danger">*</span>
+                                    <select class="form-control custom-select" data-placeholder="Choose a Category"
+                                            tabindex="1" formControlName="salary" name="salary">
+                                        <!--<option>Select Category</option>-->
+                                        <optgroup label="Salary">
+                                            <option value="< $3000">< $3000</option>
+                                            <option value="$3001 - $6000">$3001 - $6000</option>
+                                            <option value="$6001 - $9000">$6001 - $9000</option>
+                                            <option value="$9001 - $12000">$9001 - $12000</option>
+                                            <option value="$12001 - $15000">$12001 - $15000</option>
+                                            <option value="> $15000">> $15000</option>
+                                        </optgroup>
+                                    </select>
+                                    <small *ngIf="!jobForm.controls.salary.valid && jobForm.controls.salary.dirty">
+                                        Error
                                     </small>
                                 </div>
                             </div>
@@ -161,71 +217,29 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label>Minimum Salary</label><span class="text-danger">*</span>
-                                    <input type="text" class="form-control" formControlName="salary"
-                                           [class.invalid]="!jobForm.controls.salary.valid">
+                                    <label>Job Description/ Responsibilities</label><span class="text-danger">*</span>
+                                    <textarea class="form-control" rows="5" name="desc" formControlName="jobDesc" placeholder="Describe the job duties and details"
+                                              [class.invalid]="!jobForm.controls.jobDesc.valid"></textarea>
                                     <small style="color:red;"
-                                           *ngIf="!jobForm.controls.salary.valid && jobForm.controls.salary.dirty">This
-                                        is required
+                                           *ngIf="!jobForm.controls.jobDesc.valid && jobForm.controls.jobDesc.dirty">
+                                        This is required
                                     </small>
                                 </div>
                             </div>
-                            <!--/span-->
-                            <!--<div class="col-md-6">-->
-                                <!--<div class="form-group">-->
-                                    <!--<label>Maximum Salary</label><span class="text-danger">*</span>-->
-                                    <!--<input type="text" class="form-control" formControlName="maxSal"-->
-                                           <!--[class.invalid]="!jobForm.controls.maxSal.valid">-->
-                                    <!--<small style="color:red;"-->
-                                           <!--*ngIf="!jobForm.controls.maxSal.valid && jobForm.controls.maxSal.dirty">This-->
-                                        <!--is required-->
-                                    <!--</small>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                            <!--/span-->
                         </div>
-
-                        <!--<h3 class="box-title m-t-40" style="text-align: center;">Company Details</h3>-->
-                        <!--<hr>-->
-                        <!--<div class="row">-->
-                            <!--<div class="col-md-6">-->
-                                <!--<div class="form-group">-->
-                                    <!--<label>Company Name</label><span class="text-danger">*</span>-->
-                                    <!--<input type="text" class="form-control" formControlName="comName"-->
-                                           <!--[class.invalid]="!jobForm.controls.comName.valid">-->
-                                    <!--<small style="color:red;"-->
-                                           <!--*ngIf="!jobForm.controls.comName.valid && jobForm.controls.comName.dirty">-->
-                                        <!--This is required-->
-                                    <!--</small>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                            <!--&lt;!&ndash;/span&ndash;&gt;-->
-                            <!--<div class="col-md-6">-->
-                                <!--<div class="form-group">-->
-                                    <!--<label>Website</label>-->
-                                    <!--<input type="text" class="form-control" formControlName="website" name="website"-->
-                                           <!--[class.invalid]="!jobForm.controls.website.valid">-->
-                                    <!--<small style="color:red;"-->
-                                           <!--*ngIf="!jobForm.controls.website.valid && jobForm.controls.website.dirty">-->
-                                        <!--Input N/A if do not have a website-->
-                                    <!--</small>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                            <!--&lt;!&ndash;/span&ndash;&gt;-->
-                        <!--</div>-->
-                        <!--<div class="row">-->
-                            <!--<div class="col-md-12">-->
-                                <!--<div class="form-group">-->
-                                    <!--<label>Company Description </label><span class="text-danger">*</span>-->
-                                    <!--<textarea class="form-control" rows="5" formControlName="comDesc"-->
-                                              <!--[class.invalid]="!jobForm.controls.comDesc.valid"></textarea>-->
-                                    <!--<small style="color:red;"-->
-                                           <!--*ngIf="!jobForm.controls.comDesc.valid && jobForm.controls.comDesc.dirty">-->
-                                        <!--This is required-->
-                                    <!--</small>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</div>-->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Knowledge/ Skills</label><span class="text-danger">*</span>
+                                    <textarea class="form-control" rows="5" name="skills" formControlName="skills"  placeholder="List out required skills of the job"
+                                              [class.invalid]="!jobForm.controls.skills.valid"></textarea>
+                                    <small style="color:red;"
+                                           *ngIf="!jobForm.controls.skills.valid && jobForm.controls.skills.dirty">
+                                        This is required
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
                         <!--/row-->
 
                     </div>
@@ -233,7 +247,8 @@
                         <button type="submit" class="btn btn-secondary" style="width: 20%;" [disabled]="!jobForm.valid">
                             <i class="fa fa-check"></i> Submit
                         </button>
-                        <button  (click)="redirect()" type="button" class="btn btn-outline-secondary cancel" style="width: 20%;">Cancel
+                        <button (click)="redirect()" type="button" class="btn btn-outline-secondary cancel"
+                                style="width: 20%;">Cancel
                         </button>
                     </div>
                 </form>
