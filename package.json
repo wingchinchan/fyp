@@ -47,7 +47,7 @@
     "@firebase/firestore-types": "^0.1.1",
     "@firebase/messaging-types": "^0.1.1",
     "@firebase/storage": "^0.1.6",
-    "@firebase/storage-types": "^0.1.1",
+    "@firebase/storage-types": "^0.1.1"
   },
   "devDependencies": {
     "@angular/cli": "1.0.4",
