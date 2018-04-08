@@ -16,6 +16,8 @@ import {RegisterTypeComponent} from './registerType/registerType.component';
 import {SearchJobComponent} from './searchJob/searchJob.component';
 import { ScrollableDirective } from '../../Directive/scrollable.directive';
 import {RegisterAsComComponent} from './registerAsCom/registerAsCom.component';
+import {AngularFireDatabaseModule} from "angularfire2/database-deprecated"
+import {FileUploadComponent} from "../../file-upload/file-upload.component";
 
 const routes: Routes = [{
     path: '',
@@ -55,7 +57,11 @@ const routes: Routes = [{
         },
         {
             path: 'searchJob',
-            component: SearchJobComponent
+            component: SearchJobComponent,
+        },
+        {
+            path: 'file-upload',
+            component: FileUploadComponent
         }
     ]
 }];
@@ -72,7 +78,8 @@ const routes: Routes = [{
         RegisterAsComComponent,
         LandingNavigationComponent,
         SearchJobComponent,
-        ScrollableDirective
+        ScrollableDirective,
+        FileUploadComponent
     ],
     imports: [
         FormsModule,
@@ -83,7 +90,8 @@ const routes: Routes = [{
         ReactiveFormsModule,
         FormsModule,
         HttpModule,
-        RouterModule.forChild(routes)
+        RouterModule.forChild(routes),
+        AngularFireDatabaseModule
     ],
     exports: [
         LandingComponet,

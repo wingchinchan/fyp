@@ -38,41 +38,81 @@
 
     <div class="col-md-8">
         <div class="tab-pane" id="profile" role="tabpanel">
-
-
             <div class="card" style="margin-top: 5%;">
                 <div class="card-body">
                     <h4 class="card-title" style="text-align: center;">{{ job.title }}</h4>
                     <ul class="feeds">
-                        <!--<li>-->
-                            <!--<div class="bg-light-info"><i class="fa fa-calendar"></i></div>-->
-                            <!--<b>Due Date</b><span>{{ job.dueDate | amDateFormat: 'YYYY-MM-DD'}}</span></li>-->
-                        <li>
-                            <div class="bg-light-success"><i class="fa fa-dollar"></i></div>
-                            <b>Salary</b><span>$ {{job.salary}} </span></li>
                         <li>
                             <div class="bg-light-warning"><i class="fa fa fa-address-book-o"></i></div>
                             <b>Contact
                                 Email</b><span>{{job.email}}</span></li>
                         <li>
-                            <div class="bg-light-danger"><i class="fa fa-folder-o"></i></div>
+                            <div class="bg-light-info"><i class="fa fa-folder-o"></i></div>
                             <b>Job Category</b><span>{{job.jobCategory}}</span></li>
+                        <li>
+                            <div class="bg-light-danger"><i class="fa fa-mortar-board"></i></div>
+                            <b>Expected Education Level</b><span>{{job.eduLv}}</span></li>
+                        <li>
+                            <div class="bg-light-primary"><i class="fa fa-drivers-license-o"></i></div>
+                            <b>Expected Working Experience</b><span>{{job.expectedExp}}</span></li>
                         <li>
                             <div class="bg-light-inverse"><i class="fa fa-question"></i></div>
                             <b>Job Quota</b><span>{{job.quota}}</span></li>
+                        <li>
+                            <div class="bg-light-success"><i class="fa fa-map-marker"></i></div>
+                            <b>Location</b><span>{{job.location}}</span></li>
+                        <li>
+                            <div class="bg-light-info"><i class="fa fa-money"></i></div>
+                            <b>Salary</b><span>{{job.salary}} </span></li>
+                        <li>
+                            <div class="bg-light-danger"><i class="fa fa-edit"></i></div>
+                            <b>Job Description/ Responsibilities</b><span>{{job.jobDesc}} </span></li>
+                        <li>
+                            <div class="bg-light-primary"><i class="fa fa-thumb-tack"></i></div>
+                            <b>Knowledge/ Skills</b><span>{{job.skills}} </span></li>
 
                     </ul>
                     <div  style="text-align: center; margin-top: 2%;" (click)="goBackJobList()" >
-                        <div class="btn btn-warning">
-                            <i class="fa fa-file-text-o"></i> Back to Job List
-                        </div>
-
+                    <div class="btn btn-warning">
+                    <i class="fa fa-file-text-o"></i> Back to Job List
                     </div>
                 </div>
-                <!--<div class="btn btn-warning" (click)="goBackJobList()">Back to Job List</div>-->
-
 
             </div>
+
+            <!--<div class="card" style="margin-top: 5%;">-->
+                <!--<div class="card-body">-->
+                    <!--<h4 class="card-title" style="text-align: center;">{{ job.title }}</h4>-->
+                    <!--<ul class="feeds">-->
+                        <!--&lt;!&ndash;<li>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<div class="bg-light-info"><i class="fa fa-calendar"></i></div>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<b>Due Date</b><span>{{ job.dueDate | amDateFormat: 'YYYY-MM-DD'}}</span></li>&ndash;&gt;-->
+                        <!--<li>-->
+                            <!--<div class="bg-light-success"><i class="fa fa-dollar"></i></div>-->
+                            <!--<b>Salary</b><span>$ {{job.salary}} </span></li>-->
+                        <!--<li>-->
+                            <!--<div class="bg-light-warning"><i class="fa fa fa-address-book-o"></i></div>-->
+                            <!--<b>Contact-->
+                                <!--Email</b><span>{{job.email}}</span></li>-->
+                        <!--<li>-->
+                            <!--<div class="bg-light-danger"><i class="fa fa-folder-o"></i></div>-->
+                            <!--<b>Job Category</b><span>{{job.jobCategory}}</span></li>-->
+                        <!--<li>-->
+                            <!--<div class="bg-light-inverse"><i class="fa fa-question"></i></div>-->
+                            <!--<b>Job Quota</b><span>{{job.quota}}</span></li>-->
+
+                    <!--</ul>-->
+                    <!--<div  style="text-align: center; margin-top: 2%;" (click)="goBackJobList()" >-->
+                        <!--<div class="btn btn-warning">-->
+                            <!--<i class="fa fa-file-text-o"></i> Back to Job List-->
+                        <!--</div>-->
+
+                    <!--</div>-->
+                <!--</div>-->
+                <!--&lt;!&ndash;<div class="btn btn-warning" (click)="goBackJobList()">Back to Job List</div>&ndash;&gt;-->
+
+
+            <!--</div>-->
 
             <div class="col-md-2"></div>
         </div>

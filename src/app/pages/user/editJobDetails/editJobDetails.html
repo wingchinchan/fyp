@@ -133,7 +133,7 @@
                                     <div class="bg-light-success"><i class="fa fa-map-marker"></i></div>
                                     <b>Location</b><span>{{job.location}}</span></li>
                                 <li>
-                                    <div class="bg-light-info"><i class="fa fa-question"></i></div>
+                                    <div class="bg-light-info"><i class="fa fa-money"></i></div>
                                     <b>Salary</b><span>{{job.salary}} </span></li>
                                 <li>
                                     <div class="bg-light-danger"><i class="fa fa-edit"></i></div>
@@ -419,7 +419,7 @@
                                                              class="img-circle" width="50px" (click)="viewFreelancerProfile(jobApplication)"/>
                                                     </td>
                                                     <td>
-                                                        <h6>{{ (jobApplication.uid | user | async)?.displayName}}</h6>
+                                                        <h6 style="cursor: pointer;" (click)="viewFreelancerProfile(jobApplication)" >{{ (jobApplication.uid | user | async)?.displayName}}</h6>
                                                         <small class="text-muted">{{ (jobApplication.uid | user |
                                                             async)?.jobCategory}}
                                                         </small>

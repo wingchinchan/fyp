@@ -28,6 +28,9 @@ import {PipeModule} from '../../pipe/pipe.module';
 import {ViewProfileByOtherComponent} from './viewProfileByOther/viewProfileByOther.component';
 import {ViewProfileOfCompanyComponent} from './viewProfileOfCompany/viewProfileOfCompany.component';
 import {SetPreferenceComponent} from './setPreference/setPreference.component';
+import {DeleteJobByAdminComponent} from './deleteJobByAdmin/deleteJobByAdmin.component';
+import {SearchJobByFreelancerComponent} from './searchJobByFreelancer/searchJobByFreelancer.component';
+import {SearchResultByCompanyComponent} from './searchResultByCompany/searchResultByCompany.component';
 
 const routes: Routes = [{
     path: 'user',
@@ -82,6 +85,15 @@ const routes: Routes = [{
         }, {
             path: 'setPreference',
             component: SetPreferenceComponent,
+        }, {
+            path: 'deleteJobByAdmin/:id',
+            component: DeleteJobByAdminComponent,
+        }, {
+            path: 'searchJobByFreelancer',
+            component: SearchJobByFreelancerComponent,
+        }, {
+            path: 'searchResultByCompany',
+            component: SearchResultByCompanyComponent,
         }
     ]
 }];
@@ -108,7 +120,10 @@ const routes: Routes = [{
         ViewCommentFromCompanyComponent,
         ViewProfileByOtherComponent,
         ViewProfileOfCompanyComponent,
-        SetPreferenceComponent
+        SetPreferenceComponent,
+        DeleteJobByAdminComponent,
+        SearchJobByFreelancerComponent,
+        SearchResultByCompanyComponent
     ],
     imports: [
         FormsModule,
@@ -139,7 +154,10 @@ const routes: Routes = [{
         ViewCommentFromCompanyComponent,
         ViewProfileByOtherComponent,
         ViewProfileOfCompanyComponent,
-        SetPreferenceComponent
+        SetPreferenceComponent,
+        DeleteJobByAdminComponent,
+        SearchJobByFreelancerComponent,
+        SearchResultByCompanyComponent
     ]
 })
 export class UserModule {

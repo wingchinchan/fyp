@@ -1,34 +1,74 @@
+<!--------------------------- slider -------------------------->
+<div class="row">
+    <div class="col-md-12">
+        <!--<div class="card text-center" style="margin-bottom: 0px;">-->
+        <!--<div class="card-body"-->
+        <!--style=" height: 250px;background-image: url('assets/jpeg/wood.jpg'); background-repeat: no-repeat; background-size: cover; display: block;  -webkit-filter: blur(5px);  filter: blur(5px);">-->
+
+        <!--</div>-->
+        <!--<div style="position: absolute; top: 130px; left: 43%;">-->
+        <!--<p style="font-size: 45px; color: white; font-weight: 700;" class="card-text">-->
+        <!--GET A JOB-->
+        <!--</p>-->
+        <!--<hr style="width: 50%; border-top: 1px solid white !important;">-->
+
+        <!--&lt;!&ndash;<a href="/register" class="btn btn-primary started-button">GET STARTED</a>&ndash;&gt;-->
+        <!--</div>-->
+
+        <!--</div>-->
+        <div class="card">
+            <div>
+                <div style=" height: 550px;background-image: url('assets/jpeg/wood.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center; opacity: 0.7;">
+                </div>
+                <div class="carousel-caption">
+                    <p style="font-size: 45px; color: white; font-weight: 700;" class="text-white font-bold">SEARCH
+                        JOB</p>
+                    <hr style="width: 10%; border-top: 2px solid white !important;">
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!--------------------------- searching -------------------------->
 <div class="row">
 
-    <div class="col-sm-3"></div>
-    <div class="col-sm-6">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
         <form [formGroup]="jobForm">
             <!-- <form> -->
             <div class="row p-t-20">
-                <div class="col-md-5">
+                <div class="col-md-6">
                     <div class="form-group">
+                        <label>Job Title</label>
                         <input name="title" type="text" class="form-control" formControlName="title"
-                               placeholder="Enter job title">
+                               placeholder="Enter keyword of the job">
 
                     </div>
                 </div>
                 <!--/span-->
-                <div class="col-md-5">
+                <div class="col-md-6">
                     <div class="form-group has-danger">
-                        <select class="form-control custom-select" data-placeholder="Choose a Category" formControlName="jobCategory" name="jobCategory">
+                        <label>Job Category</label>
+                        <select class="form-control custom-select" data-placeholder="Choose a Category"
+                                tabindex="1" formControlName="jobCategory" name="jobCategory">
                             <!--<option>Select Category</option>-->
-                            <option value=""></option>
-
                             <optgroup label="Finance">
                                 <option value="Accounting">Accounting</option>
+                                <option value="Banking">Banking</option>
                             </optgroup>
                             <optgroup label="Computing">
-                                <option value="Programming">Programming</option>
+                                <option value="Mobile Application Development">Mobile Application Development
+                                </option>
+                                <option value="Website Development">Website Development</option>
                             </optgroup>
                             <optgroup label="Design">
-                                <option value="Design">Design</option>
+                                <option value="Fashion Design">Fashion Design</option>
+                                <option value="Graphics Design">Graphics Design</option>
                             </optgroup>
                             <optgroup label="Other">
+                                <option value="Education">Education</option>
                                 <option value="Other">Other</option>
                             </optgroup>
                         </select>
@@ -37,51 +77,23 @@
                 </div>
 
                 <!--/span-->
-                <div class="col-md-2">
-                    <div class="form-actions" style="text-align: center;">
-                        <button type="button" class="btn btn-secondary" (click)="searchJobs()">
-                            <i class="fa fa-search"></i> Search Job
-                        </button>
-
-                    </div>
-                </div>
             </div>
         </form>
-
-        <!--<div class="row">-->
-        <!--<div class="col-md-5">-->
-        <!--<div class="form-group">-->
-        <!--<input type="text" class="form-control" formControlName="minSal"-->
-        <!--[class.invalid]="!jobForm.controls.minSal.valid" placeholder="Minimum Salary">-->
-        <!--<small style="color:red;"-->
-        <!--*ngIf="!jobForm.controls.minSal.valid && jobForm.controls.minSal.dirty">This-->
-        <!--is required-->
-        <!--</small>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--&lt;!&ndash;/span&ndash;&gt;-->
-        <!--<div class="col-md-5">-->
-        <!--<div class="form-group">-->
-        <!--<input type="text" class="form-control" formControlName="maxSal"-->
-        <!--[class.invalid]="!jobForm.controls.maxSal.valid" placeholder="Maximum Salary">-->
-        <!--<small style="color:red;"-->
-        <!--*ngIf="!jobForm.controls.maxSal.valid && jobForm.controls.maxSal.dirty">This-->
-        <!--is required-->
-        <!--</small>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--&lt;!&ndash;/span&ndash;&gt;-->
-        <!--</div>-->
-        <!-- </form> -->
     </div>
-    <div class="col-sm-3"></div>
 </div>
+<div class="form-actions" style="text-align: center;">
+    <button style="margin: 0 auto" type="button" class="btn btn-warning" (click)="searchJobs()">
+        <i class="fa fa-search"></i> Search Job
+    </button>
+
+</div>
+<br>
 <div class="row" *ngIf="jobs">
     <div class="col-md-2"></div>
     <div class="col-md-8">
         <div class="card" style="text-align: center;">
             <div class="card-body">
-                <h4 class="card-title">Latest Jobs</h4>
+                <h4 class="card-title">Job List</h4>
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
@@ -101,12 +113,12 @@
                             <td><span class="text-muted"><i class="fa fa-clock-o"></i> {{job.createdAt | amDateFormat: 'YYYY-MM-DD'}}</span>
                             </td>
                             <td>
-                                <div class="btn btn-rounded btn-secondary">{{job.jobCategory}}</div>
+                                <div class="catButton btn btn-rounded {{job.ngClass}}">{{job.jobCategory}}</div>
                             </td>
                             <td>$ {{job.salary}}</td>
                             <td>{{job.quota}}</td>
                             <td>
-                                <div class="btn btn-block btn-secondary" (click)="goToDetail(job)">Details</div>
+                                <div class="btn btn-block btn-warning" (click)="goToDetail(job)">Details</div>
                             </td>
                         </tr>
 

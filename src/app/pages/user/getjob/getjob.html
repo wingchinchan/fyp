@@ -2,18 +2,18 @@
 <div class="row">
     <div class="col-md-12">
         <!--<div class="card text-center" style="margin-bottom: 0px;">-->
-            <!--<div class="card-body"-->
-                 <!--style=" height: 250px;background-image: url('assets/jpeg/wood.jpg'); background-repeat: no-repeat; background-size: cover; display: block;  -webkit-filter: blur(5px);  filter: blur(5px);">-->
+        <!--<div class="card-body"-->
+        <!--style=" height: 250px;background-image: url('assets/jpeg/wood.jpg'); background-repeat: no-repeat; background-size: cover; display: block;  -webkit-filter: blur(5px);  filter: blur(5px);">-->
 
-            <!--</div>-->
-            <!--<div style="position: absolute; top: 130px; left: 43%;">-->
-                <!--<p style="font-size: 45px; color: white; font-weight: 700;" class="card-text">-->
-                    <!--GET A JOB-->
-                <!--</p>-->
-                <!--<hr style="width: 50%; border-top: 1px solid white !important;">-->
+        <!--</div>-->
+        <!--<div style="position: absolute; top: 130px; left: 43%;">-->
+        <!--<p style="font-size: 45px; color: white; font-weight: 700;" class="card-text">-->
+        <!--GET A JOB-->
+        <!--</p>-->
+        <!--<hr style="width: 50%; border-top: 1px solid white !important;">-->
 
-                <!--&lt;!&ndash;<a href="/register" class="btn btn-primary started-button">GET STARTED</a>&ndash;&gt;-->
-            <!--</div>-->
+        <!--&lt;!&ndash;<a href="/register" class="btn btn-primary started-button">GET STARTED</a>&ndash;&gt;-->
+        <!--</div>-->
 
         <!--</div>-->
 
@@ -22,7 +22,8 @@
                 <div style=" height: 250px;background-image: url('assets/jpeg/wood.jpg'); border-radius:8px; background-repeat: no-repeat; background-size: cover; background-position: center; opacity: 0.7;">
                 </div>
                 <div class="carousel-caption">
-                    <p style="font-size: 45px; color: white; font-weight: 700;" class="text-white font-bold">Get A JOB</p>
+                    <p style="font-size: 45px; color: white; font-weight: 700;" class="text-white font-bold">Get A
+                        JOB</p>
                     <hr style="width: 10%; border-top: 2px solid white !important;">
 
                 </div>
@@ -35,59 +36,92 @@
 <!--------------------------- latest job table -------------------------->
 
 <!--<div class="row">-->
-    <!--<div class="col-md-2"></div>-->
-    <!--<div class="col-md-8">-->
-        <!--<div class="card" style="text-align: center; ">-->
-            <!--<div class="card-body">-->
-                <!--<h4 class="card-title">Latest Jobs</h4>-->
-                <!--<div class="table-responsive" style="overflow-y: scroll;height: 400px" scrollable (scrollPosition)="scrollHandler($event)">-->
-                    <!--<table class="table" *ngIf="jobs">-->
-                        <!--<thead>-->
-                        <!--<tr>-->
-                            <!--<th style="text-align: center;">Job Title</th>-->
-                            <!--<th style="text-align: center;">Post Date</th>-->
-                            <!--<th style="text-align: center;">Job Category</th>-->
-                            <!--<th style="text-align: center;">Salary</th>-->
-                            <!--<th style="text-align: center;">Quota</th>-->
-                            <!--<th style="text-align: center;">Details</th>-->
-                        <!--</tr>-->
-                        <!--</thead>-->
-                        <!--<tbody>-->
-                        <!--<tr *ngFor="let job of jobs">-->
-                            <!--&lt;!&ndash;<td><a style="color: black;" href="javascript:void(0)">#{{job.no}}</a></td>&ndash;&gt;-->
-                            <!--<td><a style="color: black;">{{job.title}}</a></td>-->
-                            <!--<td><span class="text-muted"><i class="fa fa-clock-o"></i> {{job.createdAt | amDateFormat: 'YYYY-MM-DD'}}</span>-->
-                            <!--</td>-->
-                            <!--<td>-->
-                                <!--<div class="catButton btn btn-rounded {{job.ngClass}}">{{job.jobCategory}}</div>-->
-                            <!--</td>-->
-                            <!--<td>$ {{job.salary}}</td>-->
-                            <!--<td>{{job.quota}}</td>-->
-                            <!--<td>-->
-                                <!--<div class="btn btn-block btn-warning" (click)="goToDetail(job)">Details</div>-->
-                            <!--</td>-->
-                        <!--</tr>-->
+<!--<div class="col-md-2"></div>-->
+<!--<div class="col-md-8">-->
+<!--<div class="card" style="text-align: center; ">-->
+<!--<div class="card-body">-->
+<!--<h4 class="card-title">Latest Jobs</h4>-->
+<!--<div class="table-responsive" style="overflow-y: scroll;height: 400px" scrollable (scrollPosition)="scrollHandler($event)">-->
+<!--<table class="table" *ngIf="jobs">-->
+<!--<thead>-->
+<!--<tr>-->
+<!--<th style="text-align: center;">Job Title</th>-->
+<!--<th style="text-align: center;">Post Date</th>-->
+<!--<th style="text-align: center;">Job Category</th>-->
+<!--<th style="text-align: center;">Salary</th>-->
+<!--<th style="text-align: center;">Quota</th>-->
+<!--<th style="text-align: center;">Details</th>-->
+<!--</tr>-->
+<!--</thead>-->
+<!--<tbody>-->
+<!--<tr *ngFor="let job of jobs">-->
+<!--&lt;!&ndash;<td><a style="color: black;" href="javascript:void(0)">#{{job.no}}</a></td>&ndash;&gt;-->
+<!--<td><a style="color: black;">{{job.title}}</a></td>-->
+<!--<td><span class="text-muted"><i class="fa fa-clock-o"></i> {{job.createdAt | amDateFormat: 'YYYY-MM-DD'}}</span>-->
+<!--</td>-->
+<!--<td>-->
+<!--<div class="catButton btn btn-rounded {{job.ngClass}}">{{job.jobCategory}}</div>-->
+<!--</td>-->
+<!--<td>$ {{job.salary}}</td>-->
+<!--<td>{{job.quota}}</td>-->
+<!--<td>-->
+<!--<div class="btn btn-block btn-warning" (click)="goToDetail(job)">Details</div>-->
+<!--</td>-->
+<!--</tr>-->
 
-                        <!--</tbody>-->
-                    <!--</table>-->
-                <!--</div>-->
-                <!--&lt;!&ndash;<div style="text-align: center; display: inline-block !important;">&ndash;&gt;-->
-                <!--&lt;!&ndash;<div class="btn btn-block btn-secondary">View more</div>&ndash;&gt;-->
-                <!--&lt;!&ndash;</div>&ndash;&gt;-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-    <!--<div class="col-md-2"></div>-->
+<!--</tbody>-->
+<!--</table>-->
+<!--</div>-->
+<!--&lt;!&ndash;<div style="text-align: center; display: inline-block !important;">&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="btn btn-block btn-secondary">View more</div>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="col-md-2"></div>-->
 
 <!--</div>-->
 
 <div class="row">
-    <div class="col-md-2"></div>
+    <div class="col-md-4">
+
+        <div class="col-md-12" style="padding-top: 1%;" *ngFor="let job of preferenceJob | async">
+            <div class="card card-body landing-card">
+                <h4 class="card-title" style="text-align: center">Recommend Job</h4>
+                <div class="row">
+                    <div class="col-md-4 col-lg-3 text-center">
+                        <img [src]=" (job.uid | user | async)?.photoURL" alt="user"
+                             class="img-circle img-responsive">
+                    </div>
+                    <div class="col-md-8 col-lg-9">
+                        <h5 class="box-title m-b-0">{{job.title}}</h5>
+                        <small><span class="text-muted"><i class="fa fa-clock-o"></i> {{job.createdAt | amDateFormat: 'YYYY-MM-DD'}}</span>
+                        </small>
+                        <br>
+                        <small>
+                            <div class="catButton btn btn-rounded {{job.ngClass}}">{{job.jobCategory}}</div>
+                        </small>
+                        <br>
+                        <br>
+                        <div><i class="fa fa-money" style="color: limegreen; font-size: 22px;"></i>    {{job.salary}}</div>
+                        <!--<button type="button" class="btn btn-danger btn-circle"><i class="fa fa-heart"></i></button>-->
+                        <div><i class="fa fa-mortar-board" style="color: lightpink; font-size: 20px;"></i>   {{job.eduLv}}</div>
+                        <br>
+                        <div class="btn btn-block btn-warning" (click)="goToDetail(job)">Details</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
     <div class="col-md-8">
         <div class="card" style="text-align: center;">
             <div class="card-body">
                 <h4 class="card-title">Latest Jobs</h4>
-                <div class="table-responsive" style="overflow-y: scroll;height: 400px" scrollable (scrollPosition)="scrollHandler($event)">
+                <div class="table-responsive" style="overflow-y: scroll;height: 400px" scrollable
+                     (scrollPosition)="scrollHandler($event)">
                     <table class="table" *ngIf="jobs">
                         <thead>
                         <tr>
@@ -124,6 +158,5 @@
             </div>
         </div>
     </div>
-    <div class="col-md-2"></div>
 
 </div>

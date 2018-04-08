@@ -2,78 +2,84 @@ import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {EmailValidator} from '../../landing/email';
 import {AngularFirestore, AngularFirestoreCollection} from 'angularfire2/firestore';
-import {JobService} from '../../../service/jobService'
+import {JobApplication, JobService, Preference} from '../../../service/jobService'
 import {Router} from '@angular/router';
-import {User, UserService} from "../../../service/userService";
+import {UserService, User} from "../../../service/userService";
+import {logging} from "selenium-webdriver";
+import {Observable} from "rxjs/Observable";
 
 @Component({
     templateUrl: './setPreference.html',
     styleUrls: ['./setPreference.css'],
 })
 export class SetPreferenceComponent {
-    public jobForm: FormGroup;
-    public jobCollection: AngularFirestoreCollection<any>;
+    public preferenceForm: FormGroup;
+    public application: Observable<JobApplication[]>;
     public user: User;
+    public jobCollection: AngularFirestoreCollection<any>;
+
+    // public PreferenceList: Observable<Preference[]>;
+    id: string;
+    uid: string;
 
     constructor(public formBuilder: FormBuilder, public afs: AngularFirestore, public jobService: JobService, public router: Router, public userService: UserService) {
-        this.jobForm = formBuilder.group({
-            title: [
-                '', Validators.compose([
-                    Validators.required
-                ])
-            ],
-            jobCategory: [
+        this.userService.getUser().then(user => {
+            this.user = user;
+            console.log(user);
+            console.log(user.uid);
+
+            // this.PreferenceList = this.jobService.getPreference(user.id);
+        });
+
+        this.preferenceForm = formBuilder.group({
+            preference_jobCategory: [
                 '', Validators.compose([
                     Validators.nullValidator,
                     Validators.required
                 ])
             ],
-            quota: [
+            preference_eduLv: [
                 '', Validators.compose([
+                    Validators.nullValidator,
                     Validators.required
                 ])
             ],
-            jobDesc: [
+            preference_salary: [
                 '', Validators.compose([
+                    Validators.nullValidator,
                     Validators.required
                 ])
             ],
-            email: [
+            preference_expectedExp: [
                 '', Validators.compose([
-                    Validators.required,
-                    Validators.minLength(4),
-                    EmailValidator.isValid
-                ])
-            ],
-            minRate: [
-                'N/A', Validators.compose([
+                    Validators.nullValidator,
                     Validators.required
                 ])
             ],
-            salary: [
+            preference_location: [
                 '', Validators.compose([
+                    Validators.nullValidator,
                     Validators.required
                 ])
-            ]
+            ],
         });
         this.userService.getUser().then(user => {
-            this.jobForm.setValue({
-                email: user.email,
-                title: '',
-                jobCategory: '',
-                minRate: 'N/A',
-                salary: '',
-                quota: '',
-                jobDesc: ''
+            this.preferenceForm.setValue({
+                preference_jobCategory: '',
+                preference_eduLv: '',
+                preference_salary: '',
+                preference_expectedExp: '',
+                preference_location: '',
+
             });
         });
 
-
     }
-
-    postJob() {
-        this.jobService.postJob(this.jobForm.value);
+    setPreference() {
+        console.log('test');
+        this.userService.setPreference(this.preferenceForm.value, this.user.uid);
         this.router.navigateByUrl('user/profile');
+        alert('Set Preference successfully');
     }
     redirect() {
         this.router.navigateByUrl('user/profile');

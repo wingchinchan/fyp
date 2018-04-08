@@ -9,11 +9,11 @@ import { Subject } from "rxjs/Subject"
 
 
 @Component({
-    templateUrl: './searchJob.html',
-    styleUrls: ['./searchJob.css'],
+    templateUrl: './searchJobByFreelancer.html',
+    styleUrls: ['./searchJobByFreelancer.css'],
 
 })
-export class SearchJobComponent {
+export class SearchJobByFreelancerComponent {
     public jobForm: FormGroup;
     public jobs: Observable<Job[]>;
 
@@ -48,7 +48,7 @@ export class SearchJobComponent {
         this.jobs = this.jobService.searchJobs(this.jobForm.value.title, this.jobForm.value.jobCategory);
     }
     goToDetail(job) {
-        this.router.navigate(['job', job.id]);
+        this.router.navigate(['/user/job', job.id]);
     }
 }
 

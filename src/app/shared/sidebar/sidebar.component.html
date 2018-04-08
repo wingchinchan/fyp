@@ -7,7 +7,7 @@
         <!-- User profile -->
         <div class="user-profile">
             <!-- User profile image -->
-            <div class="profile-img"><img src="{{user.photoURL}}" alt="user"/></div>
+            <div class="profile-img"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSgJ2_u9xXrMkZgeDbjhsE29U8IlU9_TDcr2h9_C3MpTKH47pP" alt="user"/></div>
             <!-- User profile text-->
             <!--<div class="profile-text"> <a href="#" class="dropdown-toggle link u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">{{user.displayName}} <span class="caret"></span></a>-->
             <!--<div class="dropdown-menu animated flipInY">-->
@@ -35,9 +35,13 @@
                     <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="jobs"><i
                             class="mdi mdi-calendar-text"></i><span class="hide-menu">Get Job</span></a>
                 </li>
+                <!--<li>-->
+                    <!--<a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="setPreference"><i-->
+                            <!--class="mdi mdi-auto-fix"></i><span class="hide-menu">Set Preference</span></a>-->
+                <!--</li>-->
                 <li>
-                    <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="setPreference"><i
-                            class="mdi mdi-auto-fix"></i><span class="hide-menu">Set Preference</span></a>
+                    <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="searchJobByFreelancer"><i
+                            class="fa fa-search"></i><span class="hide-menu">Search</span></a>
                 </li>
                 <li>
                     <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="chat"><i
@@ -102,7 +106,7 @@
         <!-- User profile -->
         <div class="user-profile">
             <!-- User profile image -->
-            <div class="profile-img"><img src="{{user.photoURL}}" alt="user"/></div>
+            <div class="profile-img"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSgJ2_u9xXrMkZgeDbjhsE29U8IlU9_TDcr2h9_C3MpTKH47pP" alt="user"/></div>
 
         </div>
         <!-- End User profile text-->
@@ -122,15 +126,20 @@
                     <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="manageJob"><i
                             class="mdi mdi-calendar-text"></i><span class="hide-menu">Manage Job</span></a>
                 </li>
-                <li>
-                    <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active"
-                       routerLink="manageJobApplication"><i
-                            class="mdi mdi-calendar-text"></i><span class="hide-menu">Manage Application</span></a>
-                </li>
+                <!--<li>-->
+                    <!--<a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active"-->
+                       <!--routerLink="manageJobApplication"><i-->
+                            <!--class="mdi mdi-calendar-text"></i><span class="hide-menu">Manage Application</span></a>-->
+                <!--</li>-->
                 <li>
                     <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="chat"><i
                             class="ti-email"></i><span class="hide-menu">Message</span></a>
                 </li>
+                <li>
+                    <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="searchJobByFreelancer"><i
+                            class="fa fa-search"></i><span class="hide-menu">Search</span></a>
+                </li>
+
                 <li>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" (click)="logout()"><i class="fa fa-power-off"></i> <span class="hide-menu">Logout</span></a>
@@ -169,6 +178,10 @@
                 <li>
                     <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="chat"><i
                             class="ti-email"></i><span class="hide-menu">Message</span></a>
+
+                <li>
+                    <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="searchJobByFreelancer"><i
+                            class="fa fa-search"></i><span class="hide-menu">Search</span></a>
                 </li>
                 <li>
                     <div class="dropdown-divider"></div>

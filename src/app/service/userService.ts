@@ -11,8 +11,12 @@ export interface User {
     photoURL?: string;
     displayName?: string;
     email?: string;
+    skills: string;
+    introduction: string;
     id: string;
+    preference_jobCategory?: string;
 };
+
 
 @Injectable()
 export class UserService {
@@ -42,6 +46,11 @@ export class UserService {
         userRef.update(userObj);
     }
 
+    setPreference(preferenceObj, uid) {
+        const preference = this.afs.doc(`user/${uid}`);
+        preference.update(preferenceObj);
+    }
+
     updateUserData(user) {
         console.log(user);
         // Sets user data to firestore on login
@@ -60,6 +69,9 @@ export class UserService {
         // Sets user data to firestore on login
         const userRef = this.afs.doc(`user/${user.uid}`);
         console.log(userRef);
+        const a = {
+            uid: user.uid,
+        }
         const data = {
             userType: 'freelancer',
             uid: user.uid,
@@ -71,7 +83,7 @@ export class UserService {
         console.log(user.uid);
 
         const id = this.afs.createId();
-        const message = 'Welcome to Flashjob';
+        const message = 'Welcome to Flashjob, you may ask me any question here';
         const chat = {
             id: id,
             user1: user.uid,
@@ -86,6 +98,8 @@ export class UserService {
             updatedDt: new Date()
         };
         this.afs.doc(`chat/${id}`).set(chat);
+        // this.afs.doc(`preference/${id}`).set(a);
+
         return userRef.set(data);
     }
 

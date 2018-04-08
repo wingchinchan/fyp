@@ -1,0 +1,133 @@
+<!--------------------------- slider -------------------------->
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="card">
+            <div>
+                <div style=" height: 250px;background-image: url('assets/jpeg/wood.jpg'); border-radius:8px; background-repeat: no-repeat; background-size: cover; background-position: center; opacity: 0.7;">
+                </div>
+                <div class="carousel-caption">
+                    <p style="font-size: 45px; color: white; font-weight: 700;" class="text-white font-bold">SEARCH
+                        JOB</p>
+                    <hr style="width: 10%; border-top: 2px solid white !important;">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--------------------------- searching -------------------------->
+<div class="row">
+
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+        <div class="card card-outline-info">
+            <div class="card-body">
+                <p style="font-size: 40px; padding-top: 30px;font-weight: 500; text-align: center;" class="card-text">
+                    Search Job
+                </p>
+                <form [formGroup]="jobForm">
+                    <!-- <form> -->
+                    <div class="form-body">
+                        <div class="row p-t-20">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Job Title</label>
+                                    <input name="title" type="text" class="form-control" formControlName="title"
+                                           placeholder="Enter keyword of the job">
+
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group has-danger">
+                                    <label>Job Category</label>
+                                    <select class="form-control custom-select" data-placeholder="Choose a Category"
+                                            tabindex="1" formControlName="jobCategory" name="jobCategory">
+                                        <!--<option>Select Category</option>-->
+                                        <optgroup label="Finance">
+                                            <option value="Accounting">Accounting</option>
+                                            <option value="Banking">Banking</option>
+                                        </optgroup>
+                                        <optgroup label="Computing">
+                                            <option value="Mobile Application Development">Mobile Application
+                                                Development
+                                            </option>
+                                            <option value="Website Development">Website Development</option>
+                                        </optgroup>
+                                        <optgroup label="Design">
+                                            <option value="Fashion Design">Fashion Design</option>
+                                            <option value="Graphics Design">Graphics Design</option>
+                                        </optgroup>
+                                        <optgroup label="Other">
+                                            <option value="Education">Education</option>
+                                            <option value="Other">Other</option>
+                                        </optgroup>
+                                    </select>
+
+                                </div>
+                            </div>
+
+                            <!--/span-->
+                        </div>
+                    </div>
+                </form>
+                <div class="form-actions" style="text-align: center;" >
+                    <button style="margin: 0 auto" type="button" class="btn btn-warning" (click)="searchJobs()">
+                        <i class="fa fa-search"></i> Search Job
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<br>
+<div class="row" *ngIf="jobs">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <div class="card" style="text-align: center;">
+            <div class="card-body">
+                <h4 class="card-title">Job List</h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th style="text-align: center;">Job Title</th>
+                            <th style="text-align: center;">Post Date</th>
+                            <th style="text-align: center;">Job Category</th>
+                            <th style="text-align: center;">Salary</th>
+                            <th style="text-align: center;">Quota</th>
+                            <th style="text-align: center;">Details</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let job of jobs | async">
+                            <!--<td><a style="color: black;" href="javascript:void(0)">#{{job.no}}</a></td>-->
+                            <td><a style="color: black;">{{job.title}}</a></td>
+                            <td><span class="text-muted"><i class="fa fa-clock-o"></i> {{job.createdAt | amDateFormat: 'YYYY-MM-DD'}}</span>
+                            </td>
+                            <td>
+                                <div class="catButton btn btn-rounded {{job.ngClass}}">{{job.jobCategory}}</div>
+                            </td>
+                            <td>$ {{job.salary}}</td>
+                            <td>{{job.quota}}</td>
+                            <td>
+                                <div class="btn btn-block btn-warning" (click)="goToDetail(job)">Details</div>
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+                <!--<div style="text-align: center; display: inline-block !important;">-->
+                <!--<div class="btn btn-block btn-secondary">View more</div>-->
+                <!--</div>-->
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2"></div>
+
+</div>

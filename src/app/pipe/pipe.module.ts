@@ -5,11 +5,12 @@ import { ChatPipe } from './chatPipe';
 import { MessagePipe } from './messagePipe';
 import { JobApplicationPipe } from './jobApplicationPipe';
 import {CommentByCompanyPipe} from './commentByCompanyPipe';
+import {FormatFileSizePipe} from './testUploadPipe';
 
 @NgModule({
     imports:        [],
-    declarations:   [JobPipe, UserPipe, ChatPipe, MessagePipe, JobApplicationPipe, CommentByCompanyPipe],
-    exports:        [JobPipe, UserPipe, ChatPipe, MessagePipe, JobApplicationPipe, CommentByCompanyPipe],
+    declarations:   [JobPipe, UserPipe, ChatPipe, MessagePipe, JobApplicationPipe, CommentByCompanyPipe, FormatFileSizePipe],
+    exports:        [JobPipe, UserPipe, ChatPipe, MessagePipe, JobApplicationPipe, CommentByCompanyPipe, FormatFileSizePipe],
 })
 
 export class PipeModule {

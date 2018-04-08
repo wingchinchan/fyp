@@ -21,19 +21,34 @@ import {UserService} from '../../../service/userService';
 
 export class ManageJobByAdminComponent {
     public user: User;
-    public jobs: Observable<Job[]>;
+    // public jobs: Observable<Job[]>;
+    public jobs: Job[];
+    public offset = 50;
 
     constructor(public jobService: JobService, public router: Router, public userService: UserService) {
         // this.jobs = this.jobService.getJobs();
+        this.jobService.getMoreJob(this.offset).subscribe(jobs => {
+            this.jobs = jobs;
+        });
 
         this.userService.getUser().then(user => {
             console.log(user);
             this.user = user;
-            this.jobs = this.jobService.getJobsByCompany(user.uid);
+            // this.jobs = this.jobService.getJobsByCompany(user.uid);
         });
     }
 
-    goToDetail(job) {
-        this.router.navigate(['/user/job', job.id]);
+    goToManageJobByAdmin(job) {
+        this.router.navigate(['/user/deleteJobByAdmin', job.id]);
+    }
+
+    scrollHandler(e) {
+        console.log(e);
+        if (e === 'bottom') {
+            this.offset += 5;
+            this.jobService.getMoreJob(this.offset).subscribe(jobs => {
+                this.jobs = jobs;
+            });
+        }
     }
 }

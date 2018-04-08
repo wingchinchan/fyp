@@ -58,8 +58,11 @@ export class ChatComponent implements DoCheck {
     }
 
     async sendMessage() {
-        this.chatService.sendMessage(this.message, this.currentChat);
-        this.message = '';
+        this.chatService.getChat(this.currentChat.id).subscribe(chat => {
+            this.currentChat = chat;
+            this.chatService.sendMessage(this.message, this.currentChat);
+            this.message = '';
+        });
     }
 
     selectedChat(chat, event) {

@@ -43,6 +43,10 @@ export class ChatService {
         ).valueChanges();
     };
 
+    getChat(id) {
+        return this.afs.doc<Chat>(`chat/${id}`).valueChanges();
+    }
+
     //
     getResponse(query: string) {
         const data = {
@@ -63,7 +67,6 @@ export class ChatService {
     };
 
     async sendMessage(message: string, chat: Chat) {
-
         const user = await this.userService.getUser();
         const chatMessage: Message = {
             user: user.uid,
@@ -71,15 +74,9 @@ export class ChatService {
             updatedDt: new Date()
         };
         chat.updatedDt = new Date();
-        let botUser = '';
-        if (chat.user1 === user.uid) {
-            botUser = chat.user2;
-        } else {
-            botUser = chat.user1;
-        }
         const bot = await this.getResponse(message);
         const botMessage: Message = {
-            user: botUser,
+            user: 'sFYQxt3AOLT8Nv1LY22FeVoKZgD3',
             value: bot.result.fulfillment.speech,
             updatedDt: new Date()
         };
@@ -89,10 +86,11 @@ export class ChatService {
         } else {
             chat.messages.push(chatMessage);
         }
-        if (chat.type === 'Admin') {
+        if (chat.type === 'Admin' && chat.user1 === user.uid) {
             chat.messages.push(botMessage);
+            message = bot.result.fulfillment.speech;
         }
-        chat.lastMessage = bot.result.fulfillment.speech;
+        chat.lastMessage = message;
         this.afs.doc(`chat/${chat.id}`).update(chat);
     }
 

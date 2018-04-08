@@ -4,6 +4,7 @@ import {Injectable} from '@angular/core';
 import {UserService, User} from './userService';
 import {ChatService} from './chatService';
 import {Observable} from 'rxjs/Observable';
+import {AngularFireDatabase, FirebaseListObservable} from 'angularfire2/database-deprecated';
 
 export interface Job {
     name: string;
@@ -36,6 +37,11 @@ export interface viewFreelancerComment {
     id: string;
 }
 
+export interface Preference {
+    uid: string;
+    id: string;
+}
+
 @Injectable()
 export class JobService {
 
@@ -50,12 +56,36 @@ export class JobService {
     // public jobSync = false;
     public job: Job;
     public jobApplication: JobApplication;
+
     // public commentRatingForFreelancer: CommentToFreelancer;
 
-    constructor(public afs: AngularFirestore, public userService: UserService, public chatService: ChatService) {
-
+    constructor(private db: AngularFireDatabase, public afs: AngularFirestore, public userService: UserService, public chatService: ChatService) {
     }
 
+    // getJobsBysearch(start, end): FirebaseListObservable<any> {
+    //     return this.db.list('/job', {
+    //         // return this.afs.collection('job', {
+    //             query: {
+    //             oderByChild: 'title',
+    //             limitToFirst: 10,
+    //             startAt: start,
+    //             endAt: end
+    //         }
+    //     });
+    //
+    // }
+
+    generateRecommendResult(jobCategory) {
+        return this.afs.collection('job', ref =>
+            ref.where('jobCategory', '==', jobCategory).orderBy('createdAt', 'desc')
+        ).snapshotChanges().map(actions => {
+            return actions.map(a => {
+                const data = a.payload.doc.data() as Job;
+                const id = a.payload.doc.id;
+                return {id, ...data};
+            });
+        });
+    };
 
     getJobs() {
         return this.afs.collection('job', ref =>
@@ -110,8 +140,7 @@ export class JobService {
                 return {id, ...data};
             });
         });
-    }
-    ;
+    };
 
     getJob(id) {
         return this.afs.doc<Job>(`job/${id}`).valueChanges();
@@ -233,6 +262,12 @@ export class JobService {
 
     };
 
+    deleteJob(job, id) {
+        this.afs.doc(`job/${id}`).delete();
+        console.log(...job);
+
+    };
+
     updateJobApplicationStatus(jobApplication, id) {
         let ngClass = '';
         switch (jobApplication.status) {
@@ -279,6 +314,7 @@ export class JobService {
             });
         });
     };
+
     getApplicationByID(id) {
         return this.afs.doc<JobApplication>(`jobApplication/${id}`).valueChanges();
     }
@@ -310,6 +346,7 @@ export class JobService {
             );
         });
     }
+
     getCommentRecordByCompany(id) {
         return this.afs.doc<CommentFreelancer>(`commentRatingForFreelancer/${id}`).valueChanges();
     }
@@ -317,5 +354,18 @@ export class JobService {
     // getCommentRecordByFreelancer(id) {
     //     return this.afs.doc<CommentCompany>(`commentRatingForCompany/${id}`).valueChanges();
     // }
+    // setPreference(preference) {
+    //     this.userService.getUser().then(user => {
+    //         this.afs.collection('preference').add(
+    //             {
+    //                 ...preference,
+    //                 updatedAt: new Date(),
+    //                 createdAt: new Date(),
+    //                 uid: user.uid
+    //             }
+    //         );
+    //     });
+    // }
+
 }
 

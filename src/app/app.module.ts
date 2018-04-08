@@ -18,6 +18,12 @@ import {UserModule} from './pages/user/user.module';
 import {HttpClientModule} from '@angular/common/http';
 import { PipeModule } from './pipe/pipe.module';
 
+import { AngularFireStorageModule } from 'angularfire2/storage';
+import { environment } from '../environments/environment';
+import { DropZoneDirective } from './drop-zone.directive';
+// import { FileUploadComponent } from './file-upload/file-upload.component';
+
+
 const firebaseConfig = {
     apiKey: "AIzaSyDhGKcU8rrQ9PSdFrTs9ju5PnE5OFyWd3E",
     authDomain: "cwcfyp.firebaseapp.com",
@@ -84,12 +90,17 @@ const routes: Routes = [
     }, {
         path: 'simpleline',
         loadChildren: './pages/icons/simpleline/simpleline.module'
-    }
+    },
+    // {
+    //     path: 'file-upload',
+    //     loadChildren: './file-upload/file-upload.component'
+    // }
 ];
 
 @NgModule({
     declarations: [
         AppComponent,
+        DropZoneDirective,
     ],
     imports: [
         BrowserModule,
@@ -105,7 +116,9 @@ const routes: Routes = [
         AngularFirestoreModule, // imports firebase/firestore, only needed for database features
         AngularFireAuthModule, // imports firebase/auth, only needed for auth features
         MomentModule,
-        HttpClientModule
+        HttpClientModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFireStorageModule
     ],
     providers: [
         UserService,

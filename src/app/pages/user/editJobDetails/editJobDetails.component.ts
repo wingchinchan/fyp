@@ -152,6 +152,10 @@ export class EditJobDetailsComponent {
         console.log(jobApplication.id);
         this.router.navigate(['/user/commentRating', jobApplication.id]);
     }
+    viewFreelancerProfile(jobApplication) {
+        this.router.navigate(['/user/viewProfileByOther', jobApplication.uid]);
+
+    }
 
 
 }

@@ -1,0 +1,9 @@
+.card-title {
+    color: white;
+    background: #99dece;
+    padding: 10px;
+}
+
+.catButton{
+    cursor: auto !important;
+}
