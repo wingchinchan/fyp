@@ -20,7 +20,6 @@ import { PipeModule } from './pipe/pipe.module';
 
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { environment } from '../environments/environment';
-// import { DropZoneDirective } from './drop-zone.directive';
 // import { FileUploadComponent } from './file-upload/file-upload.component';
 
 
@@ -91,16 +90,11 @@ const routes: Routes = [
         path: 'simpleline',
         loadChildren: './pages/icons/simpleline/simpleline.module'
     },
-    // {
-    //     path: 'file-upload',
-    //     loadChildren: './file-upload/file-upload.component'
-    // }
 ];
 
 @NgModule({
     declarations: [
         AppComponent,
-        DropZoneDirective,
     ],
     imports: [
         BrowserModule,
