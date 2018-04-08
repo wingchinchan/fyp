@@ -20,6 +20,7 @@ import { PipeModule } from './pipe/pipe.module';
 
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { environment } from '../environments/environment';
+// import { DropZoneDirective } from './drop-zone.directive';
 // import { FileUploadComponent } from './file-upload/file-upload.component';
 
 
