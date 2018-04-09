@@ -96,12 +96,12 @@ export class PostjobComponent {
 
     postJob() {
         this.jobService.postJob(this.jobForm.value);
-        this.router.navigateByUrl('user/profile');
+        this.router.navigateByUrl('user/manageJob');
         alert('Post job successfully');
     }
 
     redirect() {
-        this.router.navigateByUrl('user/profile');
+        this.router.navigateByUrl('user/manageJob');
     }
 }
 

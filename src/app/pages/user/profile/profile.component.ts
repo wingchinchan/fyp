@@ -7,7 +7,7 @@ import {AngularFirestore, AngularFirestoreCollection} from 'angularfire2/firesto
 import {Router} from '@angular/router';
 import {EmailValidator} from '../../landing/email';
 import {Observable} from 'rxjs/Observable';
-import {AngularFireStorage} from "angularfire2/storage";
+// import {AngularFireStorage} from "angularfire2/storage";
 
 
 @Component({
@@ -32,7 +32,7 @@ export class ProfileComponent {
 
     uploadPercent: Observable<number>;
 
-    constructor(private storage: AngularFireStorage, public userService: UserService, public jobService: JobService, public formBuilder: FormBuilder, public afs: AngularFirestore, public router: Router) {
+    constructor(public userService: UserService, public jobService: JobService, public formBuilder: FormBuilder, public afs: AngularFirestore, public router: Router) {
         this.userService.getUser().then(user => {
             console.log(user);
             this.user = user;
@@ -209,28 +209,28 @@ export class ProfileComponent {
 
     }
 
-    uploadFile(event) {
-        const file = event.target.files[0];
-        const filePath = this.user.uid;
-        const task = this.storage.upload(filePath, file);
-
-        // observe percentage changes
-        this.uploadPercent = task.percentageChanges();
-        // get notified when the download URL is available
-        const downloadURL = task.downloadURL();
-        downloadURL.subscribe(url => {
-            console.log(url);
-            if (this.user.userType === 'company') {
-                this.companyForm.patchValue({
-                    photoURL: url
-                });
-            } else {
-                this.preferenceForm.patchValue({
-                    photoURL: url
-                });
-            }
-        });
-    }
+    // uploadFile(event) {
+    //     const file = event.target.files[0];
+    //     const filePath = this.user.uid;
+    //     const task = this.storage.upload(filePath, file);
+    //
+    //     // observe percentage changes
+    //     this.uploadPercent = task.percentageChanges();
+    //     // get notified when the download URL is available
+    //     const downloadURL = task.downloadURL();
+    //     downloadURL.subscribe(url => {
+    //         console.log(url);
+    //         if (this.user.userType === 'company') {
+    //             this.companyForm.patchValue({
+    //                 photoURL: url
+    //             });
+    //         } else {
+    //             this.preferenceForm.patchValue({
+    //                 photoURL: url
+    //             });
+    //         }
+    //     });
+    // }
 
 }
 

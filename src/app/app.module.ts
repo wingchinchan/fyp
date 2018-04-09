@@ -10,6 +10,7 @@ import {AppComponent} from './app.component';
 import {AngularFireModule} from 'angularfire2';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import {AngularFirestoreModule} from 'angularfire2/firestore';
+// import { AngularFireStorageModule } from 'angularfire2/storage';
 import {MomentModule} from 'angular2-moment';
 import {UserService} from './service/userService';
 import {ChatService} from './service/chatService';
@@ -17,11 +18,6 @@ import {JobService} from './service/jobService';
 import {UserModule} from './pages/user/user.module';
 import {HttpClientModule} from '@angular/common/http';
 import { PipeModule } from './pipe/pipe.module';
-
-import { AngularFireStorageModule } from 'angularfire2/storage';
-import { environment } from '../environments/environment';
-// import { DropZoneDirective } from './drop-zone.directive';
-// import { FileUploadComponent } from './file-upload/file-upload.component';
 
 
 const firebaseConfig = {
@@ -31,7 +27,8 @@ const firebaseConfig = {
     projectId: "cwcfyp",
     storageBucket: "cwcfyp.appspot.com",
     messagingSenderId: "1083031193263"
-}
+};
+
 const routes: Routes = [
     {
         path: '',
@@ -93,6 +90,7 @@ const routes: Routes = [
     },
 ];
 
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -110,10 +108,9 @@ const routes: Routes = [
         AngularFireModule.initializeApp(firebaseConfig),
         AngularFirestoreModule, // imports firebase/firestore, only needed for database features
         AngularFireAuthModule, // imports firebase/auth, only needed for auth features
+        // AngularFireStorageModule,
         MomentModule,
         HttpClientModule,
-        AngularFireModule.initializeApp(environment.firebase),
-        AngularFireStorageModule
     ],
     providers: [
         UserService,
