@@ -34,6 +34,7 @@ export class JobDetailsComponent {
 
     applyJob(job) {
         this.jobService.applyJob(job, this.id);
+        alert('Apply this job successfully');
         this.router.navigateByUrl('user/profile');
     }
     viewCompanyProfile(job) {

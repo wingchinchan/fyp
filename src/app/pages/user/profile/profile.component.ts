@@ -133,11 +133,7 @@ export class ProfileComponent {
                     Validators.required
                 ])
             ],
-            // photoURL: [
-            //     '', Validators.compose([
-            //         Validators.required
-            //     ])
-            // ]
+
         });
         this.userService.getUser().then(user => {
             this.companyForm.setValue({
@@ -145,7 +141,6 @@ export class ProfileComponent {
                 email: user.email,
                 introduction: user.introduction,
                 skills: user.skills,
-                // photoURL: user.photoURL
             });
         });
 
