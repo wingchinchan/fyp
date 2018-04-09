@@ -10,7 +10,6 @@ import {AppComponent} from './app.component';
 import {AngularFireModule} from 'angularfire2';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import {AngularFirestoreModule} from 'angularfire2/firestore';
-// import { AngularFireStorageModule } from 'angularfire2/storage';
 import {MomentModule} from 'angular2-moment';
 import {UserService} from './service/userService';
 import {ChatService} from './service/chatService';
@@ -108,7 +107,6 @@ const routes: Routes = [
         AngularFireModule.initializeApp(firebaseConfig),
         AngularFirestoreModule, // imports firebase/firestore, only needed for database features
         AngularFireAuthModule, // imports firebase/auth, only needed for auth features
-        // AngularFireStorageModule,
         MomentModule,
         HttpClientModule,
     ],
