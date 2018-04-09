@@ -4,7 +4,6 @@ import {Injectable} from '@angular/core';
 import {UserService, User} from './userService';
 import {ChatService} from './chatService';
 import {Observable} from 'rxjs/Observable';
-import {AngularFireDatabase, FirebaseListObservable} from 'angularfire2/database-deprecated';
 
 export interface Job {
     name: string;
@@ -59,7 +58,7 @@ export class JobService {
 
     // public commentRatingForFreelancer: CommentToFreelancer;
 
-    constructor(private db: AngularFireDatabase, public afs: AngularFirestore, public userService: UserService, public chatService: ChatService) {
+    constructor(public afs: AngularFirestore, public userService: UserService, public chatService: ChatService) {
     }
 
     // getJobsBysearch(start, end): FirebaseListObservable<any> {
