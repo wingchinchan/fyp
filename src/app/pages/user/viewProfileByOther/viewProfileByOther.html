@@ -156,17 +156,17 @@
                     </div>
                 </div>
                 <!----------------------------------------------------second tab-------------------------------------------------------------->
-                <div class="tab-pane" id="profile" role="tabpanel">
+                <div class="tab-pane" id="profile" role="tabpanel" *ngIf="user.userType == 'freelancer' ">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-4 col-xs-6 b-r"><strong>Full Name</strong>
                                 <br>
                                 <p class="text-muted">{{ user.displayName}}</p>
                             </div>
-                            <!--<div class="col-md-4 col-xs-6 b-r"><strong>Phone</strong>-->
-                                <!--<br>-->
-                                <!--<p class="text-muted">{{ user.phone}}</p>-->
-                            <!--</div>-->
+                            <div class="col-md-4 col-xs-6 b-r"><strong>Job Category</strong>
+                                <br>
+                                <p class="text-muted">{{ user.preference_jobCategory}}</p>
+                            </div>
                             <div class="col-md-4 col-xs-6 b-r"><strong>Email</strong>
                                 <br>
                                 <p class="text-muted">{{ user.email}}</p>
@@ -182,19 +182,19 @@
                             <p class="text-muted">{{ user.introduction}}</p>
                         </div>
                         <hr>
-                        <div><strong>Education</strong>
+                        <div><strong>Education Level</strong>
                             <br>
-                            <p class="text-muted">{{ user.edu}}</p>
+                            <p class="text-muted">{{ user.preference_eduLv}}</p>
                         </div>
                         <hr>
                         <div><strong>Working Experience</strong>
                             <br>
-                            <p class="text-muted">{{ user.workingexp}}</p>
+                            <p class="text-muted">{{ user.workExp}}</p>
                         </div>
                         <hr>
                         <div><strong>Skill</strong>
                             <br>
-                            <p class="text-muted">{{ user.skill}}</p>
+                            <p class="text-muted">{{ user.skills}}</p>
                         </div>
 
 
