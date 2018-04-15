@@ -149,7 +149,7 @@ export class ProfileComponent {
     setPreference() {
         console.log('test');
         this.userService.setPreference(this.preferenceForm.value, this.user.uid);
-        this.user.photoURL = this.preferenceForm.value.photoURL;
+        // this.user.photoURL = this.preferenceForm.value.photoURL;
         this.router.navigateByUrl('user/profile');
         alert('Set Preference successfully');
     }
