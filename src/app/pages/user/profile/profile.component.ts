@@ -151,16 +151,16 @@ export class ProfileComponent {
         this.userService.setPreference(this.preferenceForm.value, this.user.uid);
         // this.user.photoURL = this.preferenceForm.value.photoURL;
         this.router.navigateByUrl('user/profile');
-        alert('Set Preference successfully');
+        alert('Edit profile successfully');
     }
 
     setCompany() {
         console.log('test');
         console.log(this.companyForm.value);
         this.userService.setPreference(this.companyForm.value, this.user.uid);
-        this.user.photoURL = this.companyForm.value.photoURL;
+        // this.user.photoURL = this.companyForm.value.photoURL;
         this.router.navigateByUrl('user/profile');
-        alert('Set Preference successfully');
+        alert('Edit profile successfully');
     }
 
 
